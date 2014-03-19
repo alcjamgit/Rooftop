@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <form class="form-horizontal" role="form">
+        <h2 class="text-center">Search for Apartments and More</h2>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">For Rent <span class="caret"></span></button>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="#">For Sale</a></li>
+                    <li><a href="#">For Rent</a></li>
+                    <li><a href="#">Bedspace</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Commercial</a></li>
+                </ul>
+            </div><!-- /btn-group -->
+
+        </div><!-- /input-group -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span data-bind="label">Any Price </span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><input class ="form-control" placeholder="Min Price"/></li>
+                <li><a href="#">Below P2000</a></li>
+                <li><a href="#">Below P3000</a></li>
+                <li><a href="#">Below P4000</a></li>
+                <li><a href="#">Below P5000</a></li>
+                <li><a href="#">Below P6000</a></li>
+                <li><a href="#">Below P7000</a></li>
+                <li><a href="#">Below P8000</a></li>
+                <li><a href="#">Below P9000</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span data-bind="label">Any Beds </span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><input class="form-control" placeholder="Min Price" /></li>
+                <li><a href="#">Studio</a></li>
+                <li><a href="#">1 Bed</a></li>
+                <li><a href="#">2 Beds</a></li>
+                <li><a href="#">3 Beds</a></li>
+                <li><a href="#">+ 4 Beds</a></li>
+            </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span data-bind="label">Any Beds</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><input class="form-control" placeholder="Min Price" /></li>
+                <li><a href="#">Studio</a></li>
+                <li><a href="#">1 Bed</a></li>
+                <li><a href="#">2 Beds</a></li>
+                <li><a href="#">3 Beds</a></li>
+                <li><a href="#">+ 4 Beds</a></li>
+            </ul>
+        </div>
+        <div class="btn-group btn-input clearfix">
+            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                More <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Another item</a></li>
+                <li><a href="#">This is a longer item that will not fit properly</a></li>
+            </ul>
+        </div>
+    </form>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        /*SUPPLEMENTARY SCRIPTS
+        Author:James Alcaraz
+        */
+        /*------------------------------------------------------------------------
+        When an item in the drop-down button is selected it will be changed
+        http://www.benknowscode.com/2013/12/bootstrap-dropdown-button-select-box-control.html
+        -------------------------------------------------------------------------*/
+        $(document.body).on('click', '.dropdown-menu li', function (event) {
+
+            var $target = $(event.currentTarget);
+
+            $target.closest('.btn-group')
+                .find('[data-bind="label"]').text($target.text())
+                .end()
+                .children('.dropdown-toggle').dropdown('toggle');
+
+            return false;
+
+        });
+
+
+        /*------------------------------------------------------------------------
+        Prevent drop-down menu from disappearing when an input got the focus
+        -------------------------------------------------------------------------*/
+        $(function () {
+            // Setup drop down menu
+            $('.dropdown-toggle').dropdown();
+
+            // Fix input element click problem
+            $('.dropdown input, .dropdown label').click(function (e) {
+                e.stopPropagation();
+            });
+        });
+
+    </script>
+}
