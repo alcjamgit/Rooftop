@@ -8,7 +8,9 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City">
             <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">For Rent <span class="caret"></span></button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span data-bind="label">For Rent</span> <span class="caret"></span>
+                </button>
                 <ul class="dropdown-menu pull-right">
                     <li><a href="#">For Sale</a></li>
                     <li><a href="#">For Rent</a></li>
@@ -48,19 +50,7 @@
                 <li><a href="#">+ 4 Beds</a></li>
             </ul>
         </div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label">Any Beds</span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><input class="form-control" placeholder="Min Price" /></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">1 Bed</a></li>
-                <li><a href="#">2 Beds</a></li>
-                <li><a href="#">3 Beds</a></li>
-                <li><a href="#">+ 4 Beds</a></li>
-            </ul>
-        </div>
+
         <div class="btn-group btn-input clearfix">
             <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
                 More <span class="caret"></span>
@@ -110,7 +100,7 @@
 
             var $target = $(event.currentTarget);
 
-            $target.closest('.btn-group')
+            $target.closest('.btn-group, .input-group-btn')
                 .find('[data-bind="label"]').text($target.text())
                 .end()
                 .children('.dropdown-toggle').dropdown('toggle');
