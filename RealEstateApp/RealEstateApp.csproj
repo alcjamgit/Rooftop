@@ -163,8 +163,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\MigrationsAppDb\201403221613388_InitialCreate.cs" />
+    <Compile Include="Migrations\MigrationsAppDb\201403221613388_InitialCreate.Designer.cs">
+      <DependentUpon>201403221613388_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MigrationsAppDb\201403221649416_Initial.cs" />
+    <Compile Include="Migrations\MigrationsAppDb\201403221649416_Initial.Designer.cs">
+      <DependentUpon>201403221649416_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MigrationsAppDb\Configuration.cs" />
+    <Compile Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.cs" />
+    <Compile Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.Designer.cs">
+      <DependentUpon>201403221413125_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MigrationsUserDb\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\RealEstateDataContext.cs" />
+    <Compile Include="Models\RealtyAd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -214,6 +231,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -225,6 +243,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\MigrationsAppDb\201403221613388_InitialCreate.resx">
+      <DependentUpon>201403221613388_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MigrationsAppDb\201403221649416_Initial.resx">
+      <DependentUpon>201403221649416_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.resx">
+      <DependentUpon>201403221413125_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

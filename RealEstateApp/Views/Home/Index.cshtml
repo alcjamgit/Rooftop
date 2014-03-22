@@ -6,12 +6,12 @@
     <form class="form-horizontal" role="form">
         <h2 class="text-center">Search for Apartments and More</h2>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City">
+            
             <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
                     <span data-bind="label">For Rent</span> <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu pull-right">
+                <ul class="dropdown-menu pull-left">
                     <li><a href="#">For Sale</a></li>
                     <li><a href="#">For Rent</a></li>
                     <li><a href="#">Bedspace</a></li>
@@ -19,7 +19,7 @@
                     <li><a href="#">Commercial</a></li>
                 </ul>
             </div><!-- /btn-group -->
-
+            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
         </div><!-- /input-group -->
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -50,7 +50,7 @@
                 <li><a href="#">+ 4 Beds</a></li>
             </ul>
         </div>
-
+        
         <div class="btn-group btn-input clearfix">
             <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
                 More <span class="caret"></span>
@@ -61,6 +61,7 @@
                 <li><a href="#">This is a longer item that will not fit properly</a></li>
             </ul>
         </div>
+        <button type ="submit" class="btn btn-success">Search</button>
     </form>
 
 </div>
