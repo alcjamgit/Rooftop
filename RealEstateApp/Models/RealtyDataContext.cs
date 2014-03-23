@@ -6,16 +6,20 @@ using System.Web;
 
 namespace RealEstateApp.Models
 {
-    public class RealEstateDataContext: DbContext
+    public class RealtyDataContext: DbContext
 
     {
         //Use same connection string as the db context
-        public RealEstateDataContext()
+        public RealtyDataContext()
             :base("DefaultConnection")
         {
         }
 
         public DbSet<RealtyAd> RealtyAds { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
+        public DbSet<RealtyAdView> RealtyAdViews { get; set; }
+        
+
     }
 }

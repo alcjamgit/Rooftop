@@ -1,0 +1,1 @@
+﻿update-database -configuration RealEstateApp.MigrationsUserDb.Configuration -Verbose
