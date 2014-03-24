@@ -9,12 +9,14 @@ namespace RealEstateApp.Models
     //public class ApplicationUser : IdentityUser
     public class ApplicationUser : IdentityUser
     {
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [MaxLength(30)]
         public string CellphoneNum { get; set; }
         public string TelephoneNum { get; set; }
         public bool IsRealtyAgent { get; set; }
+        public string AboutMessage { get; set; }
         public virtual ICollection<RealtyAd> Ads { get; set; }
         
     }
@@ -33,6 +35,11 @@ namespace RealEstateApp.Models
         public DbSet<RealtyAdView> RealtyAdViews { get; set; }
         public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
 
+        public System.Data.Entity.DbSet<RealEstateApp.Models.ApplicationUser> IdentityUsers { get; set; }
+
+        //TODO:Check redundancy of adding this to t
+        //public DbSet<ApplicationUser> IdentityUsers { get; set; }
+        
 
     }
 }

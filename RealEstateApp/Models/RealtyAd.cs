@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,6 +9,15 @@ using System.Web;
 
 namespace RealEstateApp.Models
 {
+    public enum RealtyAdCategory
+    {
+        [Description("For Sale")]
+        Homes = 1,
+        [Description("For Rent")]
+        Rentals = 2,
+        [Description("Commercial Space")]
+        Commercial = 4,    
+    }
     public class RealtyAd
     {
         public long Id { get; set; }
@@ -26,6 +36,7 @@ namespace RealEstateApp.Models
         
         [DisplayFormat(DataFormatString="mm/dd/yyyy")]
         public decimal? Price { get; set; }
+        public RealtyAdCategory Category { get;set;}
         public int Type { get;set;}
         public string Address { get; set; }
         public int BedCount { get; set; }
