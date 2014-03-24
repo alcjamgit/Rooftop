@@ -25,7 +25,7 @@ namespace RealEstateApp.Models
         public virtual string ApplicationUserId { get; set; }
         
         [DisplayFormat(DataFormatString="mm/dd/yyyy")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         public int Type { get;set;}
         public string Address { get; set; }
         public int BedCount { get; set; }
@@ -33,11 +33,13 @@ namespace RealEstateApp.Models
         public float FloorAreaSqM { get; set; }
         public float LotAreaSqM { get; set; }
         public int CityId { get; set; }
+        public float Latitude { get; set; }
         public float Longitude { get; set; }
         //Navigational Properties
         public virtual City City { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<RealtyAdMessage> RealtyAdMessages { get; set; }
         public virtual ICollection<RealtyAdView> Views { get; set; }
+        public virtual ICollection<RealtyAdImage> RealtyAdImages { get; set; }
     }
 }

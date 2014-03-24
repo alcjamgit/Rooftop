@@ -6,10 +6,12 @@ using System.Data.Entity;
 namespace RealEstateApp.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    //public class ApplicationUser : IdentityUser
     public class ApplicationUser : IdentityUser
     {
-    
+        [EmailAddress]
         public string Email { get; set; }
+        [MaxLength(30)]
         public string CellphoneNum { get; set; }
         public string TelephoneNum { get; set; }
         public bool IsRealtyAgent { get; set; }
@@ -24,6 +26,13 @@ namespace RealEstateApp.Models
         {
 
         }
+
+        public DbSet<RealtyAd> RealtyAds { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
+        public DbSet<RealtyAdView> RealtyAdViews { get; set; }
+        public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
+
 
     }
 }

@@ -19,7 +19,7 @@ namespace RealEstateApp.Models
         public DbSet<City> Cities { get; set; }
         public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
         public DbSet<RealtyAdView> RealtyAdViews { get; set; }
-        
+        public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
 
     }
 }
