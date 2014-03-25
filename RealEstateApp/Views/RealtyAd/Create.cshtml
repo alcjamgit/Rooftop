@@ -32,11 +32,10 @@
         </div>
 
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Status)
+                @Html.EnumDropDownListFor(model => model.Status)
                 @Html.ValidationMessageFor(model => model.Status)
             </div>
         </div>
@@ -54,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Category)
+                @Html.EnumDropDownListFor(model => model.Category)
                 @Html.ValidationMessageFor(model => model.Category)
             </div>
         </div>
@@ -76,22 +75,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BedCount, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BedCount)
-                @Html.ValidationMessageFor(model => model.BedCount)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BathCount, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BathCount)
-                @Html.ValidationMessageFor(model => model.BathCount)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.FloorAreaSqM, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FloorAreaSqM)
@@ -108,10 +91,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CityId, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.City_Id, "City_Id", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CityId)
-                @Html.ValidationMessageFor(model => model.CityId)
+                @Html.DropDownList("City_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.City_Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BedCount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BedCount)
+                @Html.ValidationMessageFor(model => model.BedCount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BathCount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BathCount)
+                @Html.ValidationMessageFor(model => model.BathCount)
             </div>
         </div>
 

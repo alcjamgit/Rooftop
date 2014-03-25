@@ -7,12 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-default">@Html.ActionLink("Create New", "Create")</button>
 </p>
 <table class="table">
     <tr>
+
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
+            @Html.DisplayNameFor(model => model.City.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ShortDescn)
@@ -39,19 +40,10 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BedCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BathCount)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FloorAreaSqM)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LotAreaSqM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Latitude)
@@ -65,7 +57,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.UserName)
+            @Html.DisplayFor(modelItem => item.City.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ShortDescn)
@@ -92,19 +84,10 @@
             @Html.DisplayFor(modelItem => item.Address)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BedCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BathCount)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.FloorAreaSqM)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LotAreaSqM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CityId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Latitude)

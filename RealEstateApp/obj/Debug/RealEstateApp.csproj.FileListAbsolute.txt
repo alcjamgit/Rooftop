@@ -53,5 +53,5 @@ c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateA
 c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csprojResolveAssemblyReference.cache
 c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.dll
 c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.pdb
-C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csproj.GenerateResource.Cache
-C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.MigrationsUserDb.InitialCreate.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.Initial.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csproj.GenerateResource.Cache

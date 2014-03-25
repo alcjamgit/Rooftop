@@ -1,20 +1,18 @@
-namespace RealEstateApp.MigrationsAppDb
+namespace RealEstateApp.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RealEstateApp.Models.RealtyDataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<RealEstateApp.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            MigrationsDirectory = @"MigrationsAppDb";
-            ContextKey = "RealEstateApp.Models.RealEstateDataContext";
         }
 
-        protected override void Seed(RealEstateApp.Models.RealtyDataContext context)
+        protected override void Seed(RealEstateApp.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

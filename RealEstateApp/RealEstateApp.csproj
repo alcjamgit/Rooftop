@@ -165,18 +165,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\MigrationsAppDb\Configuration.cs" />
-    <Compile Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.cs" />
-    <Compile Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.Designer.cs">
-      <DependentUpon>201403221413125_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201403250433401_Initial.cs" />
+    <Compile Include="Migrations\201403250433401_Initial.Designer.cs">
+      <DependentUpon>201403250433401_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\MigrationsUserDb\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
     <Compile Include="Models\RealtyAdViews.cs" />
-    <Compile Include="Models\RealtyDataContext.cs" />
     <Compile Include="Models\RealtyAd.cs" />
     <Compile Include="Models\RealtyAdMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,7 +185,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -248,15 +246,15 @@
     <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\MigrationsUserDb\201403221413125_InitialCreate.resx">
-      <DependentUpon>201403221413125_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201403250433401_Initial.resx">
+      <DependentUpon>201403250433401_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

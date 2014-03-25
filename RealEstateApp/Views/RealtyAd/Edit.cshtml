@@ -49,10 +49,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ApplicationUserId, "ApplicationUserId", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ApplicationUser_Id, "ApplicationUser_Id", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ApplicationUserId", String.Empty)
-                @Html.ValidationMessageFor(model => model.ApplicationUserId)
+                @Html.DropDownList("ApplicationUser_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.ApplicationUser_Id)
             </div>
         </div>
 
@@ -89,22 +89,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BedCount, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BedCount)
-                @Html.ValidationMessageFor(model => model.BedCount)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BathCount, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BathCount)
-                @Html.ValidationMessageFor(model => model.BathCount)
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.FloorAreaSqM, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FloorAreaSqM)
@@ -121,10 +105,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CityId, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.City_Id, "City_Id", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CityId)
-                @Html.ValidationMessageFor(model => model.CityId)
+                @Html.DropDownList("City_Id", String.Empty)
+                @Html.ValidationMessageFor(model => model.City_Id)
             </div>
         </div>
 

@@ -9,19 +9,26 @@ namespace RealEstateApp.Models
     //public class ApplicationUser : IdentityUser
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        [EmailAddress]
+        [Required, StringLength(50)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [MaxLength(30)]
+        [StringLength(50), Display(Name="First Name")]
+        public string FirstName { get; set; }
+        [StringLength(50), Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [StringLength(30), Display(Name="Cellphone Number")]
         public string CellphoneNum { get; set; }
+        [StringLength(30), Display(Name = "Telephone Number")]
         public string TelephoneNum { get; set; }
         public bool IsRealtyAgent { get; set; }
         public string AboutMessage { get; set; }
-        public virtual ICollection<RealtyAd> Ads { get; set; }
+        public virtual ICollection<RealtyAd> RealtyAds { get; set; }
         
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    //Originally public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    //http://stackoverflow.com/questions/19628144/how-can-one-put-application-users-in-the-same-context-as-the-rest-of-the-objects
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext()
             : base("DefaultConnection")
@@ -29,17 +36,13 @@ namespace RealEstateApp.Models
 
         }
 
+        public DbSet<ApplicationUser> IdentityUsers { get; set; }
         public DbSet<RealtyAd> RealtyAds { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
         public DbSet<RealtyAdView> RealtyAdViews { get; set; }
         public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
-
-        public System.Data.Entity.DbSet<RealEstateApp.Models.ApplicationUser> IdentityUsers { get; set; }
-
-        //TODO:Check redundancy of adding this to t
-        //public DbSet<ApplicationUser> IdentityUsers { get; set; }
-        
+       
 
     }
 }

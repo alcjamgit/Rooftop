@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using RealEstateApp.Models;
 using Microsoft.AspNet.Identity;
-
 namespace RealEstateApp.Controllers
 {
     public class RealtyAdController : Controller
@@ -18,12 +17,12 @@ namespace RealEstateApp.Controllers
         // GET: /RealtyAd/
         public ActionResult Index()
         {
-            var realtyads = db.RealtyAds.Include(r => r.ApplicationUser);
+            var realtyads = db.RealtyAds.Include(r => r.ApplicationUser).Include(r => r.City);
             return View(realtyads.ToList());
         }
 
         // GET: /RealtyAd/Details/5
-        public ActionResult Details(long? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -40,7 +39,8 @@ namespace RealEstateApp.Controllers
         // GET: /RealtyAd/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUserId = new SelectList(db.IdentityUsers, "Id", "UserName");
+            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName");
+            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
             return View();
         }
 
@@ -49,12 +49,11 @@ namespace RealEstateApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ShortDescn,LongDescn,Status,Price,Category,Type,Address,BedCount,BathCount,FloorAreaSqM,LotAreaSqM,CityId,Latitude,Longitude")] RealtyAd realtyad)
+        public ActionResult Create([Bind(Include=@"Id,ShortDescn,LongDescn,Status,BedCount,BathCount, 
+                Price,Category,Type,Address,FloorAreaSqM,LotAreaSqM,City_Id,Latitude,Longitude")] RealtyAd realtyad)
         {
-            
             realtyad.DatePosted = DateTime.Now;
-            realtyad.ApplicationUserId = User.Identity.GetUserId();
-            
+            realtyad.ApplicationUser_Id = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.RealtyAds.Add(realtyad);
@@ -62,12 +61,13 @@ namespace RealEstateApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.IdentityUsers, "Id", "UserName", realtyad.ApplicationUserId);
+            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName", realtyad.ApplicationUser_Id);
+            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyad.City_Id);
             return View(realtyad);
         }
 
         // GET: /RealtyAd/Edit/5
-        public ActionResult Edit(long? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -78,7 +78,8 @@ namespace RealEstateApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.IdentityUsers, "Id", "UserName", realtyad.ApplicationUserId);
+            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName", realtyad.ApplicationUser_Id);
+            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyad.City_Id);
             return View(realtyad);
         }
 
@@ -87,7 +88,7 @@ namespace RealEstateApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,ShortDescn,LongDescn,DatePosted,Status,ApplicationUserId,Price,Category,Type,Address,BedCount,BathCount,FloorAreaSqM,LotAreaSqM,CityId,Latitude,Longitude")] RealtyAd realtyad)
+        public ActionResult Edit([Bind(Include="Id,ShortDescn,LongDescn,DatePosted,Status,ApplicationUser_Id,Price,Category,Type,Address,FloorAreaSqM,LotAreaSqM,City_Id,Latitude,Longitude")] RealtyAd realtyad)
         {
             if (ModelState.IsValid)
             {
@@ -95,12 +96,13 @@ namespace RealEstateApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.IdentityUsers, "Id", "UserName", realtyad.ApplicationUserId);
+            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName", realtyad.ApplicationUser_Id);
+            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyad.City_Id);
             return View(realtyad);
         }
 
         // GET: /RealtyAd/Delete/5
-        public ActionResult Delete(long? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -117,7 +119,7 @@ namespace RealEstateApp.Controllers
         // POST: /RealtyAd/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(int id)
         {
             RealtyAd realtyad = db.RealtyAds.Find(id);
             db.RealtyAds.Remove(realtyad);
