@@ -7,7 +7,7 @@ using System.Web;
 
 namespace RealEstateApp.Models
 {
-    public class RealtyAdView
+    public class RealtyAdPageView
     {
         public long Id { get; set; }
         [ForeignKey("RealtyAd")]

@@ -66,7 +66,7 @@ namespace RealEstateApp.Models
         public virtual City City { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<RealtyAdMessage> RealtyAdMessages { get; set; }
-        public virtual ICollection<RealtyAdView> Views { get; set; }
+        public virtual ICollection<RealtyAdPageView> Views { get; set; }
         public virtual ICollection<RealtyAdImage> RealtyAdImages { get; set; }
     }
 }

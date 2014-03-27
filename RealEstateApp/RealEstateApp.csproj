@@ -162,6 +162,7 @@
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RealtyAdController.cs" />
+    <Compile Include="Controllers\RealtyAdViewModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,7 +175,8 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
-    <Compile Include="Models\RealtyAdViews.cs" />
+    <Compile Include="Models\RealtyAdViewModels.cs" />
+    <Compile Include="Models\RealtyAdPageViews.cs" />
     <Compile Include="Models\RealtyAd.cs" />
     <Compile Include="Models\RealtyAdMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +192,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -240,6 +244,7 @@
     <Content Include="Views\RealtyAd\Details.cshtml" />
     <Content Include="Views\RealtyAd\Edit.cshtml" />
     <Content Include="Views\RealtyAd\Index.cshtml" />
+    <Content Include="Views\RealtyAdViewModel\SearchRealtyAds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
