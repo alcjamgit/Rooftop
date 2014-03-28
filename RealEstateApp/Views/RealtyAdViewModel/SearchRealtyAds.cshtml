@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RealEstateApp.Models.RealtyAd>
+﻿@model IEnumerable<RealEstateApp.Models.RealtyAdDisplaySearchResult>
 
 @{
     ViewBag.Title = "SearchRealtyAds";
@@ -11,27 +11,17 @@
 </p>
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.ShortDescn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LongDescn)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DatePosted)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.DaysAgo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Address)
@@ -43,43 +33,27 @@
             @Html.DisplayNameFor(model => model.BathCount)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FloorAreaSqM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LotAreaSqM)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-
         <td>
             @Html.DisplayFor(modelItem => item.ShortDescn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LongDescn)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DatePosted)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @Html.DisplayFor(modelItem => item.DaysAgo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
@@ -91,16 +65,10 @@
             @Html.DisplayFor(modelItem => item.BathCount)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.FloorAreaSqM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LotAreaSqM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

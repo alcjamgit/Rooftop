@@ -33,7 +33,17 @@ namespace RealEstateApp.Controllers
       ViewBag.CurentFilter = searchString;
 
       var realtyAds = from r in db.RealtyAds
-                      select r;
+                      join c in db.Cities on r.City_Id equals c.Id
+                      select new RealtyAdDisplaySearchResult  { 
+                                                                Id = r.Id,
+                                                                ShortDescn = r.ShortDescn,
+                                                                Address = r.Address + " " + c.Name + " City",
+                                                                DatePosted = r.DatePosted,
+                                                                Price = r.Price,
+                                                                ImageUrl = "",
+                                                                BedCount = r.BedCount,
+                                                                BathCount = r.BathCount
+                                                                };
 
       if (!String.IsNullOrEmpty(searchString))
       {

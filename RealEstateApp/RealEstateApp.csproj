@@ -163,6 +163,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RealtyAdController.cs" />
     <Compile Include="Controllers\RealtyAdViewModelController.cs" />
+    <Compile Include="Controllers\UserViewModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,6 +180,7 @@
     <Compile Include="Models\RealtyAdPageViews.cs" />
     <Compile Include="Models\RealtyAd.cs" />
     <Compile Include="Models\RealtyAdMessages.cs" />
+    <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -245,6 +247,11 @@
     <Content Include="Views\RealtyAd\Edit.cshtml" />
     <Content Include="Views\RealtyAd\Index.cshtml" />
     <Content Include="Views\RealtyAdViewModel\SearchRealtyAds.cshtml" />
+    <Content Include="Views\UserViewModels\Create.cshtml" />
+    <Content Include="Views\UserViewModels\Delete.cshtml" />
+    <Content Include="Views\UserViewModels\Details.cshtml" />
+    <Content Include="Views\UserViewModels\Index.cshtml" />
+    <Content Include="Views\UserViewModels\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

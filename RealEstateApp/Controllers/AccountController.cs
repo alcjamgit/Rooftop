@@ -311,6 +311,7 @@ namespace RealEstateApp.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && UserManager != null)

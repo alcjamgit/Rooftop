@@ -42,6 +42,9 @@ namespace RealEstateApp.Models
         public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
         public DbSet<RealtyAdPageView> RealtyAdViews { get; set; }
         public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
+
+        
+
        
 
     }
