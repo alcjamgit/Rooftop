@@ -11,7 +11,7 @@ namespace RealEstateApp.Models
         public int Id { get; set; }
         [StringLength(100), Display(Name="City Name")]
         public string Name { get; set; }
-        public uint Region { get; set; }
+        public short Region { get; set; }
 
     }
 }

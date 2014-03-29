@@ -1,0 +1,81 @@
+﻿@model IEnumerable<RealEstateApp.Models.RealtyAdDisplaySearchResult>
+
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<h2>SearchResults</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePosted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaysAgo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BedCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BathCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FloorAreaSqM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePosted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DaysAgo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BedCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BathCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FloorAreaSqM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

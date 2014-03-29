@@ -3,10 +3,11 @@
 }
 
 <div class="jumbotron">
-    @using (Html.BeginForm("SearchRealtyAds", "RealtyAdViewModel", FormMethod.Get, new { @class = "form-horizontal"}))
+    @using (Html.BeginForm("SearchRealtyAdsQueryString", "RealtyAdViewModel", FormMethod.Get, new { @class = "form-horizontal"}))
     {
             <p>
                 Find by name: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+                Bed Count: @Html.TextBox("bedCount")
                 <input type="submit" value="Search" />
             </p>
     }

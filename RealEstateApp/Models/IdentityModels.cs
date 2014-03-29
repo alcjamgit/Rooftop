@@ -45,7 +45,7 @@ namespace RealEstateApp.Models
 
         
 
-       
+
 
     }
 }
