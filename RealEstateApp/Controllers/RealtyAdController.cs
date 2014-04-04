@@ -39,31 +39,38 @@ namespace RealEstateApp.Controllers
         // GET: /RealtyAd/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName");
-            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
-            return View();
+          RealtyAdCreateViewModel createModel = new RealtyAdCreateViewModel();
+          ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
+          return View(createModel);
         }
-
+        
         // POST: /RealtyAd/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include=@"Id,ShortDescn,LongDescn,Status,BedCount,BathCount, 
-                Price,Category,Type,Address,FloorAreaSqM,LotAreaSqM,City_Id,Latitude,Longitude")] RealtyAd realtyad)
+        public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
         {
-            realtyad.DatePosted = DateTime.Now;
-            realtyad.ApplicationUser_Id = User.Identity.GetUserId();
+
+          RealtyAd realtyAd = new RealtyAd()
+          {
+            DatePosted = DateTime.Now,
+            City_Id = realtyAdViewModel.City,
+            ShortDescn = realtyAdViewModel.ShortDescn,
+            Type = realtyAdViewModel.Type,
+
+          };
+
             if (ModelState.IsValid)
             {
-                db.RealtyAds.Add(realtyad);
+              db.RealtyAds.Add(realtyAd);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUser_Id = new SelectList(db.Users, "Id", "UserName", realtyad.ApplicationUser_Id);
-            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyad.City_Id);
-            return View(realtyad);
+            
+            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyAd.City_Id);
+            return View(realtyAd);
         }
 
         // GET: /RealtyAd/Edit/5

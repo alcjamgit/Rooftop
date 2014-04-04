@@ -18,6 +18,7 @@ namespace RealEstateApp.Models
 
   public class RealtyAdCreateViewModel
   {
+    public int Id { get; set; }
     [Required, StringLength(50, ErrorMessage = "Please limit your title to 50 characters."), Display(Name = "Title")]
     public string ShortDescn { get; set; }
     [Display(Name = "Description")]
@@ -32,8 +33,8 @@ namespace RealEstateApp.Models
     public short BathCount { get; set; }
     public float? FloorAreaSqM { get; set; }
     public float? LotAreaSqM { get; set; }
-    public virtual City City { get; set; }
-    public ICollection<RealtyAdImage> RealtyAdImages { get; set; }
+    public int City { get; set; }
+    public IEnumerable<HttpPostedFileBase> PostedImages { get; set; }
 
   }
 
