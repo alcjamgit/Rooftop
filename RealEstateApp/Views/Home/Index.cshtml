@@ -2,75 +2,69 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    @using (Html.BeginForm("SearchRealtyAdsQueryString", "RealtyAdViewModel", FormMethod.Get, new { @class = "form-horizontal"}))
-    {
-            <p>
-                Find by name: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
-                Bed Count: @Html.TextBox("bedCount")
-                <input type="submit" value="Search" />
-            </p>
-    }
-    <form class="form-horizontal" role="form">
-        <h2 class="text-center">Search for Apartments and More</h2>
-        <div class="input-group">
-            
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
-                    <span data-bind="label">For Rent</span> <span class="caret"></span>
+<div class="jumbotron col-md-9 pull-right">
+
+   
+        <form class="form-horizontal" role="form">
+            <h2 class="text-center">Search for Apartments and More</h2>
+            <div class="input-group">
+
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
+                        <span data-bind="label">For Rent</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-left">
+                        <li><a href="#">For Sale</a></li>
+                        <li><a href="#">For Rent</a></li>
+                        <li><a href="#">Bedspace</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Commercial</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+            </div><!-- /input-group -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span data-bind="label">Any Price </span> <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu pull-left">
-                    <li><a href="#">For Sale</a></li>
-                    <li><a href="#">For Rent</a></li>
-                    <li><a href="#">Bedspace</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Commercial</a></li>
+                <ul class="dropdown-menu" role="menu">
+                    <li><input class="form-control" placeholder="Min Price" /></li>
+                    <li><a href="#">Below P2000</a></li>
+                    <li><a href="#">Below P3000</a></li>
+                    <li><a href="#">Below P4000</a></li>
+                    <li><a href="#">Below P5000</a></li>
+                    <li><a href="#">Below P6000</a></li>
+                    <li><a href="#">Below P7000</a></li>
+                    <li><a href="#">Below P8000</a></li>
+                    <li><a href="#">Below P9000</a></li>
                 </ul>
-            </div><!-- /btn-group -->
-            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
-        </div><!-- /input-group -->
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label">Any Price </span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><input class ="form-control" placeholder="Min Price"/></li>
-                <li><a href="#">Below P2000</a></li>
-                <li><a href="#">Below P3000</a></li>
-                <li><a href="#">Below P4000</a></li>
-                <li><a href="#">Below P5000</a></li>
-                <li><a href="#">Below P6000</a></li>
-                <li><a href="#">Below P7000</a></li>
-                <li><a href="#">Below P8000</a></li>
-                <li><a href="#">Below P9000</a></li>
-            </ul>
-        </div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span data-bind="label">Any Beds </span> <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><input class="form-control" placeholder="Min Price" /></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">1 Bed</a></li>
-                <li><a href="#">2 Beds</a></li>
-                <li><a href="#">3 Beds</a></li>
-                <li><a href="#">+ 4 Beds</a></li>
-            </ul>
-        </div>
-        
-        <div class="btn-group btn-input clearfix">
-            <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                More <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Item 1</a></li>
-                <li><a href="#">Another item</a></li>
-                <li><a href="#">This is a longer item that will not fit properly</a></li>
-            </ul>
-        </div>
-        <button type ="submit" class="btn btn-success">Search</button>
-    </form>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span data-bind="label">Any Beds </span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><input class="form-control" placeholder="Min Price" /></li>
+                    <li><a href="#">Studio</a></li>
+                    <li><a href="#">1 Bed</a></li>
+                    <li><a href="#">2 Beds</a></li>
+                    <li><a href="#">3 Beds</a></li>
+                    <li><a href="#">+ 4 Beds</a></li>
+                </ul>
+            </div>
+
+            <div class="btn-group btn-input clearfix">
+                <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
+                    More <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li><a href="#">This is a longer item that will not fit properly</a></li>
+                </ul>
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
 
 </div>
 

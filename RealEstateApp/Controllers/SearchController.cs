@@ -35,20 +35,19 @@ namespace RealEstateApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         
-        [ValidateAntiForgeryToken]
-        public ActionResult SearchResults([Bind(Include="SearchString,BedCount,BathCount,Price")] SearchViewModel searchModel)
+        public ActionResult SearchResults([Bind(Include="Location,BedCount,BathCount")] SearchViewModel searchModel)
         {
-          if (searchModel.SearchString != null)
+          if (searchModel.Location != null)
           {
             //this is the first page since search string is not null
             searchModel.Page = 1;
           }
           else
           {
-            searchModel.SearchString = searchModel.CurrentSearchFilter;
+            searchModel.Location = searchModel.CurrentSearchFilter;
           }
 
-          ViewBag.CurentFilter = searchModel.SearchString;
+          ViewBag.CurentFilter = searchModel.Location;
 
           var realtyAds = from r in db.RealtyAds
                           join c in db.Cities on r.City_Id equals c.Id
@@ -56,19 +55,19 @@ namespace RealEstateApp.Controllers
                           {
                             Id = r.Id,
                             ShortDescn = r.ShortDescn,
-                            Address = r.Address + " " + c.Name + " City",
+                            Address = c.Name + " City",
                             DatePosted = r.DatePosted,
                             Price = r.Price,
-                            ImageUrl = "",
+                            ImageUrl = "/Content/images/thumbnailPlaceholder400x300.gif",
                             BedCount = r.BedCount,
                             BathCount = r.BathCount
                           };
 
-          if (!String.IsNullOrEmpty(searchModel.SearchString))
+          if (!String.IsNullOrEmpty(searchModel.Location))
           {
             //realtyAds = realtyAds.Where(r=>r.ShortDescn.Contains(searchString)).OrderBy(r=>r.DatePosted);
             realtyAds = from r in realtyAds
-                        where r.ShortDescn.Contains(searchModel.SearchString)
+                        where r.ShortDescn.Contains(searchModel.Location)
                         && (searchModel.BedCount == null || r.BedCount == searchModel.BedCount)
                         select r;
           }

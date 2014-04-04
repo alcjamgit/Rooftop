@@ -11,9 +11,13 @@ namespace RealEstateApp.Models
     {
         
         public long Id { get; set; }
+
+        public string Caption { get; set; }
+
         [ForeignKey("RealtyAd")]
         public virtual int RealtyAd_Id { get; set; }
-        [Url]
+
+        [DataType(DataType.ImageUrl)]
         public string Url { get; set; }
         public virtual RealtyAd RealtyAd { get; set; }
 

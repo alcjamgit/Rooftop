@@ -42,3 +42,21 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+/* James Styles */
+/* styles for borderless thumbnail */
+.border-less {
+    border: 0 none;
+}
+
+.padding-less {
+    padding: 0 0
+}
+
+.pointed-border {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    border-radius: 0px;
+    /*border: 0px;*/
+}

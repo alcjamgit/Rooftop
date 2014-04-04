@@ -9,10 +9,10 @@ namespace RealEstateApp.Models
   {
     public SearchViewModel()
     {
-      SearchString = "";
+      Location = "";
     }
     public int Id { get; set; }
-    public string SearchString { get; set; }
+    public string Location { get; set; }
     public short? BedCount { get; set; }
     public short? BathCount { get; set; }
     public decimal Price { get; set; }

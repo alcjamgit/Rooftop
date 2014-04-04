@@ -13,6 +13,11 @@ namespace RealEstateApp
     {
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+      routes.MapRoute(
+            name: "Search",
+            url: "search",
+            defaults: new { controller = "Search", action = "SearchResults"}
+        );
 
       routes.MapRoute(
             name: "Default",
