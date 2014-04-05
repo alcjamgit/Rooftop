@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RealEstateApp.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 namespace RealEstateApp.Controllers
 {
     public class RealtyAdController : Controller
@@ -58,18 +59,37 @@ namespace RealEstateApp.Controllers
             City_Id = realtyAdViewModel.City,
             ShortDescn = realtyAdViewModel.ShortDescn,
             Type = realtyAdViewModel.Type,
-
+            Category = realtyAdViewModel.Category,
+            Address = realtyAdViewModel.Address,
+            BedCount = realtyAdViewModel.BedCount,
+            BathCount = realtyAdViewModel.BathCount,
+            FloorAreaSqM = realtyAdViewModel.FloorAreaSqM,
+            Status = RealtyAdStatus.Active,
+            ApplicationUser_Id = User.Identity.GetUserId()
           };
 
             if (ModelState.IsValid)
             {
+              //save RealtyAd entry
               db.RealtyAds.Add(realtyAd);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+              db.SaveChanges();
+
+              //save Realty Ad Images to the server and add to database
+              foreach(var img in realtyAdViewModel.PostedImages){
+                var fileName = Path.GetFileName(img.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/images"),fileName);
+                img.SaveAs(path);
+                db.RealtyAdImages.Add(new RealtyAdImage() { 
+                    RealtyAd_Id = realtyAd.Id,
+                    Url = "/Content/images/" + fileName
+                  }
+                );
+              }
+              //save changes for the images
+              db.SaveChanges();
+              return RedirectToAction("Index");
             }
 
-            
-            ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name", realtyAd.City_Id);
             return View(realtyAd);
         }
 

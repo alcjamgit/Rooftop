@@ -41,13 +41,7 @@ namespace RealEstateApp.Models
         public DbSet<City> Cities { get; set; }
         public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }
         public DbSet<RealtyAdPageView> RealtyAdViews { get; set; }
-        public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
-
-        public System.Data.Entity.DbSet<RealEstateApp.Models.RealtyAdCreateViewModel> RealtyAdCreateViewModels { get; set; }
-
-        
-
-
+        public DbSet<RealtyAdImage> RealtyAdImages { get; set; }    
 
     }
 }
