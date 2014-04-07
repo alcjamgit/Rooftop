@@ -1,17 +1,15 @@
 ﻿@model RealEstateApp.Models.RealtyAdCreateViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Post New Item";
 }
-
-<h2>Create</h2>
 
 @using (Html.BeginForm("Create","RealtyAd",FormMethod.Post, new {enctype="multipart/form-data"})) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>RealtyAdCreateViewModel</h4>
+        <h4>Post An Ad</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -19,22 +17,25 @@
             @Html.LabelFor(model => model.ShortDescn, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ShortDescn)
+                @*<span class="help-block">Keep it short and sweet, avoid putting too much keywords.</span>*@
                 @Html.ValidationMessageFor(model => model.ShortDescn)
             </div>
         </div>
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.LongDescn, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PostedImages, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LongDescn)
-                @Html.ValidationMessageFor(model => model.LongDescn)
+                <div class="row">
+                    <input type="file" name="PostedImages" class="col-md-4" multiple="multiple" />
+                </div>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Price)
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Price)
             </div>
         </div>
@@ -42,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Category)
+                @Html.EnumDropDownListFor(model => model.Category, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category)
             </div>
         </div>
@@ -50,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type)
+                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Type)
             </div>
         </div>
@@ -91,21 +92,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.City)
+                @Html.DropDownListFor(model => model.City, ViewBag.City_Id as SelectList, String.Empty, new { @class="form-control"})
                 @Html.ValidationMessageFor(model => model.City)
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.PostedImages, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LongDescn, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="row">
-                    <input type="file" name="PostedImages" class="col-md-4" />
-                    <input type="file" name="PostedImages" class="col-md-4" />
-                    <input type="file" name="PostedImages" class="col-md-4" />
-                </div>
+                @Html.TextAreaFor(model => model.LongDescn, new { @class = "form-control", @rows = 6 })
+                @Html.ValidationMessageFor(model => model.LongDescn)
             </div>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

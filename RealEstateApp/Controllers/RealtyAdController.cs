@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RealEstateApp.Models;
 using Microsoft.AspNet.Identity;
 using System.IO;
+using RealEstateApp.Helpers;
 namespace RealEstateApp.Controllers
 {
     public class RealtyAdController : Controller
@@ -58,6 +59,7 @@ namespace RealEstateApp.Controllers
             DatePosted = DateTime.Now,
             City_Id = realtyAdViewModel.City,
             ShortDescn = realtyAdViewModel.ShortDescn,
+            LongDescn = realtyAdViewModel.LongDescn,
             Type = realtyAdViewModel.Type,
             Category = realtyAdViewModel.Category,
             Address = realtyAdViewModel.Address,
@@ -81,7 +83,7 @@ namespace RealEstateApp.Controllers
                 img.SaveAs(path);
                 db.RealtyAdImages.Add(new RealtyAdImage() { 
                     RealtyAd_Id = realtyAd.Id,
-                    Url = "/Content/images/" + fileName
+                    Url = Config.Directories.Images + fileName
                   }
                 );
               }
