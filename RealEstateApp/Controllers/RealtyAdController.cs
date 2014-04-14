@@ -67,7 +67,8 @@ namespace RealEstateApp.Controllers
             BathCount = realtyAdViewModel.BathCount,
             FloorAreaSqM = realtyAdViewModel.FloorAreaSqM,
             Status = RealtyAdStatus.Active,
-            ApplicationUser_Id = User.Identity.GetUserId()
+            ApplicationUser_Id = User.Identity.GetUserId(),
+            DefaultImageUrl = Path.GetFileName(realtyAdViewModel.DefaultPostedImage.FileName)
           };
 
             if (ModelState.IsValid)
