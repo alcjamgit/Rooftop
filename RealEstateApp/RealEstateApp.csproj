@@ -173,11 +173,24 @@
     <Compile Include="Migrations\201403250433401_Initial.Designer.cs">
       <DependentUpon>201403250433401_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404142052136_ChangeUrlImageFields.cs" />
+    <Compile Include="Migrations\201404142052136_ChangeUrlImageFields.Designer.cs">
+      <DependentUpon>201404142052136_ChangeUrlImageFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.cs" />
+    <Compile Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.Designer.cs">
+      <DependentUpon>201404142058516_AddTableRealtyAdImageDefaults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404150050394_AddFileNameToDefaultImg.cs" />
+    <Compile Include="Migrations\201404150050394_AddFileNameToDefaultImg.Designer.cs">
+      <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
+    <Compile Include="Models\RealtyAdImageDefault.cs" />
     <Compile Include="Models\ViewModels\RealtyAdViewModels.cs" />
     <Compile Include="Models\RealtyAdPageViews.cs" />
     <Compile Include="Models\RealtyAd.cs" />
@@ -280,6 +293,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403250433401_Initial.resx">
       <DependentUpon>201403250433401_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404142052136_ChangeUrlImageFields.resx">
+      <DependentUpon>201404142052136_ChangeUrlImageFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.resx">
+      <DependentUpon>201404142058516_AddTableRealtyAdImageDefaults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404150050394_AddFileNameToDefaultImg.resx">
+      <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

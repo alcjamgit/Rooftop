@@ -67,8 +67,7 @@ namespace RealEstateApp.Controllers
             BathCount = realtyAdViewModel.BathCount,
             FloorAreaSqM = realtyAdViewModel.FloorAreaSqM,
             Status = RealtyAdStatus.Active,
-            ApplicationUser_Id = User.Identity.GetUserId(),
-            DefaultImageUrl = Path.GetFileName(realtyAdViewModel.DefaultPostedImage.FileName)
+            ApplicationUser_Id = User.Identity.GetUserId()
           };
 
             if (ModelState.IsValid)
@@ -78,18 +77,42 @@ namespace RealEstateApp.Controllers
               db.SaveChanges();
 
               //save Realty Ad Images to the server and add to database
-              foreach(var img in realtyAdViewModel.PostedImages){
-                var fileName = Path.GetFileName(img.FileName);
+              foreach(var img in realtyAdViewModel.PostedImages)
+              {
+                //var fileName = Path.GetFileName(img.FileName);
+                var fileExt = Path.GetExtension(img.FileName);
+                var fileName = Guid.NewGuid().ToString() +  fileExt;
                 var path = Path.Combine(Server.MapPath("~/Content/images"),fileName);
                 img.SaveAs(path);
-                db.RealtyAdImages.Add(new RealtyAdImage() { 
+                db.RealtyAdImages.Add(new RealtyAdImage() 
+                  { 
                     RealtyAd_Id = realtyAd.Id,
-                    Url = Config.Directories.Images + fileName
+                    FileName = fileName
                   }
                 );
               }
               //save changes for the images
               db.SaveChanges();
+
+              //save Realty Ad Image Default
+              var imgSelect = (from i in db.RealtyAdImages
+                               where i.RealtyAd_Id == realtyAd.Id
+                               select i).FirstOrDefault();
+
+              if (imgSelect != null)
+              {
+                var realtyAdImgDefault = new RealtyAdImageDefault()
+                {
+                  RealtyAd_Id = imgSelect.RealtyAd_Id,
+                  RealtyAdImage_Id = imgSelect.Id,
+                  FileName = imgSelect.FileName
+                };
+
+                db.RealtyAdImageDefaults.Add(realtyAdImgDefault);
+                db.SaveChanges();
+              } 
+              
+
               return RedirectToAction("Index");
             }
 

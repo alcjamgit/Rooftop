@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RealEstateApp.Models;
+using RealEstateApp.Helpers;
 
 namespace RealEstateApp.Controllers
 {
@@ -51,6 +52,8 @@ namespace RealEstateApp.Controllers
 
           var realtyAds = from r in db.RealtyAds
                           join c in db.Cities on r.City_Id equals c.Id
+                          join img in db.RealtyAdImageDefaults on r.Id equals img.RealtyAd_Id into outerJoin
+                          from subjoin in outerJoin.DefaultIfEmpty()
                           select new RealtyAdDisplaySearchResult
                           {
                             Id = r.Id,
@@ -58,10 +61,11 @@ namespace RealEstateApp.Controllers
                             Address = c.Name + " City",
                             DatePosted = r.DatePosted,
                             Price = r.Price,
-                            ImageUrl = "/Content/images/thumbnailPlaceholder400x300.gif",
+                            ImageUrl = Config.Directories.Images + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"), //"/Content/images/thumbnailPlaceholder400x300.gif",
                             BedCount = r.BedCount,
                             BathCount = r.BathCount
                           };
+          
 
           if (!String.IsNullOrEmpty(searchModel.Location))
           {

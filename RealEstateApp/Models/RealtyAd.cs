@@ -43,8 +43,7 @@ namespace RealEstateApp.Models
 
         [DefaultValue(RealtyAdStatus.Active)]
         public RealtyAdStatus Status { get; set; }
-        
-        public string DefaultImageUrl { get; set; }
+     
 
         [ForeignKey("ApplicationUser")]
         public virtual string ApplicationUser_Id { get; set; }

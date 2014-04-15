@@ -41,8 +41,7 @@ namespace RealEstateApp.Models
     [Display(Name = "Lot Area (in sqm)")]
     public float? LotAreaSqM { get; set; }
     public int City { get; set; }
-    [Display(Name="Default Image")]
-    public HttpPostedFileBase DefaultPostedImage { get; set; }
+    
     [Display(Name = "Photos")]
     public IEnumerable<HttpPostedFileBase> PostedImages { get; set; }
 
@@ -70,8 +69,8 @@ namespace RealEstateApp.Models
     public string Address { get; set; }
     public short BedCount { get; set; }
     public short BathCount { get; set; }
-    public string ImageUrl { get; set; }
     public float FloorAreaSqM { get; set; }
+    public string ImageUrl { get; set; }
 
   }
 

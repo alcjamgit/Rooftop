@@ -55,3 +55,6 @@ C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.csproj.GenerateResource.Cache
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.dll
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.pdb
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.ChangeUrlImageFields.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddTableRealtyAdImageDefaults.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddFileNameToDefaultImg.resources
