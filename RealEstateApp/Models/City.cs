@@ -13,5 +13,6 @@ namespace RealEstateApp.Models
         public string Name { get; set; }
         public short Region { get; set; }
 
+
     }
 }

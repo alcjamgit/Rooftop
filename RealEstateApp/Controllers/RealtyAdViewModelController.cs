@@ -40,7 +40,6 @@ namespace RealEstateApp.Controllers
                                                                 Address = r.Address + " " + c.Name + " City",
                                                                 DatePosted = r.DatePosted,
                                                                 Price = r.Price,
-                                                                ImageUrl = "",
                                                                 BedCount = r.BedCount,
                                                                 BathCount = r.BathCount
                                                                 };
@@ -92,7 +91,6 @@ namespace RealEstateApp.Controllers
                         Address = r.Address + " " + c.Name + " City",
                         DatePosted = r.DatePosted,
                         Price = r.Price,
-                        ImageUrl = "",
                         BedCount = r.BedCount,
                         BathCount = r.BathCount
                       };

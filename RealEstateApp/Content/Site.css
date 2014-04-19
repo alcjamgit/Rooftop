@@ -1,4 +1,5 @@
 ﻿body {
+    background-color:#f5f5f5;
     padding-top: 70px;
     padding-bottom: 20px;
 }
@@ -60,3 +61,20 @@ input[type="checkbox"].input-validation-error {
     border-radius: 0px;
     /*border: 0px;*/
 }
+
+/*Remove padding at smartphone screens*/
+
+@media(max-width: 480px) {
+    .less-margin[class*="col-"]  {   
+        margin-left:10px;
+        margin-right:10px;
+    }
+}
+
+
+    .thumbnail {   
+        margin-bottom:25px;
+    }
+
+
+

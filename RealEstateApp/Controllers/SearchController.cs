@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using RealEstateApp.Models;
 using RealEstateApp.Helpers;
+using System.IO;
 
 namespace RealEstateApp.Controllers
 {
@@ -49,6 +50,8 @@ namespace RealEstateApp.Controllers
           }
 
           ViewBag.CurentFilter = searchModel.Location;
+          
+          var ImgDirAbsolutePath = Server.MapPath("~" + RealEstateApp.Helpers.Config.Directories.Images);
 
           var realtyAds = from r in db.RealtyAds
                           join c in db.Cities on r.City_Id equals c.Id
@@ -61,7 +64,9 @@ namespace RealEstateApp.Controllers
                             Address = c.Name + " City",
                             DatePosted = r.DatePosted,
                             Price = r.Price,
-                            ImageUrl = Config.Directories.Images + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"), //"/Content/images/thumbnailPlaceholder400x300.gif",
+                            FileName = subjoin.FileName ?? "thumbnailPlaceholder400x300.gif",
+                            //ImageUrl = "~/Content/Images/" + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"),
+                            //ImageUrl = "~/Content/Images/thumbnailPlaceholder400x300.gif",
                             BedCount = r.BedCount,
                             BathCount = r.BathCount
                           };

@@ -70,8 +70,10 @@ namespace RealEstateApp.Models
     public short BedCount { get; set; }
     public short BathCount { get; set; }
     public float FloorAreaSqM { get; set; }
-    public string ImageUrl { get; set; }
-
+    public string ImageUrl {
+      get { return String.Format("~/{0}/{1}", RealEstateApp.Helpers.Config.Directories.Images, this.FileName); } 
+    }
+    public string FileName { get; set; }
   }
 
 

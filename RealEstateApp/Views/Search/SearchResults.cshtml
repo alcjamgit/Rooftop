@@ -1,31 +1,79 @@
 ﻿@model IEnumerable<RealEstateApp.Models.RealtyAdDisplaySearchResult>
-
 @{
     ViewBag.Title = "SearchResults";
 }
 
-<h2>SearchResults</h2>
+<div class="row well well-sm">
+    <form class="form-inline" role="form">
+     
+        <div class="form-group col-sm-5 col-md-5 padding-less">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
+                        <span data-bind="label">For Rent</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-left">
+                        <li><a href="#">For Sale</a></li>
+                        <li><a href="#">For Rent</a></li>
+                        <li><a href="#">Bedspace</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Commercial</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </div><!-- /input-group -->
+        </div>
+        
 
-<div class="row">
-    <div class="col-sm-9 col-md-9 padding-less">
-        @foreach (var item in Model)
-{
-    <div class="col-sm-4 col-md-3 padding-less">
-        @*<div class="thumbnail col-sm-4 col-md-3">*@
-        <div class="thumbnail padding-less pointed-border">
-            
-            <a href="#"><img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="No Available Image" class="img-thumbnail border-less"></a>
-            
-            @*<img src="/Content/images/img4eb38507c91fe0.24497459.jpg" alt="No Available Image" class="img-thumbnail border-less">*@
-            @*<img src="~/Content/images/samsungGalaxyS4.jpg" alt="..." class="img-responsive">*@
-            <div class="caption">
-                <h5>@Html.DisplayFor(modelItem => item.ShortDescn)</h5>
-                <p>P @Html.DisplayFor(modelItem => item.Price)</p>
-                <p class="text-left">@Html.DisplayFor(modelItem => item.BedCount) bd, @Html.DisplayFor(modelItem => item.BathCount) bath(s)</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Address)</p>
+        <div class="col-md-7 hidden-xs">
+            <div class="form-group padding-less">
+                <input type="text" class="form-control" placeholder="Min Price" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Max Price" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Beds" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-chevron-down"></span></button>
             </div>
         </div>
-    </div>
-}
-    </div>
+
+
+
+</form>
+</div>
+
+<div class="row">
+    @{int indexNo = 1;}
+    @foreach (var item in Model)
+    {
+        if (indexNo == 1)
+        { @Html.Raw("<div class='row rowGallery'>")}
+            @*@<div class="col-sm-4 col-md-3">*@
+            <div class="col-sm-3 col-md-3">
+                <div class="thumbnail">
+                    <a href="#"><img src="@Url.Content(item.ImageUrl)" alt="No Available Image" class="img-thumbnail border-less"></a>
+                    <div class="caption">
+                        <h5>@Html.DisplayFor(modelItem => item.ShortDescn)</h5>
+                        <p>P @Html.DisplayFor(modelItem => item.Price)</p>
+                        <p class="text-left">@Html.DisplayFor(modelItem => item.BedCount) bd, @Html.DisplayFor(modelItem => item.BathCount) bath(s)</p>
+                        <p><span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => item.Address)</p>
+                    </div>
+                </div>
+            </div>
+
+
+        if (indexNo == 4)
+        {
+            @Html.Raw("</div>");
+                               indexNo = 1;
+        }
+        else { indexNo++; }
+
+    }
 </div>
