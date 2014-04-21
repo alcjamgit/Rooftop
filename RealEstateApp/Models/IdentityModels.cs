@@ -44,5 +44,6 @@ namespace RealEstateApp.Models
         public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
         public DbSet<RealtyAdImageDefault> RealtyAdImageDefaults { get; set; }
 
+
     }
 }

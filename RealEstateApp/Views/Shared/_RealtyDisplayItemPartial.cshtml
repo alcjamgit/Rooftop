@@ -1,0 +1,14 @@
+﻿@model RealEstateApp.Models.RealtyAdDisplaySearchResult
+
+<div class="thumbnail thumbnail-add-bottom-margin">
+         <div>
+            <a href="#"><img src="@Url.Content(Model.ImageUrl)" alt="No Available Image" class="img-thumbnail border-less"></a>
+            <div class="photo-count">2 Photos</div>
+        </div>
+        <div class="caption">
+            @*<h5>@Html.DisplayFor(modelItem => Model.ShortDescn)</h5>*@
+            <h4>&#8369 @Html.DisplayFor(modelItem => Model.Price)<small>/ month </small><span class="label label-success">New</span></h4>
+            <p class="small"><span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => Model.Address)</p>
+            <p class="small">@Html.DisplayFor(modelItem => Model.BedCount) bd | @Html.DisplayFor(modelItem => Model.BathCount) ba</p>
+        </div> 
+</div>

@@ -58,6 +58,7 @@ namespace RealEstateApp.Controllers
           {
             DatePosted = DateTime.Now,
             City_Id = realtyAdViewModel.City,
+            Price = realtyAdViewModel.Price,
             ShortDescn = realtyAdViewModel.ShortDescn,
             LongDescn = realtyAdViewModel.LongDescn,
             Type = realtyAdViewModel.Type,
