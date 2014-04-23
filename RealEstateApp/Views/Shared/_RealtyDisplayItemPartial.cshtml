@@ -7,8 +7,10 @@
         </div>
         <div class="caption">
             @*<h5>@Html.DisplayFor(modelItem => Model.ShortDescn)</h5>*@
-            <h4>&#8369 @Html.DisplayFor(modelItem => Model.Price)<small>/ month </small><span class="label label-success">New</span></h4>
+            <h4>&#8369 @Html.DisplayFor(modelItem => Model.Price)<small> / mo. </small><span class="label label-success">New</span></h4>
             <p class="small"><span class="glyphicon glyphicon-map-marker"></span> @Html.DisplayFor(modelItem => Model.Address)</p>
-            <p class="small">@Html.DisplayFor(modelItem => Model.BedCount) bd | @Html.DisplayFor(modelItem => Model.BathCount) ba</p>
+            <p class="small">
+                @Html.DisplayFor(modelItem => Model.BedCount) bd | @Html.DisplayFor(modelItem => Model.BathCount) ba | @Html.DisplayFor(modelItem => Model.FloorAreaSqM) sqm
+            </p>
         </div> 
 </div>

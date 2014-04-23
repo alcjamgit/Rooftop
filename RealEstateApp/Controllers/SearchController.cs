@@ -68,7 +68,8 @@ namespace RealEstateApp.Controllers
                             //ImageUrl = "~/Content/Images/" + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"),
                             //ImageUrl = "~/Content/Images/thumbnailPlaceholder400x300.gif",
                             BedCount = r.BedCount,
-                            BathCount = r.BathCount
+                            BathCount = r.BathCount,
+                            FloorAreaSqM = r.FloorAreaSqM
                           };
           
 

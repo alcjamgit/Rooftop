@@ -282,6 +282,7 @@
     <Content Include="Views\Search\SearchResults.cshtml" />
     <Content Include="Views\RealtyAdViewModel\SearchRealtyAdsQueryString.cshtml" />
     <Content Include="Views\Shared\_RealtyDisplayItemPartial.cshtml" />
+    <Content Include="Views\Shared\_RealtySearchPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -69,7 +69,7 @@ namespace RealEstateApp.Models
     public string Address { get; set; }
     public short BedCount { get; set; }
     public short BathCount { get; set; }
-    public float FloorAreaSqM { get; set; }
+    public float? FloorAreaSqM { get; set; }
     public string ImageUrl {
       get { return String.Format("~/{0}/{1}", RealEstateApp.Helpers.Config.Directories.Images, this.FileName); } 
     }

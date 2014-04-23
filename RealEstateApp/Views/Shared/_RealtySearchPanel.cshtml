@@ -1,0 +1,54 @@
+﻿@*Enclosed this partial view with a div.class ="row" *@
+
+<div class="col-md-12">
+    <div class="well well-sm">
+        <div class="row">
+            <form class="form-inline col-md-12" role="form">
+                <div class="form-group col-sm-12 col-md-7 padding-less margin-less">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
+                                <span data-bind="label">For Rent</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-left">
+                                <li><a href="#">For Sale</a></li>
+                                <li><a href="#">For Rent</a></li>
+                                <li><a href="#">Bedspace</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Commercial</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                        <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div><!-- /input-group -->
+                </div>
+
+                <div class="col-md-5 hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="form-group col-md-3 side-padding-sm">
+                            <input type="text" class="form-control" placeholder="Min Price" />
+                        </div>
+                        <div class="form-group col-md-3 side-padding-sm">
+                            <input type="text" class="form-control" placeholder="Max Price" />
+                        </div>
+                        <div class="form-group col-md-3 side-padding-sm">
+                            <select class="form-control">
+                                <option>All Beds</option>
+                                <option>1+</option>
+                                <option>3+</option>
+                                <option>2+</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3 side-padding-sm left">
+                            <button type="submit" class="btn btn-default">More Filters <span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
