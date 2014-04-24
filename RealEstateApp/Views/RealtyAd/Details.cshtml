@@ -3,128 +3,102 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>For Rent | 57 Salcedo Village, Makati City</strong></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="thumbnail">
+                            <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
+                        </div>
+                        <div class="well well-sm hidden-xs hidden-sm">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br class="hidden-md hidden-lg" />
+                    <div class="col-md-4">
+                        <div class="row">
 
-<h2>Details</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Price:</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <span>&#8369 4,500</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Address:</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <span>57 Salcedo Village</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Flr Area:</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <span>56 sqm</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Bedrooms:</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <span>2 Beds</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong>Bathrooms:</strong>
+                            </div>
+                            <div class="col-md-7">
+                                <span>1 Bath</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
 
-<div>
-    <h4>RealtyAd</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
-        </dt>
+                        <strong>Description</strong>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LongDescn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LongDescn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePosted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatePosted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FloorAreaSqM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FloorAreaSqM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LotAreaSqM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LotAreaSqM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-
-    </dl>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">Agent Info</div>
+            <div class="panel-body">
+                <p>This is the agent info</p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
