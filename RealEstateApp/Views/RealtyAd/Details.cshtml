@@ -6,88 +6,52 @@
 <div class="row">
     <div class="col-md-9">
         <div class="panel panel-default glow-hover">
+            
             <div class="panel-heading"><strong>For Rent | 57 Salcedo Village, Makati City</strong></div>
             <div class="panel-body">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default">Photos</button>
+                            <button type="button" class="btn btn-default">Map</button>
+                        </div>
+                    </div>
+                </div>
+  
+                <div class="row">       
                     <div class="col-md-8">
-                        <div class="thumbnail">
-                            <img src="~/Content/images/42657607_1.jpg" alt="no available image" class="img-thumbnail border-less" />
-                            @*<img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">*@
-                        </div>
-                        <div class="well well-sm hidden-xs hidden-sm">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
-                                </div>
-                                <div class="col-md-3">
-                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" alt="No Available Image" class="img-thumbnail border-less">
-                                </div>
-                            </div>
-                        </div>
+
+                        <ul class="bxslider">
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="~/Content/images/img4eb38507c91fe0.24497459.jpg" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="http://placehold.it/400x300" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="http://placehold.it/400x200" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="~/Content/images/img4eb38507c91fe0.24497459.jpg" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="http://placehold.it/400x300" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="http://placehold.it/300x400" /></div>
+                            </li>
+                            <li>
+                                <div class="thumbnail border-less"><img class="full-height-width" src="/Content/images/thumbnailPlaceholder400x300.gif" /></div>
+                            </li>
+                            <!-- items mirrored twice, total of 12 -->
+                        </ul>
+
                     </div>
                     <br class="hidden-md hidden-lg" />
                     
-                    @*<div class="col-md-4">
-        <div class="row">
-
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Price:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>&#8369 4,500</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Posted:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>6 days ago <small>(4/3/2013)</small></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Address:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>57 Salcedo Village, Makati City</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Flr Area:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>56 sqm</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Bedrooms:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>2 Beds</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Bathrooms:</strong>
-            </div>
-            <div class="col-md-7">
-                <span>1 Bath</span>
-            </div>
-        </div>
-
-    </div>*@
-
                     <div class="col-md-4">
                         <div class ="row">
                             <div class="col-md-12">
@@ -178,7 +142,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default glow-hover">
                     <div class="panel-heading"><span>Inquire about this property</span></div>
                     <div class="panel-body">   
                         <form method="POST" action ="#">
@@ -196,6 +160,11 @@
                                 <label>Message</label>
                                 <textarea class="form-control" cols="20" rows="7">Hi, I found your listing on BahayList and would like to find out more about this property. Please let me know when you are available for a viewing. Thank you.</textarea>
                             </div>
+                            <div class="form-group">
+                                <button class="btn btn-default btn-block">
+                                    Submit
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -203,3 +172,24 @@
         </div>
     </div>
 </div>
+
+@section styles{
+    
+     
+<link href="~/CustomLibraries/jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />   
+    }
+
+@section scripts{
+    
+    <script src="~/CustomLibraries/jquery.bxslider/jquery.bxslider.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.bxslider').bxSlider({
+                adaptiveHeight:true,
+            });
+
+        });
+
+    </script>
+        
+    }

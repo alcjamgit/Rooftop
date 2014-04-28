@@ -86,12 +86,12 @@ input[type="checkbox"].input-validation-error {
 }
 
 .thumbnail-add-bottom-margin {   
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 div.photo-count {
-    top: 10px;
-    left: 24px;
+    top: 6px;
+    left: 21px;
     position: absolute;
     background-color: #000;
     border-radius: 0 0 4px 0;
@@ -107,18 +107,51 @@ div.photo-count {
 {
     -webkit-box-shadow: 0px 0px 15px 5px #888888;
     -moz-box-shadow: 0px 0px 15px 5px #888888;
-    box-shadow: 0px 0px 15px 5px #888888; 
+    box-shadow: 0px 0px 15px 5px #888888;
 }
 
-.thumbnail img {
+.glow-hover :hover {text-decoration:none;}
+.glow-hover :visited {text-decoration:none;}
+/*-------------------------------------------------------------
+    Start of Maintain 100% width of images in smaller screens
+-------------------------------------------------------------*/
+.full-height-width{
     width: 100%;
     height:100%;
 }
 
-/*-------------------------------------------------
-    Start of Customized Nav Bar
--------------------------------------------------*/
+/*-------------------------------------------------------------
+    Start of Maintain 100% width of images in smaller screens
+-------------------------------------------------------------*/
 
 /*-------------------------------------------------
-    End of Customized Nav Bar
+    Start of Maintain image aspect ratio of thumbnail images
+-------------------------------------------------*/
+/*this must be in the image container*/
+.maintain-aspect-ratio-4-3
+{
+  position: relative;
+  height: 0;
+  padding-top: 75%; /*4:3*/
+  display: block; 
+
+}
+
+img.maintain-aspect-ratio
+{  
+  position: absolute;
+  padding:0;
+  border-radius:0px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-height: 100%;
+  margin: auto;
+}
+
+
+
+/*-------------------------------------------------
+    End of Maintain image aspect ratio of thumbnail images
 -------------------------------------------------*/

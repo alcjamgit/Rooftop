@@ -1,8 +1,10 @@
 ﻿@model RealEstateApp.Models.RealtyAdDisplaySearchResult
 
 <div class="thumbnail glow-hover thumbnail-add-bottom-margin">
-         <div>
-            <a href="#"><img src="@Url.Content(Model.ImageUrl)" alt="No Available Image" class="img-thumbnail border-less"></a>
+    <a href="#">
+        @*addl div is included to position the photo count div properly*@
+        <div style="border:1px solid #dddddd; background-color:#dddddd">
+            <div class="maintain-aspect-ratio-4-3"><img src="@Url.Content(Model.ImageUrl)" alt="No Available Image" class="img-thumbnail maintain-aspect-ratio border-less"></div>
             <div class="photo-count">2 Photos</div>
         </div>
         <div class="caption">
@@ -12,5 +14,6 @@
             <p class="small">
                 @Html.DisplayFor(modelItem => Model.BedCount) bd | @Html.DisplayFor(modelItem => Model.BathCount) ba | @Html.DisplayFor(modelItem => Model.FloorAreaSqM) sqm
             </p>
-        </div> 
+        </div>
+    </a>
 </div>
