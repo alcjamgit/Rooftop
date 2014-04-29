@@ -38,7 +38,7 @@
                 <div>
                     @Html.Partial("_LoginPartial")
                 </div>
-                <form class="navbar-form">
+                <form class="navbar-form" id="navbar-main-search">
                     <div class="form-group" style="display:inline;">
                         <div class="input-group">
                             <div class="input-group-btn">
@@ -62,6 +62,8 @@
             </div>
         </div>
     </div>
+    @*jumbotron full-width has to be placed outside of the container*@
+    @RenderSection("jumbotron", required: false)
     <div class="container body-content">
             @RenderBody()           
         <hr />

@@ -1,93 +1,84 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section styles{
+    <style>
+        @*Lessen the padding to remove gap between navbar and jumbotron*@ body {
+            padding-top: 50px;
+        }
 
-<div class="jumbotron">
+        .jumbotron {
+            background-color: #3498DB;
+            color: #fff;
+        }
 
-    <div class="container">
-        <form class="form-horizontal" role="form">
-            <h2 class="text-center">Search for Apartments and More</h2>
-            <div class="input-group">
+        .well {
+            background-color: #2980B9;
+            border: none;
+        }
 
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
-                        <span data-bind="label">For Rent</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu pull-left">
-                        <li><a href="#">For Sale</a></li>
-                        <li><a href="#">For Rent</a></li>
-                        <li><a href="#">Bedspace</a></li>
-                    </ul>
-                </div><!-- /btn-group -->
-                <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
-            </div><!-- /input-group -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span data-bind="label">Any Price </span> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><input class="form-control" placeholder="Min Price" /></li>
-                    <li><a href="#">Below P2000</a></li>
-                    <li><a href="#">Below P3000</a></li>
-                    <li><a href="#">Below P4000</a></li>
-                    <li><a href="#">Below P5000</a></li>
-                    <li><a href="#">Below P6000</a></li>
-                    <li><a href="#">Below P7000</a></li>
-                    <li><a href="#">Below P8000</a></li>
-                    <li><a href="#">Below P9000</a></li>
-                </ul>
+        #navbar-main-search {
+            visibility: hidden;
+        }
+    </style>
+}
+
+@section jumbotron{
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="well well-sm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form-horizontal" role="form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>bahaylist<span class="text">&copy;</span> Find your home.</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                                </div>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <input type="text" class="form-control" placeholder="Min Price" name="MinPrice">
+                                                </div>
+                                                <div class="col-xs-3 side-padding-sm">
+                                                    <input type="text" class="form-control" placeholder="Max Price" name="MaxPrice">
+                                                </div>
+                                                <div class="col-xs-3 side-padding-sm">
+                                                    <select class="form-control">
+                                                        <option>All Beds</option>
+                                                        <option>1+</option>
+                                                        <option>3+</option>
+                                                        <option>2+</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span data-bind="label">Any Beds </span> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><input class="form-control" placeholder="Min Price" /></li>
-                    <li><a href="#">Studio</a></li>
-                    <li><a href="#">1 Bed</a></li>
-                    <li><a href="#">2 Beds</a></li>
-                    <li><a href="#">3 Beds</a></li>
-                    <li><a href="#">+ 4 Beds</a></li>
-                </ul>
-            </div>
+        </div>
 
-            <div class="btn-group btn-input clearfix">
-                <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown">
-                    More <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Another item</a></li>
-                    <li><a href="#">This is a longer item that will not fit properly</a></li>
-                </ul>
-            </div>
-            <button type="submit" class="btn btn-success">Search</button>
-        </form>
     </div>
+}
 
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
 
 @section Scripts{
     <script>
