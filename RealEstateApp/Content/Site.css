@@ -127,7 +127,7 @@ div.photo-count {
 /*-------------------------------------------------
     Start of Maintain image aspect ratio of thumbnail images
 -------------------------------------------------*/
-/*this must be in the image container*/
+/*container for the content that will scaled*/
 .maintain-aspect-ratio-4-3
 {
   position: relative;
@@ -137,7 +137,8 @@ div.photo-count {
 
 }
 
-img.maintain-aspect-ratio
+/*add this class to the content that will scaled*/
+.maintain-aspect-ratio-4-3 .maintain-aspect-ratio
 {  
   position: absolute;
   padding:0;

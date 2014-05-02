@@ -220,6 +220,11 @@
     <Content Include="Plugins\flexslider\images\bg_play_pause.png" />
     <Content Include="Plugins\flexslider\jquery.flexslider-min.js" />
     <Content Include="Plugins\flexslider\jquery.flexslider.js" />
+    <Content Include="Plugins\fotorama-4.5.1\example.html" />
+    <Content Include="Plugins\fotorama-4.5.1\fotorama%402x.png" />
+    <Content Include="Plugins\fotorama-4.5.1\fotorama.css" />
+    <Content Include="Plugins\fotorama-4.5.1\fotorama.js" />
+    <Content Include="Plugins\fotorama-4.5.1\fotorama.png" />
     <Content Include="Plugins\jquery.bxslider\images\bx_loader.gif" />
     <Content Include="Plugins\jquery.bxslider\images\controls.png" />
     <Content Include="Plugins\jquery.bxslider\jquery.bxslider.css" />
