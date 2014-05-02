@@ -18,6 +18,7 @@ namespace RealEstateApp.Models
 
   public class RealtyAdCreateViewModel
   {
+
     public int Id { get; set; }
     [Required, StringLength(50, ErrorMessage = "Please limit your title to 50 characters."), Display(Name = "Title")]
     public string ShortDescn { get; set; }
@@ -33,10 +34,10 @@ namespace RealEstateApp.Models
     public string Address { get; set; }
 
     [Display(Name = "Bedroom Count")]
-    public short BedCount { get; set; }
+    public short? BedCount { get; set; }
     [Display(Name = "Bathroom Count")]
-    public short BathCount { get; set; }
-    [Display(Name = "Floor Area (in sqm)")]
+    public short? BathCount { get; set; }
+    [Display(Name = "Floor Area (sqm)")]
     public float? FloorAreaSqM { get; set; }
     [Display(Name = "Lot Area (in sqm)")]
     public float? LotAreaSqM { get; set; }
@@ -67,8 +68,8 @@ namespace RealEstateApp.Models
     [DisplayFormat(DataFormatString = "{0:N0}")]
     public decimal? Price { get; set; }
     public string Address { get; set; }
-    public short BedCount { get; set; }
-    public short BathCount { get; set; }
+    public short? BedCount { get; set; }
+    public short? BathCount { get; set; }
     public float? FloorAreaSqM { get; set; }
     public string ImageUrl {
       get { return String.Format("~/{0}/{1}", RealEstateApp.Helpers.Config.Directories.Images, this.FileName); } 

@@ -53,7 +53,7 @@ namespace RealEstateApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
         {
-
+          
           RealtyAd realtyAd = new RealtyAd()
           {
             DatePosted = DateTime.Now,

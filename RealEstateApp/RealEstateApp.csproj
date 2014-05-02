@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201404150050394_AddFileNameToDefaultImg.Designer.cs">
       <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201405010421380_ChangeBedCountToNullable.cs" />
+    <Compile Include="Migrations\201405010421380_ChangeBedCountToNullable.Designer.cs">
+      <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
@@ -211,23 +215,25 @@
     <Content Include="Content\images\thumbnailPlaceholder150x112.gif" />
     <Content Include="Content\images\thumbnailPlaceholder350x150.gif" />
     <Content Include="Content\images\thumbnailPlaceholder400x300.gif" />
-    <Content Include="CustomLibraries\flexslider\flexslider.css" />
-    <Content Include="CustomLibraries\flexslider\fonts\flexslider-icon.svg" />
-    <Content Include="CustomLibraries\flexslider\images\bg_play_pause.png" />
-    <Content Include="CustomLibraries\flexslider\jquery.flexslider-min.js" />
-    <Content Include="CustomLibraries\flexslider\jquery.flexslider.js" />
-    <Content Include="CustomLibraries\jquery.bxslider\images\bx_loader.gif" />
-    <Content Include="CustomLibraries\jquery.bxslider\images\controls.png" />
-    <Content Include="CustomLibraries\jquery.bxslider\jquery.bxslider.css" />
-    <Content Include="CustomLibraries\jquery.bxslider\jquery.bxslider.js" />
-    <Content Include="CustomLibraries\jquery.bxslider\jquery.bxslider.min.js" />
-    <Content Include="CustomLibraries\jquery.bxslider\plugins\jquery.easing.1.3.js" />
-    <Content Include="CustomLibraries\jquery.bxslider\plugins\jquery.fitvids.js" />
+    <Content Include="Plugins\flexslider\flexslider.css" />
+    <Content Include="Plugins\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="Plugins\flexslider\images\bg_play_pause.png" />
+    <Content Include="Plugins\flexslider\jquery.flexslider-min.js" />
+    <Content Include="Plugins\flexslider\jquery.flexslider.js" />
+    <Content Include="Plugins\jquery.bxslider\images\bx_loader.gif" />
+    <Content Include="Plugins\jquery.bxslider\images\controls.png" />
+    <Content Include="Plugins\jquery.bxslider\jquery.bxslider.css" />
+    <Content Include="Plugins\jquery.bxslider\jquery.bxslider.js" />
+    <Content Include="Plugins\jquery.bxslider\jquery.bxslider.min.js" />
+    <Content Include="Plugins\jquery.bxslider\plugins\jquery.easing.1.3.js" />
+    <Content Include="Plugins\jquery.bxslider\plugins\jquery.fitvids.js" />
     <Content Include="favicon.ico" />
     <Content Include="Fonts\flexslider-icon.svg" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.js" />
+    <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
@@ -235,11 +241,11 @@
     <Content Include="Fonts\flexslider-icon.eot" />
     <Content Include="Fonts\flexslider-icon.ttf" />
     <Content Include="Fonts\flexslider-icon.woff" />
-    <Content Include="CustomLibraries\flexslider\fonts\flexslider-icon.eot" />
-    <Content Include="CustomLibraries\flexslider\fonts\flexslider-icon.ttf" />
-    <Content Include="CustomLibraries\flexslider\fonts\flexslider-icon.woff" />
-    <Content Include="CustomLibraries\jquery.bxslider\bower.json" />
-    <Content Include="CustomLibraries\jquery.bxslider\readme.md" />
+    <Content Include="Plugins\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="Plugins\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="Plugins\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="Plugins\jquery.bxslider\bower.json" />
+    <Content Include="Plugins\jquery.bxslider\readme.md" />
     <None Include="Properties\PublishProfiles\Bahay List Local IIS 2.pubxml" />
     <None Include="Properties\PublishProfiles\BahayList Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\bahaylist.com Local IIS.pubxml" />
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201404150050394_AddFileNameToDefaultImg.resx">
       <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405010421380_ChangeBedCountToNullable.resx">
+      <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

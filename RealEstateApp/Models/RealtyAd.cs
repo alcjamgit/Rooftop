@@ -11,12 +11,14 @@ namespace RealEstateApp.Models
 {
     public enum RealtyAdCategory
     {
+        [Display(Name="For Sale")]
         [Description("For Sale")]
         Homes = 1,
+        
+        [Display(Name = "For Rent")]
         [Description("For Rent")]
         Rentals = 2,
-        [Description("Commercial Space")]
-        Commercial = 4,    
+         
     }
 
     public enum RealtyAdStatus
@@ -54,8 +56,8 @@ namespace RealEstateApp.Models
         public int Type { get;set;}
         [StringLength(255)]
         public string Address { get; set; }
-        public short BedCount { get; set; }
-        public short BathCount { get; set; }
+        public short? BedCount { get; set; }
+        public short? BathCount { get; set; }
         public float? FloorAreaSqM { get; set; }
         public float? LotAreaSqM { get; set; }
 
