@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutUserMenu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+    }
+@section styles{
+    @RenderSection("styles", required: false)
+    }
+
+<div class="row">
+    <div class="col-md-3">
+        @RenderSection("sideMenu", required: true)
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">alcjambah</div>
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+

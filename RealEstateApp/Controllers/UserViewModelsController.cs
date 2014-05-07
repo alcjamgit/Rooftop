@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RealEstateApp.Models;
+using RealEstateApp.ViewModels;
 
 namespace RealEstateApp.Controllers
 {
@@ -66,7 +67,7 @@ namespace RealEstateApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ApplicationUser applicationuser = db.IdentityUsers.Find(id);
-            var updateUserProfile = new UpdateUserProfileViewModel
+            var updateUserProfile = new UserProfileUpdateViewModel
             {
 
               FirstName = applicationuser.FirstName,

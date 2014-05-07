@@ -10,6 +10,7 @@ using RealEstateApp.Models;
 using Microsoft.AspNet.Identity;
 using System.IO;
 using RealEstateApp.Helpers;
+using RealEstateApp.ViewModels;
 namespace RealEstateApp.Controllers
 {
     public class RealtyAdController : Controller
@@ -45,7 +46,106 @@ namespace RealEstateApp.Controllers
           ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
           return View(createModel);
         }
-        
+
+        public ActionResult Search()
+        {
+          RealtyAdSearchViewModel searchViewModel = new RealtyAdSearchViewModel();
+          return View(searchViewModel);
+        }
+        public ActionResult DisplaySearchResults([Bind(Include = "Location,BedCount,BathCount")] RealtyAdSearchViewModel searchModel)
+        {
+          ViewBag.CurentFilter = searchModel.Location;
+          var realtyAds = SearchProperties(searchModel);   
+          return View(realtyAds.ToList());
+        }
+
+        public JsonResult DisplaySearchResultsJson(int bedcount)
+        {
+
+          var realtyAds = from r in db.RealtyAds
+                          select new { r.ShortDescn, r.Price, r.Id};
+          return Json(realtyAds,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DisplaySearchResultsPartial(RealtyAdSearchViewModel searchModel)
+        {
+
+          ViewBag.CurentFilter = searchModel.Location;
+          var realtyAds = SearchProperties(searchModel);
+          return PartialView("~/Views/Shared/_DisplaySearchResultsPartial.cshtml", realtyAds.ToList());
+        }
+
+
+        private IEnumerable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel, int pageSize = 10)
+        {
+          if (searchModel.Location != null)
+          {
+            //this is the first page since search string is not null
+            searchModel.Page = 1;
+          }
+          else
+          {
+            searchModel.Location = searchModel.CurrentSearchFilter;
+          }
+          
+          IEnumerable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
+                          join c in db.Cities on r.City_Id equals c.Id
+                          join img in db.RealtyAdImageDefaults on r.Id equals img.RealtyAd_Id into outerJoin
+                          from subjoin in outerJoin.DefaultIfEmpty()
+                          select new RealtyAdDisplayCompactViewModel
+                          {
+                            Id = r.Id,
+                            ShortDescn = r.ShortDescn,
+                            City = c.Name + "City",
+                            Address = r.Address,
+                            DatePosted = r.DatePosted,
+                            Price = r.Price,
+                            //ImageUrl = "~/Content/Images/" + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"),
+                            FileName = subjoin.FileName ?? "thumbnailPlaceholder400x300.gif",
+                            BedCount = r.BedCount,
+                            BathCount = r.BathCount,
+                            FloorAreaSqM = r.FloorAreaSqM
+                          };
+
+          IList<String> locationKeywords;
+
+          if (!String.IsNullOrEmpty(searchModel.Location)) {
+
+              locationKeywords = searchModel.Location.Split().ToList();
+              realtyAds = from r in realtyAds
+                          where r.City.Contains(searchModel.Location) ||
+                          r.Address.Contains(searchModel.Location)
+                          select r;
+
+          }
+          var xy = realtyAds.Count();
+          if ((searchModel.MinPrice??0) > 0){
+            realtyAds = realtyAds.Where(x=>x.Price >= searchModel.MinPrice);
+          }
+
+          if ((searchModel.MaxPrice ?? 0) > 0)
+          {
+            realtyAds = realtyAds.Where(x => x.Price <= searchModel.MaxPrice);
+          }
+
+          if ((searchModel.BedCount ?? 0) > 0)
+          {
+            realtyAds = realtyAds.Where(x => x.BedCount >= searchModel.BedCount);
+          }
+
+          if ((searchModel.BathCount ?? 0) > 0)
+          {
+            realtyAds = realtyAds.Where(x => x.BathCount >= searchModel.BathCount);
+          }
+
+          //for paging implementation
+          int pageNumber = (searchModel.Page ?? 1);
+          int pagesToSkip = pageSize * pageNumber;
+          var i = System.Linq.Enumerable.Count(realtyAds);
+          return realtyAds;
+
+        } 
+
         // POST: /RealtyAd/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -117,7 +217,7 @@ namespace RealEstateApp.Controllers
               return RedirectToAction("Index");
             }
 
-            return View(realtyAd);
+            return View(realtyAdViewModel);
         }
 
         // GET: /RealtyAd/Edit/5

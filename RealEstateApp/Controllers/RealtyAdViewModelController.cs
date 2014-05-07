@@ -1,4 +1,5 @@
 ﻿using RealEstateApp.Models;
+using RealEstateApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace RealEstateApp.Controllers
 
       var realtyAds = from r in db.RealtyAds
                       join c in db.Cities on r.City_Id equals c.Id
-                      select new RealtyAdDisplaySearchResult  { 
+                      select new RealtyAdDisplayCompactViewModel  { 
                                                                 Id = r.Id,
                                                                 ShortDescn = r.ShortDescn,
                                                                 Address = r.Address + " " + c.Name + " City",
@@ -84,7 +85,7 @@ namespace RealEstateApp.Controllers
 
       var realtyAds = from r in db.RealtyAds
                       join c in db.Cities on r.City_Id equals c.Id
-                      select new RealtyAdDisplaySearchResult
+                      select new RealtyAdDisplayCompactViewModel
                       {
                         Id = r.Id,
                         ShortDescn = r.ShortDescn,

@@ -1,9 +1,10 @@
 ﻿@*Enclosed this partial view with a div.class ="row" *@
+@model RealEstateApp.ViewModels.RealtyAdSearchViewModel
 
 <div class="col-md-12">
     <div class="well well-sm">
         <div class="row">
-            <form class="form-inline col-md-12" role="form">
+            <form class="form-inline col-md-12" role="form" id="filterResultsFrm">
 
                     <div class="form-group col-sm-12 col-md-7 padding-less margin-less">
                         <div class="input-group">
@@ -11,12 +12,13 @@
                                 <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
                                     <span data-bind="label">For Rent</span> <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu pull-le    ft">
+                                <ul class="dropdown-menu pull-left">
                                     <li><a href="#">For Sale</a></li>
                                     <li><a href="#">For Rent</a></li>
                                 </ul>
                             </div><!-- /btn-group -->
-                            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class="form-control", @name="q"}})
+                            <!--<input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">-->
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                             </div>
@@ -26,21 +28,26 @@
                     <div class="col-md-5 hidden-sm hidden-xs">
                         <div class="row">
                             <div class="form-group col-md-3 side-padding-sm">
-                                <input type="text" class="form-control" placeholder="Min Price" />
+                                @Html.EditorFor(model => model.MinPrice, new { htmlattributes = new { @class="form-control", placeholder = "Min Price"}})
+
                             </div>
                             <div class="form-group col-md-3 side-padding-sm">
-                                <input type="text" class="form-control" placeholder="Max Price" />
+                                @Html.EditorFor(model => model.MaxPrice, new { htmlattributes = new { @class = "form-control", placeholder = "Max Price" } })
+     
                             </div>
                             <div class="form-group col-md-3 side-padding-sm">
-                                <select class="form-control">
+                                <select class="form-control" name="BedCount">
                                     <option>All Beds</option>
-                                    <option>1+</option>
-                                    <option>3+</option>
-                                    <option>2+</option>
+                                    <option value=0>Studio</option>
+                                    <option value=1>+1 Bed</option>
+                                    <option value=2>+2 Beds</option>
+                                    <option value=3>+3 Beds</option>
+                                    <option value=4>+4 Beds</option>
+                                    <option value=5>+5 Beds</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-2 side-padding-sm left">
-                                <button type="submit" class="btn btn-default">More Filters <span class="glyphicon glyphicon-chevron-down"></span></button>
+                                <button type="submit" class="btn btn-default" id="filterResultBtn">More Filters <span class="glyphicon glyphicon-chevron-down"></span></button>
                             </div>
                         </div>
                     </div>

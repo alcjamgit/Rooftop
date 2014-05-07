@@ -1,137 +1,162 @@
-﻿@model RealEstateApp.Models.RealtyAdCreateViewModel
+﻿@model RealEstateApp.ViewModels.RealtyAdCreateViewModel
 
 @{
     ViewBag.Title = "Post New Property";
 }
+
+@section styles{
+    <style>
+        .panel-body {
+            height: 360px;
+        }
+    </style>
+    }
 <div class="panel panel-default">
     <div class="panel-heading"><div class=""></div>Post New Property</div>
     <div class="panel-body">
-        @using (Html.BeginForm("Create", "RealtyAd", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Create", "RealtyAd", FormMethod.Post, new { enctype = "multipart/form-data", id = "PostNewPropertyForm", @class="form-horizontal" }))
         {
-            @Html.AntiForgeryToken()
-            <div id="wizard">
-                <div class="form-horizontal">
+            @Html.AntiForgeryToken()            
+
                     @Html.ValidationSummary(true)
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PostedImages, new { @class = "control-label col-md-2 hidden-col-xs" })
-                        <div class="col-md-10">
-                            <div class="row">
-                                <input type="file" name="PostedImages" class="col-md-4" multiple="multiple" />
+                    <section class="step" data-step-title="Upload Images">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PostedImages, new { @class = "control-label col-md-2 hidden-col-xs" })
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <input type="file" name="PostedImages" class="col-md-4" multiple="multiple" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2 hidden-col-xs" })
-                        <div class="btn-group col-md-10" data-toggle="buttons">
-                            <label class="btn btn-default">
-                                <input type="radio" name="Category" id="option1" value="1"> For Sale
-                            </label>
-                            <label class="btn btn-default">
-                                <input type="radio" name="Category" id="option2" value="2"> For Rent
-                            </label>
+                    <section class="step" data-step-title="Property Details">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2 hidden-col-xs" })
+                            <div class="btn-group col-md-10" data-toggle="buttons">
+                                <label class="btn btn-default">
+                                    <input type="radio" name="Category" id="option1" value="1"> For Sale
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="Category" id="option2" value="2"> For Rent
+                                </label>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group has-success has-feedback">
+                            @Html.LabelFor(model => model.ShortDescn, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ShortDescn, new { htmlAttributes = new { @class = "form-control", placeholder = "Title" } })
+                                @*<span class="help-block">Keep it short and sweet, avoid putting too much keywords.</span>*@
+                                @Html.ValidationMessageFor(model => model.ShortDescn)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group has-success has-feedback">
+                            @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Price" } })
+                                @Html.ValidationMessageFor(model => model.Price)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @*@Html.Label("Other Info", new { @class = "control-label col-xs-2 hidden-col-xs" })*@
+                            @Html.LabelFor(model => model.BedCount, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.BedCount, new { htmlAttributes = new { @class = "form-control", placeholder = "Bed Count" } })
+                                @Html.ValidationMessageFor(model => model.BedCount)
+                            </div>
+                            @Html.LabelFor(model => model.BathCount, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.BathCount, new { htmlAttributes = new { @class = "form-control", placeholder = "Bath Count" } })
+                                @Html.ValidationMessageFor(model => model.BathCount)
+                            </div>
+
+                            @Html.LabelFor(model => model.FloorAreaSqM, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-2">
+                                @Html.EditorFor(model => model.FloorAreaSqM, new { htmlAttributes = new { @class = "form-control", placeholder = "Floor Area (sqm)" } })
+                                @Html.ValidationMessageFor(model => model.FloorAreaSqM)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LongDescn, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.LongDescn, new { @class = "form-control", @rows = 6, placeholder = "Property Description" })
+                                @Html.ValidationMessageFor(model => model.LongDescn)
+                            </div>
+                        </div>
+                    </section>
+                    <section class="step" data-step-title="Property Location">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.City, ViewBag.City_Id as SelectList, String.Empty, new { @class = "form-control", placeholder = "Select City" })
+                                @Html.ValidationMessageFor(model => model.City)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2 hidden-xs" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                                @Html.ValidationMessageFor(model => model.Address)
+                            </div>
+                        </div>
+
+                    </section>
+
+
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ShortDescn, new { @class = "control-label col-md-2 hidden-xs" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ShortDescn, new { htmlAttributes = new { @class = "form-control", placeholder="Title" } })
-                            @*<span class="help-block">Keep it short and sweet, avoid putting too much keywords.</span>*@
-                            @Html.ValidationMessageFor(model => model.ShortDescn)
-                        </div>
-                    </div>
-                    
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Price" } })
-                            @Html.ValidationMessageFor(model => model.Price)
+                            <input type="submit" value="Create" class="btn btn-default" id="CreatePropertyBtn" />
                         </div>
                     </div>
 
-                    @*<div class="form-group">
-                        @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.Category, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Category)
-                        </div>
-                    </div>*@
-
-
-
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-4">
-                            @Html.DropDownListFor(model => model.City, ViewBag.City_Id as SelectList, String.Empty, new { @class = "form-control", placeholder="Select City" })
-                            @Html.ValidationMessageFor(model => model.City)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder="Address" } })
-                            @Html.ValidationMessageFor(model => model.Address)
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @*@Html.Label("Other Info", new { @class = "control-label col-xs-2 hidden-col-xs" })*@
-                        @Html.LabelFor(model => model.BedCount, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-2">
-                            @Html.EditorFor(model => model.BedCount, new { htmlAttributes = new { @class = "form-control", placeholder = "Bed Count" } })
-                            @Html.ValidationMessageFor(model => model.BedCount)
-                        </div>
-                        @Html.LabelFor(model => model.BathCount, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-2">
-                            @Html.EditorFor(model => model.BathCount, new { htmlAttributes = new { @class = "form-control" , placeholder = "Bath Count"} })
-                            @Html.ValidationMessageFor(model => model.BathCount)
-                        </div>
-
-                        @Html.LabelFor(model => model.FloorAreaSqM, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-2">
-                            @Html.EditorFor(model => model.FloorAreaSqM, new { htmlAttributes = new { @class = "form-control", placeholder = "Floor Area (sqm)"} })
-                            @Html.ValidationMessageFor(model => model.FloorAreaSqM)
-                        </div>
-
-                    </div>
-
-
-
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.LongDescn, new { @class = "control-label col-md-2 hidden-xs" })
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.LongDescn, new { @class = "form-control", @rows = 6, placeholder="Property Description" })
-                            @Html.ValidationMessageFor(model => model.LongDescn)
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+        
         }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-footer">
+                <button class="btn btn-default">@Html.ActionLink("Cancel", "Index")</button>
+                <div id="wizardPager" class="control-group">
+                    <div class="next"><a class="btn btn-default" href="#">Next</a></div>
+                    <div class="prev"><a class="btn btn-default" href="#">Previous</a></div>
+                    <div><a class="btn btn-default" href="#" id="DummySubmit">Finish</a></div>
+                </div>
+            </div class="panel-footer">
         </div>
     </div>
 </div>
 
 @section scripts{
-
-    @*<script src="~/Plugins/jquery.steps-1.0.6/jquery.steps.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @*Form Wizard*@
+    <script src="~/Plugins/jquery.easyWizard-master/jquery.easyWizard.js"></script>
+    <script src="~/Plugins/jquery.steps-1.0.6/jquery.steps.min.js"></script>
     <script>
-        var wizard = $("#wizard").steps();
-    </script>*@
+        $('#PostNewPropertyForm').easyWizard({
+            showSteps: false,
+            showButtons: false,
+            submitButton: false,
+            before: function(){alert("ahoo")},
+        });
+        $('#wizardPager .next a').bind('click', function (e) {
+            e.preventDefault();
+            $('#PostNewPropertyForm').easyWizard('nextStep');
+        });
+        $('#wizardPager .prev a').bind('click', function (e) {
+            e.preventDefault();
+            $('#PostNewPropertyForm').easyWizard('prevStep');
+        });
+        $('#CreatePropertyBtn').hide();
+        $('#DummySubmit').click(function () {
+            $('#CreatePropertyBtn').click();
+        });
+    </script>
 }

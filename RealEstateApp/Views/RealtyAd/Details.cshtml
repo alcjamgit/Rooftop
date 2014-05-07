@@ -7,7 +7,7 @@
     <div class="col-md-9">
         <div class="panel panel-default glow-hover">
             
-            <div class="panel-heading"><strong>For Rent | 57 Salcedo Village, Makati City</strong></div>
+            <div class="panel-heading"><strong>@Model.ShortDescn</strong></div>
             <div class="panel-body">
                 @*<div class="row">
                     <div class="col-md-12">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>*@
-  
+                
                 <div class="row">       
                     <div class="col-md-8">
                         <!-- Nav tabs -->
@@ -27,7 +27,7 @@
                         </ul>
                         <div class="tab-content">
                             <!-- Tab panes -->
-                            <div class="tab-pane active" id="picture-pane" data-toggle="tab">
+                            <div class="tab-pane active" id="picture-pane">
                                 <div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="400/300" data-allowfullscreen="true" data-loop="true">
                                     <img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
                                     <img src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" />
@@ -39,7 +39,7 @@
                                     <img src="/Content/images/thumbnailPlaceholder400x300.gif" />
                                 </div>
                             </div>
-                            <div class="tab-pane" id="map-pane" data-toggle="tab">
+                            <div class="tab-pane" id="map-pane">
                                 <div class="maintain-aspect-ratio-4-3">
                                     <div id="map-canvas" class="maintain-aspect-ratio">
 
@@ -66,7 +66,7 @@
                                             <div class="row"><small class="col-xs-12">Posted 6 days ago (4/21/2014)</small></div>
                                         </li>
                                         <li class="list-group-item">
-                                            <div class="row"><small class="col-xs-5">Location:</small><span class="col-xs-7">Makati City</span></div>
+                                            <div class="row"><small class="col-xs-5">Location:</small><span class="col-xs-7">@Model.City.Name</span></div>
                                         </li>
                                         <li class="list-group-item">
                                             <div class="row"><small class="col-xs-5">Address:</small><span class="col-xs-7">43 Salcedo Village</span></div>
@@ -179,16 +179,15 @@
 
 @section styles{
     <link href="~/Plugins/fotorama-4.5.1/fotorama.css" rel="stylesheet" />
+    @*To offset the added height of thumbnail in fotorama*@
     <style type="text/css">
-        #google-map-caption {
-            height: 70px; @*To offset the added height of thumbnail in fotorama*@
-        }
+        #google-map-caption {height: 70px}
     </style>
     }
 
     @section scripts {
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-68Lj-b-aUCWvLhEchRhgd5LhwWIfUXw&sensor=false"> </script>
         <script src="~/Plugins/fotorama-4.5.1/fotorama.js" > </script >
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-68Lj-b-aUCWvLhEchRhgd5LhwWIfUXw&sensor=false" > </script >
         <script>
             $(document).ready(function () {
                 /*  Load only google map object when the bootstrap tab is clicked.
@@ -196,7 +195,6 @@
                     the initialization of google map has been done on window load.
                 */
      
-
                 $('a[href="#map-pane"]').click(function (e) {
                     if ($.trim($("#map-canvas").text()) == "") {
                         //load only once!
@@ -205,6 +203,12 @@
                     }
                     
                 });
+
+                //$('#mediaTab a').click(function (e) {
+                //    e.preventDefault()
+                //    $(this).tab('show')
+                //    alert("ahoy");
+                //})
    
 
 

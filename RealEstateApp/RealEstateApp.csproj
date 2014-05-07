@@ -164,6 +164,7 @@
     <Compile Include="Controllers\RealtyAdController.cs" />
     <Compile Include="Controllers\RealtyAdViewModelController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\UserMenuController.cs" />
     <Compile Include="Controllers\UserViewModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,14 +197,16 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
     <Compile Include="Models\RealtyAdImageDefault.cs" />
-    <Compile Include="Models\ViewModels\RealtyAdViewModels.cs" />
     <Compile Include="Models\RealtyAdPageViews.cs" />
     <Compile Include="Models\RealtyAd.cs" />
     <Compile Include="Models\RealtyAdMessages.cs" />
-    <Compile Include="Models\ViewModels\SearchViewModel.cs" />
-    <Compile Include="Models\ViewModels\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RealtyAdCreateViewModel.cs" />
+    <Compile Include="ViewModels\RealtyAdDisplayFullViewModel.cs" />
+    <Compile Include="ViewModels\RealtyAdDisplayCompactViewModel.cs" />
+    <Compile Include="ViewModels\RealtyAdSearchViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileUpdateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ActionItems.txt" />
@@ -237,6 +240,22 @@
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\css\bootstrap.css" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\css\bootstrap.min.css" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\css\jquery.snippet.min.css" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\css\styles.css" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\chrome-16.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\firefox-16.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\glyphicons-halflings-white.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\glyphicons-halflings.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\opera-16.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\img\safari-16.png" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\index.html" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\js\bootstrap.js" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\js\bootstrap.min.js" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\js\jquery.snippet.min.js" />
+    <Content Include="Plugins\jquery.easyWizard-master\demo\js\scripts.js" />
+    <Content Include="Plugins\jquery.easyWizard-master\jquery.easyWizard.js" />
     <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.js" />
     <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -251,6 +270,7 @@
     <Content Include="Plugins\flexslider\fonts\flexslider-icon.woff" />
     <Content Include="Plugins\jquery.bxslider\bower.json" />
     <Content Include="Plugins\jquery.bxslider\readme.md" />
+    <Content Include="Plugins\jquery.easyWizard-master\README.md" />
     <None Include="Properties\PublishProfiles\Bahay List Local IIS 2.pubxml" />
     <None Include="Properties\PublishProfiles\BahayList Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\bahaylist.com Local IIS.pubxml" />
@@ -304,20 +324,25 @@
     <Content Include="Views\RealtyAd\Details.cshtml" />
     <Content Include="Views\RealtyAd\Edit.cshtml" />
     <Content Include="Views\RealtyAd\Index.cshtml" />
-    <Content Include="Views\RealtyAdViewModel\SearchRealtyAds.cshtml" />
     <Content Include="Views\UserViewModels\Create.cshtml" />
     <Content Include="Views\UserViewModels\Delete.cshtml" />
     <Content Include="Views\UserViewModels\Details.cshtml" />
     <Content Include="Views\UserViewModels\Index.cshtml" />
     <Content Include="Views\UserViewModels\Edit.cshtml" />
-    <Content Include="Views\Search\Search.cshtml" />
-    <Content Include="Views\Search\SearchResults.cshtml" />
+    <Content Include="Views\RealtyAd\Search.cshtml" />
+    <Content Include="Views\RealtyAd\DisplaySearchResults.cshtml" />
     <Content Include="Views\RealtyAdViewModel\SearchRealtyAdsQueryString.cshtml" />
     <Content Include="Views\Shared\_RealtyDisplayItemPartial.cshtml" />
     <Content Include="Views\Shared\_RealtySearchPanel.cshtml" />
+    <Content Include="Views\UserMenu\Index.cshtml" />
+    <Content Include="Views\Shared\_UserMenuPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutUserMenu.cshtml" />
+    <Content Include="Views\RealtyAd\Properties.cshtml" />
+    <Content Include="Views\Shared\_DisplaySearchResultsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />

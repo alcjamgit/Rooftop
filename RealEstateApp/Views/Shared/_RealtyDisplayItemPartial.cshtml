@@ -1,7 +1,8 @@
-﻿@model RealEstateApp.Models.RealtyAdDisplaySearchResult
+﻿@model RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel
 
+@{var itemDisplayUrl = String.Format("~/properties/{0}", Model.Id);}
 <div class="thumbnail glow-hover thumbnail-add-bottom-margin">
-    <a href="#">
+    <a href="@Url.Content(itemDisplayUrl)">
         @*addl div is included to position the photo count div properly*@
         <div style="border:1px solid #dddddd; background-color:#dddddd">
             <div class="maintain-aspect-ratio-4-3"><img src="@Url.Content(Model.ImageUrl)" alt="No Available Image" class="img-thumbnail maintain-aspect-ratio border-less"></div>

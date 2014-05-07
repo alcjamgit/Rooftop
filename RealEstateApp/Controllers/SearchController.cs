@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RealEstateApp.Models;
 using RealEstateApp.Helpers;
 using System.IO;
+using RealEstateApp.ViewModels;
 
 namespace RealEstateApp.Controllers
 {
@@ -29,7 +30,7 @@ namespace RealEstateApp.Controllers
         public ActionResult Search()
         {
 
-          SearchViewModel searchViewModel = new SearchViewModel();
+          RealtyAdSearchViewModel searchViewModel = new RealtyAdSearchViewModel();
           return View(searchViewModel);
         }
 
@@ -37,60 +38,6 @@ namespace RealEstateApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         
-        public ActionResult SearchResults([Bind(Include="Location,BedCount,BathCount")] SearchViewModel searchModel)
-        {
-          if (searchModel.Location != null)
-          {
-            //this is the first page since search string is not null
-            searchModel.Page = 1;
-          }
-          else
-          {
-            searchModel.Location = searchModel.CurrentSearchFilter;
-          }
-
-          ViewBag.CurentFilter = searchModel.Location;
-          
-          var ImgDirAbsolutePath = Server.MapPath("~" + RealEstateApp.Helpers.Config.Directories.Images);
-
-          var realtyAds = from r in db.RealtyAds
-                          join c in db.Cities on r.City_Id equals c.Id
-                          join img in db.RealtyAdImageDefaults on r.Id equals img.RealtyAd_Id into outerJoin
-                          from subjoin in outerJoin.DefaultIfEmpty()
-                          select new RealtyAdDisplaySearchResult
-                          {
-                            Id = r.Id,
-                            ShortDescn = r.ShortDescn,
-                            Address = c.Name + " City",
-                            DatePosted = r.DatePosted,
-                            Price = r.Price,
-                            FileName = subjoin.FileName ?? "thumbnailPlaceholder400x300.gif",
-                            //ImageUrl = "~/Content/Images/" + (subjoin.FileName ?? "thumbnailPlaceholder400x300.gif"),
-                            //ImageUrl = "~/Content/Images/thumbnailPlaceholder400x300.gif",
-                            BedCount = r.BedCount,
-                            BathCount = r.BathCount,
-                            FloorAreaSqM = r.FloorAreaSqM
-                          };
-          
-
-          if (!String.IsNullOrEmpty(searchModel.Location))
-          {
-            //realtyAds = realtyAds.Where(r=>r.ShortDescn.Contains(searchString)).OrderBy(r=>r.DatePosted);
-            realtyAds = from r in realtyAds
-                        where r.ShortDescn.Contains(searchModel.Location)
-                        && (searchModel.BedCount == null || r.BedCount == searchModel.BedCount)
-                        select r;
-          }
-
-          int pageSize = 10;
-          int pageNumber = (searchModel.Page ?? 1);
-          int pagesToSkip = pageSize * pageNumber;
-          var i = System.Linq.Enumerable.Count(realtyAds);
-          //return View(realtyAds.Skip(pagesToSkip).Take(pageSize).ToList());
-          return View(realtyAds.ToList());
-
-        }
-
 
 
 
