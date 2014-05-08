@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using System.IO;
 using RealEstateApp.Helpers;
 using RealEstateApp.ViewModels;
+using LinqKit;
 namespace RealEstateApp.Controllers
 {
     public class RealtyAdController : Controller
@@ -57,6 +58,7 @@ namespace RealEstateApp.Controllers
           ViewBag.CurentFilter = searchModel.Location;
           var realtyAds = SearchProperties(searchModel);   
           return View(realtyAds.ToList());
+          
         }
 
         public JsonResult DisplaySearchResultsJson(int bedcount)
@@ -73,10 +75,11 @@ namespace RealEstateApp.Controllers
           ViewBag.CurentFilter = searchModel.Location;
           var realtyAds = SearchProperties(searchModel);
           return PartialView("~/Views/Shared/_DisplaySearchResultsPartial.cshtml", realtyAds.ToList());
+          
         }
 
 
-        private IEnumerable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel, int pageSize = 10)
+        private IQueryable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel, int pageSize = 20)
         {
           if (searchModel.Location != null)
           {
@@ -88,7 +91,8 @@ namespace RealEstateApp.Controllers
             searchModel.Location = searchModel.CurrentSearchFilter;
           }
           
-          IEnumerable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
+          //IEnumerable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
+          IQueryable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
                           join c in db.Cities on r.City_Id equals c.Id
                           join img in db.RealtyAdImageDefaults on r.Id equals img.RealtyAd_Id into outerJoin
                           from subjoin in outerJoin.DefaultIfEmpty()
@@ -108,42 +112,53 @@ namespace RealEstateApp.Controllers
                           };
 
           IList<String> locationKeywords;
-
+          
+          var predicate = PredicateBuilder.False<RealtyAdDisplayCompactViewModel>();
           if (!String.IsNullOrEmpty(searchModel.Location)) {
-
+              
               locationKeywords = searchModel.Location.Split().ToList();
-              realtyAds = from r in realtyAds
-                          where r.City.Contains(searchModel.Location) ||
-                          r.Address.Contains(searchModel.Location)
-                          select r;
+              //todo exclude keywords such as avenue, street, village, city, etc.
+              //create the unsplit to replace this with blank
+              foreach (string keyword in locationKeywords)
+              {
+                string tempKeyword = keyword;
+                predicate = predicate.Or(r => r.City.ToLower().Contains(tempKeyword));
+                predicate = predicate.Or(r => r.Address.ToLower().Contains(tempKeyword));
+              }
 
           }
-          var xy = realtyAds.Count();
+          else
+          {
+            //need to set to true to return all records
+            predicate = PredicateBuilder.True<RealtyAdDisplayCompactViewModel>();
+          }
+
+          //var xy = realtyAds.Count();
           if ((searchModel.MinPrice??0) > 0){
-            realtyAds = realtyAds.Where(x=>x.Price >= searchModel.MinPrice);
+            predicate = predicate.And(x => x.Price >= searchModel.MinPrice);
           }
 
           if ((searchModel.MaxPrice ?? 0) > 0)
           {
-            realtyAds = realtyAds.Where(x => x.Price <= searchModel.MaxPrice);
+            predicate = predicate.And(x => x.Price <= searchModel.MaxPrice);
           }
 
           if ((searchModel.BedCount ?? 0) > 0)
           {
-            realtyAds = realtyAds.Where(x => x.BedCount >= searchModel.BedCount);
+            predicate = predicate.And(x => x.BedCount >= searchModel.BedCount);
           }
 
           if ((searchModel.BathCount ?? 0) > 0)
           {
-            realtyAds = realtyAds.Where(x => x.BathCount >= searchModel.BathCount);
+            predicate = predicate.And(x => x.BathCount >= searchModel.BathCount);
           }
 
           //for paging implementation
           int pageNumber = (searchModel.Page ?? 1);
           int pagesToSkip = pageSize * pageNumber;
-          var i = System.Linq.Enumerable.Count(realtyAds);
+          //var i = System.Linq.Enumerable.Count(realtyAds);
+          realtyAds = realtyAds.AsExpandable().Where(predicate);
           return realtyAds;
-
         } 
 
         // POST: /RealtyAd/Create
