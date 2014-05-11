@@ -1,0 +1,103 @@
+﻿@model IEnumerable<RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel>
+@using RealEstateApp.Helpers
+
+@{
+    ViewBag.Title = "SearchResults";
+}
+
+<div class="row">
+    @Html.Partial("~/Views/Shared/_RealtySearchPanel.cshtml", new RealEstateApp.ViewModels.RealtyAdSearchViewModel())
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="progress progress-striped active" id="ajaxProgressBar">
+            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    </div>
+</div class="row">
+
+<div class="row">
+    <div class="col-sm-6 text-left hidden-xs">
+        <h4>33 Results for Apartment For Rent in Makati</h4>
+    </div>
+    <div class="col-sm-6 hidden-xs">
+        <form class="form-inline">
+            <div class="form-group col-md-3 pull-right padding-less">
+                <select class="form-control input-sm" name="Sort">
+                    <option>Newest First</option>
+                    <option>Cheapest First</option>
+                    <option>Relevance</option>
+                </select>
+            </div class="form-group">
+        </form>
+    </div>
+
+</div>
+
+
+<div class="row" id="searchResultsPanel">
+
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-4 col-md-3">
+        @Html.Partial("~/Views/Shared/_RealtyDisplayItemPartial.cshtml", @item)
+    </div>
+    }
+    
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well well-sm text-center">
+            <ul class="pagination margin-less">
+                <li><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                @for (var i = 2; i < 4; i++)
+                {
+                    <li><a href="#">@i.ToString() <span class="sr-only">(current)</span></a></li>
+                }
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$('#ajaxProgressBar').show();
+            $('#ajaxProgressBar').hide();
+            $('#filterResultsFrm').submit(function (e) {
+                e.preventDefault();
+                $('#searchResultsPanel').html("");
+                $('#ajaxProgressBar').show();
+                var model = $(this).serialize();
+                var strUrl = $(this).data('ajax-url');
+                filterAsync(model, strUrl);
+            });
+        });
+
+        function filterAsync(model, urlString) {
+            alert(urlString);
+            $.ajax({
+                url: urlString,
+                type: "GET",
+                data: model,
+                dataType: "html",
+                success: function (partialView) {
+                    $('#searchResultsPanel').html(partialView);
+                },
+                error: function (xhr, status, errorThrown) { alert(errorThrown); },
+                complete: function (xhr, status) {
+                    $('#ajaxProgressBar').hide();
+                }
+            });
+    }
+    </script>
+}

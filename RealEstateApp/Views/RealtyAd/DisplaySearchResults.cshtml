@@ -3,10 +3,12 @@
 
 @{
     ViewBag.Title = "SearchResults";
+    ViewBag.SearchViewModel = new RealEstateApp.ViewModels.RealtyAdSearchViewModel() { SortOrder = RealEstateApp.ViewModels.SortOrder.PostDateDesc};
+    RealEstateApp.ViewModels.SortOrder selectedSort = ViewBag.SearchViewModel.SortOrder;
 }
 
 <div class="row">
-    @Html.Partial("~/Views/Shared/_RealtySearchPanel.cshtml", new RealEstateApp.ViewModels.RealtyAdSearchViewModel())
+    @Html.Partial("~/Views/Shared/_RealtySearchPanel.cshtml", ViewBag.SearchViewModel as RealEstateApp.ViewModels.RealtyAdSearchViewModel)
 </div>
 
 <div class="row">
@@ -26,10 +28,8 @@
     <div class="col-sm-6 hidden-xs">
         <form class="form-inline">
             <div class="form-group col-md-3 pull-right padding-less">
-                <select class="form-control input-sm" name="Sort">
-                    <option>Newest First</option>
-                    <option>Cheapest First</option>
-                    <option>Relevance</option>
+               <select class="form-control input-sm" name="Sort" id="dummySort">
+                   @Html.EnumToDropDownOptions(selectedSort)
                 </select>
             </div class="form-group">
         </form>
@@ -53,48 +53,56 @@
 <div class="row">
     <div class="col-md-12">
         <div class="well well-sm text-center">
-            <ul class="pagination margin-less">
-                <li><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                @for (var i = 2; i < 4; i++)
-                {
-                    <li><a href="#">@i.ToString() <span class="sr-only">(current)</span></a></li>
-                }
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+            @Html.Paginator(4,40)
         </div>
     </div>
 </div>
 
 
 @section scripts{
+
     <script type="text/javascript">
         $(document).ready(function () {
             //$('#ajaxProgressBar').show();
             $('#ajaxProgressBar').hide();
-        $('#filterResultsFrm').submit(function (e) {
-            e.preventDefault();
-            $('#searchResultsPanel').html("");
-            $('#ajaxProgressBar').show();
-            model = $(this).serialize();
-            filterAsync(model);
+            $('#filterResultsFrm').submit(function (e) {
+                e.preventDefault();
+                $('#searchResultsPanel').html("");
+                $('#ajaxProgressBar').show();
+                var model = $(this).serialize();
+                var strUrl = $(this).data('ajax-url');
+                filterAsync(model, strUrl);
+            });
+
+            //submit form using the selected sort value
+            $('#dummySort').change(function () {
+                $('#filterResultsFrm input[name="SortOrder"]').val($(this).val());
+                $('#filterResultsFrm').submit();
+            });
+
+            $('.pagination-item').click(function () {
+                $('#filterResultsFrm input[name="Page"]').val($(this).val());
+                //alert($('#filterResultsFrm input[name="Page"]').val());
+                $('#filterResultsFrm').submit();
+            });
         });
-    });
-        
-    function filterAsync(model) {
-        $.ajax({
-            url:"http://localhost:50627/RealtyAd/DisplaySearchResultsPartial/",
-            type: "GET",
-            data: model,
-            dataType:"html",
-            success: function (partialView) {
-                $('#searchResultsPanel').html(partialView);
-            },
-            error: function (xhr, status, errorThrown) { alert(errorThrown); },
-            complete: function (xhr, status) {
-                $('#ajaxProgressBar').hide();
-            }
-        });
+
+        function filterAsync(model, urlString) {            
+            $.ajax({
+                url: urlString,
+                type: "GET",
+                data: model,
+                dataType: "html",
+                success: function (partialView) {
+                    $('#searchResultsPanel').html(partialView);
+                },
+                error: function (xhr, status, errorThrown) {
+                    alert('Error in contacting the server \n'+ errorThrown +'\n' + status);
+                },
+                complete: function (xhr, status) {
+                    $('#ajaxProgressBar').hide();
+                }
+            });
     }
     </script>
 }

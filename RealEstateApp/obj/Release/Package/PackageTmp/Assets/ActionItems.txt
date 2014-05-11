@@ -1,0 +1,6 @@
+﻿4/19-4/21
+1. REDESIGN HOME PAGE. Full width hero with search box at the center.
+2. CREATE VIEW FOR SEARCH RESULTS. Default will be list view using either panel or thumbnails or both.
+3. CREATE FILTER PANEL AT THE TOP OF SEARCH RESULTS.
+4. ALLOW LOGIN USING EMAIL.
+5. REDESIGN NAVBAR TO INCLUDE FULL WIDTH SEARCH INPUT. http://www.bootply.com/render/129821#

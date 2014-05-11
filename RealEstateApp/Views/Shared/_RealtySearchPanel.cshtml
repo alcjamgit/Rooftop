@@ -4,53 +4,58 @@
 <div class="col-md-12">
     <div class="well well-sm">
         <div class="row">
-            <form class="form-inline col-md-12" role="form" id="filterResultsFrm">
+            <form class="form-inline col-md-12" role="form" id="filterResultsFrm" data-ajax-url='@Url.Content("~/RealtyAd/DisplaySearchResultsPartial")'>
 
-                    <div class="form-group col-sm-12 col-md-7 padding-less margin-less">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
-                                    <span data-bind="label">For Rent</span> <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu pull-left">
-                                    <li><a href="#">For Sale</a></li>
-                                    <li><a href="#">For Rent</a></li>
-                                </ul>
-                            </div><!-- /btn-group -->
-                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class="form-control", @name="q"}})
-                            <!--<input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">-->
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                            </div>
-                        </div><!-- /input-group -->
-                    </div>
+                <div class="form-group col-sm-12 col-md-7 padding-less margin-less">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
+                                <span data-bind="label">For Rent</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-left">
+                                <li><a href="#">For Sale</a></li>
+                                <li><a href="#">For Rent</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", @name = "q" } })
+                        <!--<input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">-->
+                        <div class="input-group-btn">
 
-                    <div class="col-md-5 hidden-sm hidden-xs">
-                        <div class="row">
-                            <div class="form-group col-md-3 side-padding-sm">
-                                @Html.EditorFor(model => model.MinPrice, new { htmlattributes = new { @class="form-control", placeholder = "Min Price"}})
-
-                            </div>
-                            <div class="form-group col-md-3 side-padding-sm">
-                                @Html.EditorFor(model => model.MaxPrice, new { htmlattributes = new { @class = "form-control", placeholder = "Max Price" } })
-     
-                            </div>
-                            <div class="form-group col-md-3 side-padding-sm">
-                                <select class="form-control" name="BedCount">
-                                    <option>All Beds</option>
-                                    <option value=0>Studio</option>
-                                    <option value=1>+1 Bed</option>
-                                    <option value=2>+2 Beds</option>
-                                    <option value=3>+3 Beds</option>
-                                    <option value=4>+4 Beds</option>
-                                    <option value=5>+5 Beds</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-2 side-padding-sm left">
-                                <button type="submit" class="btn btn-default" id="filterResultBtn">More Filters <span class="glyphicon glyphicon-chevron-down"></span></button>
-                            </div>
+                            @*@Url.Content("http://localhost:50627/RealtyAd/DisplaySearchResultsPartial/");*@
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
+                    </div><!-- /input-group -->
+                </div>
+
+                <div class="col-md-5 hidden-sm hidden-xs">
+                    <div class="row">
+                        <div class="form-group col-md-3 side-padding-sm">
+                            @Html.EditorFor(model => model.MinPrice, new { htmlattributes = new { @class = "form-control", placeholder = "Min Price" } })
+
+                        </div>
+                        <div class="form-group col-md-3 side-padding-sm">
+                            @Html.EditorFor(model => model.MaxPrice, new { htmlattributes = new { @class = "form-control", placeholder = "Max Price" } })
+
+                        </div>
+                        <div class="form-group col-md-3 side-padding-sm">
+                            <select class="form-control" name="BedCount">
+                                <option>All Beds</option>
+                                <option value=0>Studio</option>
+                                <option value=1>+1 Bed</option>
+                                <option value=2>+2 Beds</option>
+                                <option value=3>+3 Beds</option>
+                                <option value=4>+4 Beds</option>
+                                <option value=5>+5 Beds</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-2 side-padding-sm left">
+                            <button type="submit" class="btn btn-default" id="filterResultBtn">More Filters <span class="glyphicon glyphicon-chevron-down"></span></button>
+                        </div>
+                        @Html.HiddenFor(model => model.SortOrder, new { id="sortOrder"})
+                        @Html.HiddenFor(model => model.Page, new { id="pageNumber"})
+                        @Html.HiddenFor(model => model.PageSize, new { id ="pageSize"})
                     </div>
+                </div>
 
             </form>
         </div>

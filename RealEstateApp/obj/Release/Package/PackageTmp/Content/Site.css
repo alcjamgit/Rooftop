@@ -1,4 +1,5 @@
 ﻿body {
+    background-color:#f5f5f5;
     padding-top: 70px;
     padding-bottom: 20px;
 }
@@ -49,8 +50,22 @@ input[type="checkbox"].input-validation-error {
     border: 0 none;
 }
 
-.padding-less {
-    padding: 0 0
+.padding-less{
+    padding: 0 0;
+}
+
+.margin-less {
+    margin: 0 0;
+}
+
+.side-margin-sm {
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.side-padding-sm {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .pointed-border {
@@ -60,3 +75,99 @@ input[type="checkbox"].input-validation-error {
     border-radius: 0px;
     /*border: 0px;*/
 }
+
+/*Remove padding at smartphone screens*/
+
+@media(max-width: 480px) {
+    .less-margin-xs[class*="col-"]  {   
+        margin-left:10px;
+        margin-right:10px;
+    }
+}
+
+.thumbnail-add-bottom-margin {   
+    margin-bottom:25px;
+}
+
+div.photo-count {
+    top: 6px;
+    left: 21px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 0 0 4px 0;
+    color: #fff;
+    padding: 5px;
+    opacity: .7;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.glow-hover:hover
+{
+    -webkit-box-shadow: 0px 0px 15px 5px #888888;
+    -moz-box-shadow: 0px 0px 15px 5px #888888;
+    box-shadow: 0px 0px 15px 5px #888888;
+}
+
+.glow-hover :hover {text-decoration:none;}
+.glow-hover :visited {text-decoration:none;}
+/*-------------------------------------------------------------
+    Start of Maintain 100% width of images in smaller screens
+-------------------------------------------------------------*/
+.full-height-width{
+    width: 100%;
+    height:100%;
+}
+
+/*-------------------------------------------------------------
+    Start of Maintain 100% width of images in smaller screens
+-------------------------------------------------------------*/
+
+/*-------------------------------------------------
+    Start of Maintain image aspect ratio of thumbnail images
+-------------------------------------------------*/
+/*container for the content that will scaled*/
+.maintain-aspect-ratio-4-3
+{
+  position: relative;
+  height: 0;
+  padding-top: 75%; /*4:3*/
+  display: block; 
+
+}
+
+/*add this class to the content that will scaled*/
+.maintain-aspect-ratio-4-3 .maintain-aspect-ratio
+{  
+  position: absolute;
+  padding:0;
+  border-radius:0px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-height: 100%;
+  margin: auto;
+}
+
+/*-------------------------------------------------
+    End of Maintain image aspect ratio of thumbnail images
+-------------------------------------------------*/
+
+/*-------------------------------------------------
+    Start of Easy Wizard Styling
+-------------------------------------------------*/
+.easyWizardSteps {list-style:none;width:100%;overflow:hidden;margin:0;padding:0;border-bottom:1px solid #ccc;margin-bottom:20px}
+.easyWizardSteps li {font-size:18px;display:inline-block;padding:10px;color:#B0B1B3;margin-right:20px;}
+.easyWizardSteps li span {font-size:24px}
+.easyWizardSteps li.current {color:#000}
+
+/*.easyWizardButtons {overflow:hidden;padding:10px;} */
+.easyWizardButtons button, .easyWizardButtons .submit {cursor:pointer}
+.easyWizardButtons .prev {float:left}
+.easyWizardButtons .next, .easyWizardButtons .submit {float:right}
+/*-------------------------------------------------
+    End of Easy Wizard Styling
+-------------------------------------------------*/
+

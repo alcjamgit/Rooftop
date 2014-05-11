@@ -3,128 +3,243 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default glow-hover">
+            
+            <div class="panel-heading"><strong>@Model.ShortDescn</strong></div>
+            <div class="panel-body">
+                @*<div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-sm">
+                            <button type="button" class="btn btn-default">Photos</button>
+                            <button type="button" class="btn btn-default">Map</button>
+                        </div>
+                    </div>
+                </div>*@
+                
+                <div class="row">       
+                    <div class="col-md-8">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" id="mediaTab">
+                            <li class="active"><a href="#picture-pane" data-toggle="tab">Pictures</a></li>
+                            <li><a href="#map-pane" data-toggle="tab">Map</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Tab panes -->
+                            <div class="tab-pane active" id="picture-pane">
+                                <div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="400/300" data-allowfullscreen="true" data-loop="true">
+                                    <img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
+                                    <img src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" />
+                                    <img src="http://placehold.it/400x300" />
+                                    <img src="http://placehold.it/400x200" />
+                                    <img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
+                                    <img src="http://placehold.it/400x300" />
+                                    <img src="http://placehold.it/300x400" />
+                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" />
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="map-pane">
+                                <div class="maintain-aspect-ratio-4-3">
+                                    <div id="map-canvas" class="maintain-aspect-ratio">
 
-<h2>Details</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" id="google-map-caption">
 
-<div>
-    <h4>RealtyAd</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
-        </dt>
+                                    </div>
+                                </div>
+                            </div>
+                        </div class="tab-content">
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.UserName)
-        </dd>
+                    <br class="hidden-md hidden-lg" />
+                    
+                    <div class="col-md-4">
+                        <div class ="row">
+                            <div class="col-md-12">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-12">For Rent</small></div>
+                                            <div class="row"><h3 class="col-xs-12 margin-less">&#x20b1 4,500 <small class="text-muted">/ month</small></h3></div>
+                                            <div class="row"><small class="col-xs-12">Posted 6 days ago (4/21/2014)</small></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-5">Location:</small><span class="col-xs-7">@Model.City.Name</span></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-5">Address:</small><span class="col-xs-7">43 Salcedo Village</span></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-5">Floor Area:</small><span class="col-xs-7">45 sqm</span></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-5">Bedrooms:</small><span class="col-xs-7">2 beds</span></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row"><small class="col-xs-5">Bathrooms:</small><span class="col-xs-7">2 bath</span></div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <button type="button" class="btn btn-primary btn-block">Contact Property</button>
+                                                </div>
+                                            
+                                            </div>
+                                        </li>
+                                    </ul>
+              
+                            </div>
+                        </div class ="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.City.Name)
-        </dd>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescn)
-        </dt>
+                        <strong>Description</strong>
+                        <div class="adDescription fullDescription" itemprop="description"> Furnished House <span class="keyhigh">For</span> <span class="keyhigh">Rent</span> Near Gaisano Grand Mall (Fully Furnished)<br> With Wifi Internet Connection<br> <br> House Description:<br> 2 Storey- Townhouse (Furnished)<br> 2 Bedrooms With Air Conditioner<br> Living Area<br> Kitchen Area<br> Bath And Toilet Area<br> <br> Appliances And Furniture Provided:<br> 1 King Size Bed With Mattress+ Pillows+ Bedsheets<br> 1 Single Bed With Mattress+ Pillows+ Bedsheets<br> 2 Air Conditioner<br> 1 Closet<br> 2 Electric Fan<br> Double Burner With Stove<br> 1 Refrigerator<br> 1 Dining Set With 4 Chairs<br> 1 Sofa With Center Table<br> Television<br> Curtains<br> Rice Cooker<br> Cooking And Frying Pan<br> Kitchen Utensils<br> Electric Kettle			 <!-- 5635 Remove all features and links related to PAT --> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescn)
-        </dd>
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default glow-hover">
+                    <div class="panel-heading">Agent Info</div>
+                    <div class="panel-body">
+                        <div class="media">
+                            <a class="pull-left" href="#">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LongDescn)
-        </dt>
+                                <img class="media-object" src="~/Content/images/profilePhoto1.jpg" />
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Juan Dela Cruz</h4>
 
-        <dd>
-            @Html.DisplayFor(model => model.LongDescn)
-        </dd>
+                                <address>agentjames@gmail.com</address>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row"><small class="col-xs-5">Member Address:</small><span class="col-xs-7">12 Salcedo Village Makati</span></div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row"><small class="col-xs-5">Member Since:</small><span class="col-xs-7">June 20, 2012</span></div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-earphone"></span> Contact Numbers</button>
+                                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePosted)
-        </dt>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default glow-hover">
+                    <div class="panel-heading"><span>Inquire about this property</span></div>
+                    <div class="panel-body">   
+                        <form method="POST" action ="#">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Email" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Phone (optional)" />
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DatePosted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FloorAreaSqM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FloorAreaSqM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LotAreaSqM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LotAreaSqM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-
-    </dl>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea class="form-control" cols="20" rows="7">Hi, I found your listing on BahayList and would like to find out more about this property. Please let me know when you are available for a viewing. Thank you.</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-default btn-block">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section styles{
+    <link href="~/Plugins/fotorama-4.5.1/fotorama.css" rel="stylesheet" />
+    @*To offset the added height of thumbnail in fotorama*@
+    <style type="text/css">
+        #google-map-caption {height: 70px}
+    </style>
+    }
+
+    @section scripts {
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-68Lj-b-aUCWvLhEchRhgd5LhwWIfUXw&sensor=false"> </script>
+        <script src="~/Plugins/fotorama-4.5.1/fotorama.js" > </script >
+        <script>
+            $(document).ready(function () {
+                /*  Load only google map object when the bootstrap tab is clicked.
+                    This also fixes for google map showing half in bootstrap tab if 
+                    the initialization of google map has been done on window load.
+                */
+     
+                $('a[href="#map-pane"]').click(function (e) {
+                    if ($.trim($("#map-canvas").text()) == "") {
+                        //load only once!
+                        initializeGoogleMap();
+                        setTimeout(fixGoogleMapCanvas,300);
+                    }
+                    
+                });
+
+                //$('#mediaTab a').click(function (e) {
+                //    e.preventDefault()
+                //    $(this).tab('show')
+                //    alert("ahoy");
+                //})
+   
+
+
+            });
+            function fixGoogleMapCanvas() {
+                //alert("ahoo");
+                var myMap = document.getElementById('map-canvas');
+                google.maps.event.trigger(myMap, 'resize');
+            };
+            /*End of Google map fix*/
+
+            /*Initialize Google Map object*/
+            var map;
+            function initializeGoogleMap() {
+                var propertyLatLong = new google.maps.LatLng(14.5069619, 121.0536315);
+                var mapOptions = {
+                    zoom: 14,
+                    center: propertyLatLong,
+                };
+                map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                    
+                //add marker
+                var marker = new google.maps.Marker({
+                    position: propertyLatLong,
+                    map: map,
+                    title: 'Property Location'
+                });
+            }
+
+            //google.maps.event.addDomListener(window, 'load', initialize);   
+            
+        </script>
+
+    }

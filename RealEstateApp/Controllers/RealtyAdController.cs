@@ -53,7 +53,7 @@ namespace RealEstateApp.Controllers
           RealtyAdSearchViewModel searchViewModel = new RealtyAdSearchViewModel();
           return View(searchViewModel);
         }
-        public ActionResult DisplaySearchResults([Bind(Include = "Location,BedCount,BathCount")] RealtyAdSearchViewModel searchModel)
+        public ActionResult DisplaySearchResults(RealtyAdSearchViewModel searchModel)
         {
           ViewBag.CurentFilter = searchModel.Location;
           var realtyAds = SearchProperties(searchModel);   
@@ -71,7 +71,8 @@ namespace RealEstateApp.Controllers
 
         public ActionResult DisplaySearchResultsPartial(RealtyAdSearchViewModel searchModel)
         {
-
+          //searchModel.PageSize = 3;
+          //searchModel.Page = 1;
           ViewBag.CurentFilter = searchModel.Location;
           var realtyAds = SearchProperties(searchModel);
           return PartialView("~/Views/Shared/_DisplaySearchResultsPartial.cshtml", realtyAds.ToList());
@@ -79,7 +80,7 @@ namespace RealEstateApp.Controllers
         }
 
 
-        private IQueryable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel, int pageSize = 20)
+        private IQueryable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel)
         {
           if (searchModel.Location != null)
           {
@@ -153,11 +154,27 @@ namespace RealEstateApp.Controllers
             predicate = predicate.And(x => x.BathCount >= searchModel.BathCount);
           }
 
-          //for paging implementation
-          int pageNumber = (searchModel.Page ?? 1);
-          int pagesToSkip = pageSize * pageNumber;
-          //var i = System.Linq.Enumerable.Count(realtyAds);
-          realtyAds = realtyAds.AsExpandable().Where(predicate);
+
+          //sort
+          switch (searchModel.SortOrder)
+          {
+            case SortOrder.PostDateDesc:
+              realtyAds = realtyAds.AsExpandable().Where(predicate).OrderByDescending(r => r.DatePosted);
+              break;
+            case SortOrder.CheapestFirst:
+              realtyAds = realtyAds.AsExpandable().Where(predicate).OrderBy(r => r.Price);
+              break;
+            case SortOrder.ExpensiveFirst:
+              realtyAds = realtyAds.AsExpandable().Where(predicate).OrderByDescending(r => r.Price);
+              break;
+            default:
+              realtyAds = realtyAds.AsExpandable().Where(predicate).OrderByDescending(r => r.DatePosted);
+              break;
+          }
+
+          //realtyAds = realtyAds.AsExpandable().Where(predicate);
+          var xyz = searchModel.PagesToSkip;
+          realtyAds = realtyAds.Skip(searchModel.PagesToSkip??0).Take(searchModel.PageSize??20);
           return realtyAds;
         } 
 

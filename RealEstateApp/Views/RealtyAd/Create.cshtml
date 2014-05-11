@@ -5,10 +5,27 @@
 }
 
 @section styles{
+    
+    <link href="~/Plugins/chosen_v1.1.0/chosen.min.css" rel="stylesheet" />
     <style>
-        .panel-body {
-            height: 360px;
+        /*-------------------------------------------------
+        Start of Chosen
+        -------------------------------------------------*/
+        .chosen-container-single .chosen-single {
+            height: 34px;
         }
+
+            .chosen-container-single .chosen-single span {
+                padding-top: 5px;
+            }
+
+            /*Reposition drop icon*/
+            .chosen-container-single .chosen-single div b {
+                background-position-y: 6px;
+            }
+        /*-------------------------------------------------
+        End of Chosen
+        -------------------------------------------------*/
     </style>
     }
 <div class="panel panel-default">
@@ -20,7 +37,7 @@
 
                     @Html.ValidationSummary(true)
 
-                    <section class="step" data-step-title="Upload Images">
+                    @*<section class="step" data-step-title="Upload Images">*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.PostedImages, new { @class = "control-label col-md-2 hidden-col-xs" })
                             <div class="col-md-10">
@@ -29,9 +46,9 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    @*</section>*@
 
-                    <section class="step" data-step-title="Property Details">
+                    @*<section class="step" data-step-title="Property Details">*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2 hidden-col-xs" })
                             <div class="btn-group col-md-10" data-toggle="buttons">
@@ -89,12 +106,12 @@
                                 @Html.ValidationMessageFor(model => model.LongDescn)
                             </div>
                         </div>
-                    </section>
-                    <section class="step" data-step-title="Property Location">
+                    @*</section>*@
+                    @*<section class="step" data-step-title="Property Location">*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2 hidden-xs" })
                             <div class="col-md-4">
-                                @Html.DropDownListFor(model => model.City, ViewBag.City_Id as SelectList, String.Empty, new { @class = "form-control", placeholder = "Select City" })
+                                @Html.DropDownListFor(model => model.City, ViewBag.City_Id as SelectList, String.Empty, new { @class = "form-control chzn-select", placeholder = "Select City" })
                                 @Html.ValidationMessageFor(model => model.City)
                             </div>
                         </div>
@@ -106,7 +123,7 @@
                             </div>
                         </div>
 
-                    </section>
+                    @*</section>*@
 
 
 
@@ -137,26 +154,33 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     @*Form Wizard*@
-    <script src="~/Plugins/jquery.easyWizard-master/jquery.easyWizard.js"></script>
-    <script src="~/Plugins/jquery.steps-1.0.6/jquery.steps.min.js"></script>
+    @*<script src="~/Plugins/jquery.easyWizard-master/jquery.easyWizard.js"></script>/*@
+    <script src="~/Plugins/chosen_v1.1.0/chosen.jquery.min.js"></script>
     <script>
+    $(document).ready(function () {
+        @*
         $('#PostNewPropertyForm').easyWizard({
             showSteps: false,
             showButtons: false,
             submitButton: false,
-            before: function(){alert("ahoo")},
-        });
-        $('#wizardPager .next a').bind('click', function (e) {
-            e.preventDefault();
-            $('#PostNewPropertyForm').easyWizard('nextStep');
-        });
-        $('#wizardPager .prev a').bind('click', function (e) {
-            e.preventDefault();
-            $('#PostNewPropertyForm').easyWizard('prevStep');
-        });
-        $('#CreatePropertyBtn').hide();
-        $('#DummySubmit').click(function () {
-            $('#CreatePropertyBtn').click();
-        });
+            before: function () { }
+         });
+            $('#wizardPager .next a').bind('click', function (e) {
+                e.preventDefault();
+                $('#PostNewPropertyForm').easyWizard('nextStep');
+            });
+            $('#wizardPager .prev a').bind('click', function (e) {
+                e.preventDefault();
+                $('#PostNewPropertyForm').easyWizard('prevStep');
+            });
+            $('#CreatePropertyBtn').hide();
+            $('#DummySubmit').click(function () {
+                $('#CreatePropertyBtn').click();
+            });
+            *@
+        $(".chzn-select").chosen();
+
+    });
+
     </script>
 }

@@ -6,7 +6,9 @@
     <title>BahayList - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @*<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">*@
+    @*For image slider*@
+    @RenderSection("styles", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,32 +23,56 @@
                 @Html.ActionLink("BahayList", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Homes</a></li>
-                    <li><a href="#">Rentals</a></li>
+                <ul class="nav navbar-nav hidden-sm">
+                    <li class="active"><a href="#">Homes</a></li>
+                    <li><a href="#">Post Ad</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post Ad <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Post For Sale</a></li>
-                            <li><a href="#">Post For Rent</a></li>
-                            <li><a href="#">Post For Commercial Space</a></li>
+                            <li><a href="#">Contractors</a></li>
+                            <li><a href="#">Movers</a></li>
+                            <li><a href="#">Repairs and Maintenance</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Agents</a></li>
-                    <li><a href="#">Services</a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*wrapping the login view aligns it to the left edge of the nav bar*@
+                <div>
+                    @Html.Partial("_LoginPartial")
+                </div>
+                <form class="navbar-form" id="navbar-main-search">
+                    <div class="form-group" style="display:inline;">
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="Realty">
+                                    <span data-bind="label">For Rent</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-left">
+                                    <li><a href="#">For Sale</a></li>
+                                    <li><a href="#">For Rent</a></li>
+   
+                                </ul>
+                            </div><!-- /btn-group -->
+                            <input type="text" class="form-control" placeholder="Search for an Address, Neighborhood, or City" name="q">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+    @*jumbotron full-width has to be placed outside of the container*@
+    @RenderSection("jumbotron", required: false)
     <div class="container body-content">
-        @RenderBody()
+            @RenderBody()           
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
+        <div class="clearfix"></div>
+            <footer class="col-md-12">
+                <p>&copy; @DateTime.Now.Year - James Alcaraz</p>
+            </footer>
+     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

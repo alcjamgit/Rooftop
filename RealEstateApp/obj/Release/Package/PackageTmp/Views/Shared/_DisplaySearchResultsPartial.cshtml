@@ -1,0 +1,8 @@
+﻿@model IEnumerable<RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-4 col-md-3">
+        @Html.Partial("~/Views/Shared/_RealtyDisplayItemPartial.cshtml", @item)
+    </div>
+}

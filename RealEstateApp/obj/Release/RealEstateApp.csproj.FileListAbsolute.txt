@@ -58,3 +58,5 @@ C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.ChangeUrlImageFields.resources
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddTableRealtyAdImageDefaults.resources
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddFileNameToDefaultImg.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\bin\LinqKit.dll
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.ChangeBedCountToNullable.resources
