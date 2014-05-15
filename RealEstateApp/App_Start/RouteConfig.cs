@@ -22,7 +22,7 @@ namespace RealEstateApp
       routes.MapRoute(
         name: "PropertyDisplay",
         url: "properties/{id}",
-        defaults: new { controller = "RealtyAd", action = "Details" },
+        defaults: new { controller = "RealtyAd", action = "GetProperty" },
         constraints: new { id = @"\d+" }
         );
 

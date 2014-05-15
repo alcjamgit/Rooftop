@@ -1,20 +1,25 @@
 ﻿@model IEnumerable<RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel>
-@using RealEstateApp.Helpers
+@using RealEstateApp.ExtensionMethods
 
 @{
     ViewBag.Title = "SearchResults";
+    ViewBag.SearchViewModel = new RealEstateApp.ViewModels.RealtyAdSearchViewModel() { SortOrder = RealEstateApp.ViewModels.SortOrder.PostDateDesc};
+    RealEstateApp.ViewModels.SortOrder selectedSort = ViewBag.SearchViewModel.SortOrder;
 }
 
 <div class="row">
-    @Html.Partial("~/Views/Shared/_RealtySearchPanel.cshtml", new RealEstateApp.ViewModels.RealtyAdSearchViewModel())
+    @Html.Partial("~/Views/Shared/_RealtySearchPanel.cshtml", ViewBag.SearchViewModel as RealEstateApp.ViewModels.RealtyAdSearchViewModel)
 </div>
 
 <div class="row">
     <div class="col-md-12">
-        <div class="progress progress-striped active" id="ajaxProgressBar">
+        @*<div class="progress progress-striped active" id="ajaxProgressBar">
             <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                 <span class="sr-only"></span>
             </div>
+        </div>*@
+        <div class="text-center" id="ajaxProgressBar">
+            <img src="@Url.Content("~/Assets/ajax-loader-bar.gif")" />
         </div>
     </div>
 </div class="row">
@@ -26,10 +31,8 @@
     <div class="col-sm-6 hidden-xs">
         <form class="form-inline">
             <div class="form-group col-md-3 pull-right padding-less">
-                <select class="form-control input-sm" name="Sort">
-                    <option>Newest First</option>
-                    <option>Cheapest First</option>
-                    <option>Relevance</option>
+               <select class="form-control input-sm" name="Sort" id="dummySort">
+                   @Html.EnumToDropDownOptions(selectedSort)
                 </select>
             </div class="form-group">
         </form>
@@ -53,15 +56,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="well well-sm text-center">
-            <ul class="pagination margin-less">
-                <li><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                @for (var i = 2; i < 4; i++)
-                {
-                    <li><a href="#">@i.ToString() <span class="sr-only">(current)</span></a></li>
-                }
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+            @Html.Paginator(4,40)
         </div>
     </div>
 </div>
@@ -81,10 +76,21 @@
                 var strUrl = $(this).data('ajax-url');
                 filterAsync(model, strUrl);
             });
+
+            //submit form using the selected sort value
+            $('#dummySort').change(function () {
+                $('#filterResultsFrm input[name="SortOrder"]').val($(this).val());
+                $('#filterResultsFrm').submit();
+            });
+
+            $('.pagination-item').click(function () {
+                $('#filterResultsFrm input[name="Page"]').val($(this).val());
+                //alert($('#filterResultsFrm input[name="Page"]').val());
+                $('#filterResultsFrm').submit();
+            });
         });
 
-        function filterAsync(model, urlString) {
-            alert(urlString);
+        function filterAsync(model, urlString) {            
             $.ajax({
                 url: urlString,
                 type: "GET",
@@ -93,7 +99,9 @@
                 success: function (partialView) {
                     $('#searchResultsPanel').html(partialView);
                 },
-                error: function (xhr, status, errorThrown) { alert(errorThrown); },
+                error: function (xhr, status, errorThrown) {
+                    alert('Error in contacting the server \n'+ errorThrown +'\n' + status);
+                },
                 complete: function (xhr, status) {
                     $('#ajaxProgressBar').hide();
                 }

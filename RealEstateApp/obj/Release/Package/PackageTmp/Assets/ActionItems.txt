@@ -1,6 +1,13 @@
 ﻿4/19-4/21
-1. REDESIGN HOME PAGE. Full width hero with search box at the center.
-2. CREATE VIEW FOR SEARCH RESULTS. Default will be list view using either panel or thumbnails or both.
-3. CREATE FILTER PANEL AT THE TOP OF SEARCH RESULTS.
+1. REDESIGN HOME PAGE. Full width hero with search box at the center. Done
+2. CREATE VIEW FOR SEARCH RESULTS. Default will be list view using either panel or thumbnails or both. Done
+3. CREATE FILTER PANEL AT THE TOP OF SEARCH RESULTS. Done
 4. ALLOW LOGIN USING EMAIL.
-5. REDESIGN NAVBAR TO INCLUDE FULL WIDTH SEARCH INPUT. http://www.bootply.com/render/129821#
+5. REDESIGN NAVBAR TO INCLUDE FULL WIDTH SEARCH INPUT. http://www.bootply.com/render/129821# Done
+
+5/14-5/16
+1. Change save location for ad images
+2. Add Text Editor
+3. Allow Login Using Email
+4. Register Domain rooftop.com.ph
+5. Handle case when ad is created w/o image

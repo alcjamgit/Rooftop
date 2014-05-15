@@ -10,7 +10,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="Assets/ActionItems.txt">
-      <publishTime>04/19/2014 10:31:54</publishTime>
+      <publishTime>05/14/2014 10:13:45</publishTime>
+    </File>
+    <File Include="Assets/ajax-loader-bar.gif">
+      <publishTime>05/12/2014 13:46:14</publishTime>
     </File>
     <File Include="Assets/Update Database.txt">
       <publishTime>03/24/2014 02:49:07</publishTime>
@@ -73,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/19/2014 10:30:59</publishTime>
     </File>
     <File Include="bin/RealEstateApp.dll">
-      <publishTime>05/09/2014 11:27:09</publishTime>
+      <publishTime>05/14/2014 11:06:55</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>03/24/2014 11:17:20</publishTime>
@@ -436,10 +439,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/03/2014 13:23:28</publishTime>
     </File>
     <File Include="Views/RealtyAd/DisplaySearchResults.cshtml">
-      <publishTime>05/09/2014 12:16:24</publishTime>
+      <publishTime>05/13/2014 09:18:14</publishTime>
     </File>
     <File Include="Views/RealtyAd/Edit.cshtml">
       <publishTime>03/25/2014 12:58:49</publishTime>
+    </File>
+    <File Include="Views/RealtyAd/GetProperty.cshtml">
+      <publishTime>05/13/2014 10:13:08</publishTime>
     </File>
     <File Include="Views/RealtyAd/Index.cshtml">
       <publishTime>03/25/2014 13:14:50</publishTime>
@@ -481,10 +487,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/31/2014 04:41:19</publishTime>
     </File>
     <File Include="Views/Shared/_RealtyDisplayItemPartial.cshtml">
-      <publishTime>05/04/2014 04:32:07</publishTime>
+      <publishTime>05/12/2014 13:28:14</publishTime>
     </File>
     <File Include="Views/Shared/_RealtySearchPanel.cshtml">
-      <publishTime>05/09/2014 12:21:26</publishTime>
+      <publishTime>05/12/2014 02:26:37</publishTime>
     </File>
     <File Include="Views/Shared/_UserMenuPartial.cshtml">
       <publishTime>05/04/2014 12:53:05</publishTime>

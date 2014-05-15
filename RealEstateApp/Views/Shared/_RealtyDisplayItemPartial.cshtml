@@ -1,5 +1,6 @@
 ﻿@model RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel
 
+@*@{var itemDisplayUrl = String.Format("~/properties/{0}", Model.Id);}*@
 @{var itemDisplayUrl = String.Format("~/properties/{0}", Model.Id);}
 <div class="thumbnail glow-hover thumbnail-add-bottom-margin">
     <a href="@Url.Content(itemDisplayUrl)">

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<RealEstateApp.ViewModels.RealtyAdDisplayCompactViewModel>
-@using RealEstateApp.Helpers
+@using RealEstateApp.ExtensionMethods
 
 @{
     ViewBag.Title = "SearchResults";
@@ -13,10 +13,13 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="progress progress-striped active" id="ajaxProgressBar">
+        @*<div class="progress progress-striped active" id="ajaxProgressBar">
             <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                 <span class="sr-only"></span>
             </div>
+        </div>*@
+        <div class="text-center" id="ajaxProgressBar">
+            <img src="@Url.Content("~/Assets/ajax-loader-bar.gif")" />
         </div>
     </div>
 </div class="row">
@@ -53,7 +56,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="well well-sm text-center">
-            @Html.Paginator(4,40)
+            @{int ctr = ViewBag.SearchResultCount; 
+              int pageSize = ViewBag.SearchViewModel.PageSize;
+              
+            }
+            @Html.Paginator(pageSize, ctr)
         </div>
     </div>
 </div>

@@ -171,6 +171,7 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserMenuController.cs" />
     <Compile Include="Controllers\UserViewModelsController.cs" />
+    <Compile Include="ExtensionMethods\HtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\ActionItems.txt" />
+    <Content Include="Assets\ajax-loader-bar.gif" />
     <Content Include="Assets\Update Database.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -279,6 +281,80 @@
     <Content Include="Plugins\jquery.easyWizard-master\jquery.easyWizard.js" />
     <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.js" />
     <Content Include="Plugins\jquery.steps-1.0.6\jquery.steps.min.js" />
+    <Content Include="Plugins\tinymce\license.txt" />
+    <Content Include="Plugins\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Plugins\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\example\dialog.html" />
+    <Content Include="Plugins\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Plugins\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Plugins\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Plugins\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Plugins\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Plugins\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce-small.dev.svg" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce.dev.svg" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Plugins\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Plugins\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Plugins\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Plugins\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Plugins\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Plugins\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Plugins\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Plugins\tinymce\tinymce.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
@@ -292,6 +368,14 @@
     <Content Include="Plugins\jquery.bxslider\bower.json" />
     <Content Include="Plugins\jquery.bxslider\readme.md" />
     <Content Include="Plugins\jquery.easyWizard-master\README.md" />
+    <Content Include="Plugins\tinymce\langs\readme.md" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Properties\PublishProfiles\Bahay List Local IIS 2.pubxml" />
     <None Include="Properties\PublishProfiles\BahayList Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\bahaylist.com Local IIS.pubxml" />
@@ -360,9 +444,9 @@
     <Content Include="Views\Shared\_LayoutUserMenu.cshtml" />
     <Content Include="Views\RealtyAd\Properties.cshtml" />
     <Content Include="Views\Shared\_DisplaySearchResultsPartial.cshtml" />
+    <Content Include="Views\RealtyAd\GetProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

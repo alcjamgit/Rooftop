@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace RealEstateApp.ViewModels
 {
@@ -13,6 +14,7 @@ namespace RealEstateApp.ViewModels
     [Required, StringLength(50, ErrorMessage = "Please limit your title to 50 characters."), Display(Name = "Title")]
     public string ShortDescn { get; set; }
 
+    [AllowHtml]
     [Required, StringLength(2500, ErrorMessage = "Please limit the description to 2500 characters."), Display(Name = "Description")]
     public string LongDescn { get; set; }
     [DisplayFormat(DataFormatString = "{0:##,#}")]
@@ -31,7 +33,8 @@ namespace RealEstateApp.ViewModels
     public float? FloorAreaSqM { get; set; }
     [Display(Name = "Lot Area (in sqm)")]
     public float? LotAreaSqM { get; set; }
-    public int City { get; set; }
+    [Required]
+    public int? City { get; set; }
 
     [Display(Name = "Photos")]
     public IEnumerable<HttpPostedFileBase> PostedImages { get; set; }

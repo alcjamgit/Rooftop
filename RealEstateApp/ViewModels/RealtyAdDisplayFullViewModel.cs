@@ -9,11 +9,17 @@ namespace RealEstateApp.ViewModels
 {
   public class RealtyAdDisplayFullViewModel
   {
+    public RealtyAdDisplayFullViewModel()
+    {
+      CityName = "Makati City";
+    }
     public int Id { get; set; }
-    public string ShortDescn { get; set; }
+    public string Title { get; set; }
+    [Display(Name = "Description")]
+    public string FullDescription { get; set; }
     [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}")]
     public DateTime DatePosted { get; set; }
-    private string _daysAgo;
+    private string _DurationSincePosted;
 
     public string DaysAgo
     {
@@ -22,11 +28,13 @@ namespace RealEstateApp.ViewModels
         TimeSpan timeSpan = DateTime.Today.Subtract(this.DatePosted.Date);
         return timeSpan.Days.ToString() + " Days";
       }
-      set { _daysAgo = value; }
+      set { _DurationSincePosted = value; }
     }
+
     [DisplayFormat(DataFormatString = "{0:N0}")]
     public decimal? Price { get; set; }
     public string Address { get; set; }
+    public string CityName { get; set; }
     public short BedCount { get; set; }
     public short BathCount { get; set; }
     public float? FloorAreaSqM { get; set; }

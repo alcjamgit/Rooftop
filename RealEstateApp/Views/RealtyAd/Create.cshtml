@@ -153,32 +153,20 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    @*Form Wizard*@
-    @*<script src="~/Plugins/jquery.easyWizard-master/jquery.easyWizard.js"></script>/*@
+    <script src="~/Plugins/tinymce/tinymce.min.js"></script> 
     <script src="~/Plugins/chosen_v1.1.0/chosen.jquery.min.js"></script>
     <script>
-    $(document).ready(function () {
-        @*
-        $('#PostNewPropertyForm').easyWizard({
-            showSteps: false,
-            showButtons: false,
-            submitButton: false,
-            before: function () { }
-         });
-            $('#wizardPager .next a').bind('click', function (e) {
-                e.preventDefault();
-                $('#PostNewPropertyForm').easyWizard('nextStep');
-            });
-            $('#wizardPager .prev a').bind('click', function (e) {
-                e.preventDefault();
-                $('#PostNewPropertyForm').easyWizard('prevStep');
-            });
-            $('#CreatePropertyBtn').hide();
-            $('#DummySubmit').click(function () {
-                $('#CreatePropertyBtn').click();
-            });
-            *@
+        $(document).ready(function () {
+            //Beautify bootstrap combo for bootstrap
         $(".chzn-select").chosen();
+        //WYSIWYG Editor
+        tinymce.init({
+            selector: 'textarea',
+            menubar: false,
+            plugins: "link",
+
+        });
+
 
     });
 
