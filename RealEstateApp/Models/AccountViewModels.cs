@@ -31,7 +31,7 @@ namespace RealEstateApp.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "User name or Email")]
         public string UserName { get; set; }
 
         [Required]
@@ -41,6 +41,21 @@ namespace RealEstateApp.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+        public bool IsUserNameEmail {
+          get
+          {
+            try
+            {
+              var addr = new System.Net.Mail.MailAddress(this.UserName);
+              return true;
+            }
+            catch
+            {
+              return false;
+            };
+          }
+        }
+
     }
 
     public class RegisterViewModel

@@ -6,9 +6,9 @@
 5. REDESIGN NAVBAR TO INCLUDE FULL WIDTH SEARCH INPUT. http://www.bootply.com/render/129821# Done
 
 5/14-5/16
-1. Change save location for ad images
-2. Add Text Editor
-3. Allow Login Using Email
+1. Change save location for ad images - done
+2. Add Text Editor - done
+3. Allow Login Using Email - done
 4. Register Domain rooftop.com.ph
 5. Handle case when ad is created w/o image
 6. Create Edit Property Controller and View

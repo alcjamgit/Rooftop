@@ -54,6 +54,8 @@ namespace RealEstateApp.Controllers
                                                  BathCount = r.BathCount ?? 0,
                                                  FloorAreaSqM = r.FloorAreaSqM,
                                                  RealtyAdImages = r.RealtyAdImages,
+                                                 Longitude = r.Longitude,
+                                                 Latitude = r.Latitude
                                                }).FirstOrDefault();
 
       var realtyAdImages = (from img in db.RealtyAdImages
@@ -210,6 +212,9 @@ namespace RealEstateApp.Controllers
     public ActionResult Create()
     {
       RealtyAdCreateViewModel createModel = new RealtyAdCreateViewModel();
+      ViewBag.BedCountSelectItems = GetSelectListFromRange(0,6,suffix:" Beds");
+      ViewBag.BathCountSelectItems = GetSelectListFromRange(0, 5, suffix: " Baths");
+      ViewBag.FloorAreaSelectItems = GetSelectListFromRange(0, 1000,5,suffix:" sqm.");
       ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
       return View(createModel);
     }
@@ -237,6 +242,8 @@ namespace RealEstateApp.Controllers
           BedCount = realtyAdViewModel.BedCount,
           BathCount = realtyAdViewModel.BathCount,
           FloorAreaSqM = realtyAdViewModel.FloorAreaSqM,
+          Latitude = realtyAdViewModel.Latitude,
+          Longitude = realtyAdViewModel.Longitude,
           Status = RealtyAdStatus.Active,
           ApplicationUser_Id = userId
         };
@@ -297,8 +304,22 @@ namespace RealEstateApp.Controllers
         return RedirectToAction("Index");
       }
 
+      //model is invalid so reconstruct the original view
+      ViewBag.BedCountSelectItems = GetSelectListFromRange(0,6,suffix:" Beds");
+      ViewBag.BathCountSelectItems = GetSelectListFromRange(0, 5, suffix: " Baths");
+      ViewBag.FloorAreaSelectItems = GetSelectListFromRange(0, 1000,5,suffix:" sqm.");
       ViewBag.City_Id = new SelectList(db.Cities, "Id", "Name");
       return View(realtyAdViewModel);
+    }
+
+    public IEnumerable<SelectListItem> GetSelectListFromRange(int startVal, int endVal, int increment = 1, string prefix = "", string suffix ="" )
+    {
+      List<SelectListItem> selItems = new List<SelectListItem>();
+      for (int i = startVal; i <= endVal; i+=increment )
+      {
+        selItems.Add(new SelectListItem() { Text = prefix + i + suffix, Value = i.ToString()});
+      }
+      return selItems.ToList();
     }
 
     // GET: /RealtyAd/Edit/5

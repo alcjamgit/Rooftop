@@ -17,7 +17,7 @@ namespace RealEstateApp.ViewModels
     [AllowHtml]
     [Required, StringLength(2500, ErrorMessage = "Please limit the description to 2500 characters."), Display(Name = "Description")]
     public string LongDescn { get; set; }
-    [DisplayFormat(DataFormatString = "{0:##,#}")]
+    [DisplayFormat(DataFormatString = "{0:##,#}", ApplyFormatInEditMode = true)]
     public decimal? Price { get; set; }
     [Display(Name = "Category")]
     public RealtyAdCategory Category { get; set; }
@@ -35,6 +35,8 @@ namespace RealEstateApp.ViewModels
     public float? LotAreaSqM { get; set; }
     [Required]
     public int? City { get; set; }
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
 
     [Display(Name = "Photos")]
     public IEnumerable<HttpPostedFileBase> PostedImages { get; set; }

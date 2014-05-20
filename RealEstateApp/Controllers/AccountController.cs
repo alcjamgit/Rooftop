@@ -43,23 +43,35 @@ namespace RealEstateApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+
+          if (ModelState.IsValid)
+          {
+
+            ApplicationDbContext db;
+            //user can enter username or email
+            if (model.IsUserNameEmail)
             {
-                
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
-                if (user != null)
-                {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
-                }
+              db = new ApplicationDbContext();
+              var derivedUserName = db.IdentityUsers.Where(u => u.Email == model.UserName).Select(u => u.UserName).FirstOrDefault();
+              model.UserName = derivedUserName ?? model.UserName;
+              db.Dispose();
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+
+            var user = await UserManager.FindAsync(model.UserName, model.Password);
+            if (user != null)
+            {
+              await SignInAsync(user, model.RememberMe);
+              return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+              ModelState.AddModelError("", "Invalid username or password.");
+            }
+          }
+
+          // If we got this far, something failed, redisplay form
+          return View(model);
         }
 
         //

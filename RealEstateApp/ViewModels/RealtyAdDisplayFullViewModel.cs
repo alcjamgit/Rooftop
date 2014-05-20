@@ -38,7 +38,9 @@ namespace RealEstateApp.ViewModels
     public short BedCount { get; set; }
     public short BathCount { get; set; }
     public float? FloorAreaSqM { get; set; }
-
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
+    
     [Display(Name = "Agent")]
     public virtual ApplicationUser ApplicationUser { get; set; }
     public ICollection<RealtyAdImage> RealtyAdImages { get; set; }

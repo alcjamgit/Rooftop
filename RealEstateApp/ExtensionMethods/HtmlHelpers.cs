@@ -9,7 +9,7 @@ namespace RealEstateApp.ExtensionMethods
 {
   public static class HtmlHelpers
   {
-    public static MvcHtmlString Paginator(this HtmlHelper htmlHelper, int PageSize = 20, int resultCount = 40)
+    public static MvcHtmlString Paginator(this HtmlHelper htmlHelper, int PageSize = 20, int resultCount = 1)
     {
 
       int pageCount = (int)(Math.Ceiling(resultCount / Convert.ToDouble(PageSize)) * PageSize) / PageSize;
