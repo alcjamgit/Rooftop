@@ -7,7 +7,7 @@
 @section styles{
     
     <link href="~/Plugins/chosen_v1.1.0/chosen.min.css" rel="stylesheet" />
-    <link href="~/Plugins/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" /> //used for google maps
+    <link href="~/Plugins/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" /> @*used for google maps*@
     <style>
         /*-------------------------------------------------
         Start of Chosen
@@ -168,9 +168,13 @@
             </div>
             
             <div class="modal-body">
-                <label>Address: </label><input id="address" type="text" class="form-control" />
+                <input id="address" type="text" class="form-control" placeholder="Type the street then the city"/>
                 <br />
-                <div id="map_canvas" class="col-md-12" style="height:300px"></div>
+                
+                
+                <div id="map_canvas" class="col-md-12" style="height:300px"  ></div>
+                <br />
+                <span>Drag the marker to point to exact location</span>
                 <input id="latitude" type="hidden"/>
                 <input id="longitude" type="hidden" />
             </div>
@@ -221,6 +225,7 @@
             //fix resizing issues with google map
             $('#googleMapModal').on('shown.bs.modal', function (e) {
                 google.maps.event.trigger(map, "resize");
+                
             });
             //
 
@@ -250,7 +255,7 @@
                 $("#address").autocomplete({
                     //This bit uses the geocoder to fetch address values
                     source: function (request, response) {
-                        geocoder.geocode({ 'address': request.term }, function (results, status) {
+                        geocoder.geocode({ 'address': request.term, 'region':'phi' }, function (results, status) {
                             response($.map(results, function (item) {
                                 return {
                                     label: item.formatted_address,

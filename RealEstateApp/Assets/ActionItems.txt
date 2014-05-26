@@ -10,5 +10,5 @@
 2. Add Text Editor - done
 3. Allow Login Using Email - done
 4. Register Domain rooftop.com.ph
-5. Handle case when ad is created w/o image
+5. Handle case when ad is created w/o image - done
 6. Create Edit Property Controller and View
