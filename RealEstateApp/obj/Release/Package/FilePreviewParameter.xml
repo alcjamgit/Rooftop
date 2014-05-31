@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="rooftop" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\alcaraz\\documents\\visual\ studio\ 2013\\Projects\\RealEstateApp\\RealEstateApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\alcaraz\\documents\\visual\ studio\ 2013\\Projects\\RealEstateApp\\RealEstateApp\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:hc2idtv885.database.windows.net,1433;Initial Catalog=aspnet-RealtyDb;User Id=azuresqldb@hc2idtv885;Password=Semaj3891Mic" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\alcaraz\\documents\\visual\ studio\ 2013\\Projects\\RealEstateApp\\RealEstateApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
