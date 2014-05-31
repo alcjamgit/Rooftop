@@ -107,15 +107,15 @@ namespace RealEstateApp.Controllers
 
     private IQueryable<RealtyAdDisplayCompactViewModel> SearchProperties(RealtyAdSearchViewModel searchModel)
     {
-      if (searchModel.Location != null)
-      {
-        //this is the first page since search string is not null
-        searchModel.Page = 1;
-      }
-      else
-      {
-        searchModel.Location = searchModel.CurrentSearchFilter;
-      }
+      //if (searchModel.Location != null)
+      //{
+      //  //this is the first page since search string is not null
+      //  searchModel.Page = 1;
+      //}
+      //else
+      //{
+      //  searchModel.Location = searchModel.CurrentSearchFilter;
+      //}
 
       //IEnumerable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
       IQueryable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds

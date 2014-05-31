@@ -9,14 +9,7 @@
 
             <div class="panel-heading"><strong>@Model.Title</strong></div>
             <div class="panel-body">
-                @*<div class="row">
-                        <div class="col-md-12">
-                            <div class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-default">Photos</button>
-                                <button type="button" class="btn btn-default">Map</button>
-                            </div>
-                        </div>
-                    </div>*@
+
 
                 <div class="row">
                     <div class="col-md-8">
@@ -28,17 +21,17 @@
                         <div class="tab-content">
                             <!-- Tab panes -->
                             <div class="tab-pane active" id="picture-pane">
-                               
-                                <div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="400/300" data-allowfullscreen="true" data-loop="true">
+
+                                <div class="fotorama" id="fotorama" data-nav="thumbs" data-width="100%" data-ratio="400/300" data-allowfullscreen="true" data-loop="true" data-auto="false">
                                     @Html.RenderAdImages("67a98a64-c096-419e-8656-8829f566d3d0", Model.RealtyAdImages)
                                     @*<img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
-                                    <img src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" />
-                                    <img src="http://placehold.it/400x300" />
-                                    <img src="http://placehold.it/400x200" />
-                                    <img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
-                                    <img src="http://placehold.it/400x300" />
-                                    <img src="http://placehold.it/300x400" />
-                                    <img src="/Content/images/thumbnailPlaceholder400x300.gif" />*@
+                                        <img src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" />
+                                        <img src="http://placehold.it/400x300" />
+                                        <img src="http://placehold.it/400x200" />
+                                        <img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
+                                        <img src="http://placehold.it/400x300" />
+                                        <img src="http://placehold.it/300x400" />
+                                        <img src="/Content/images/thumbnailPlaceholder400x300.gif" />*@
                                 </div>
                             </div>
                             <div class="tab-pane" id="map-pane">
@@ -98,17 +91,26 @@
 
                     </div>
                 </div>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-md-12">
 
                         <strong>Description</strong>
                         <div class="adDescription fullDescription" itemprop="description"> Furnished House <span class="keyhigh">For</span> <span class="keyhigh">Rent</span> Near Gaisano Grand Mall (Fully Furnished)<br> With Wifi Internet Connection<br> <br> House Description:<br> 2 Storey- Townhouse (Furnished)<br> 2 Bedrooms With Air Conditioner<br> Living Area<br> Kitchen Area<br> Bath And Toilet Area<br> <br> Appliances And Furniture Provided:<br> 1 King Size Bed With Mattress+ Pillows+ Bedsheets<br> 1 Single Bed With Mattress+ Pillows+ Bedsheets<br> 2 Air Conditioner<br> 1 Closet<br> 2 Electric Fan<br> Double Burner With Stove<br> 1 Refrigerator<br> 1 Dining Set With 4 Chairs<br> 1 Sofa With Center Table<br> Television<br> Curtains<br> Rice Cooker<br> Cooking And Frying Pan<br> Kitchen Utensils<br> Electric Kettle			 <!-- 5635 Remove all features and links related to PAT --> </div>
                     </div>
-                </div>
+                </div>*@
+            </div>
+        </div>
+        <div class="panel panel-default glow-hover">
+            <div class="panel-heading"><strong>Description</strong></div>
+            <div class="panel-body">
+                
+                @MvcHtmlString.Create(Model.FullDescription)
+                @*@MvcHtmlString.Create("<h1>Test</h2><script>alert('your hacked');</script>")*@
             </div>
         </div>
     </div>
-
+    @Html.HiddenFor(m => m.Longitude)
+    @Html.HiddenFor(m => m.Latitude)
     <div class="col-md-3">
         <div class="row">
             <div class="col-md-12">
@@ -161,7 +163,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Your Phone (optional)" />
                             </div>
-
+                            
                             <div class="form-group">
                                 <label>Message</label>
                                 <textarea class="form-control" cols="20" rows="7">Hi, I found your listing on BahayList and would like to find out more about this property. Please let me know when you are available for a viewing. Thank you.</textarea>
@@ -194,25 +196,30 @@
     <script src="~/Plugins/fotorama-4.5.1/fotorama.js"> </script>
     <script>
         $(document).ready(function () {
+            //Fotorama api, this is not necessary to initialize fotorama
+            var $fotoramaDiv = $('#fotorama').fotorama();
+            var fotorama = $fotoramaDiv.data('fotorama');
+            
+
             /*  Load only google map object when the bootstrap tab is clicked.
                 This also fixes for google map showing half in bootstrap tab if
                 the initialization of google map has been done on window load.
             */
 
+
             $('a[href="#map-pane"]').click(function (e) {
                 if ($.trim($("#map-canvas").text()) == "") {
                     //load only once!
                     initializeGoogleMap();
-                    setTimeout(fixGoogleMapCanvas, 300);
                 }
-
+                setTimeout(fixGoogleMapCanvas, 300);                
             });
 
-            //$('#mediaTab a').click(function (e) {
-            //    e.preventDefault()
-            //    $(this).tab('show')
-            //    alert("ahoy");
-            //})
+            $('a[href="#picture-pane"]').click(function (e) {
+                //TODO fix resizing errors same with 
+                //fotorama.resize({});
+                //$('#fotorama').fotorama()
+            });
 
 
 
@@ -227,7 +234,9 @@
         /*Initialize Google Map object*/
         var map;
         function initializeGoogleMap() {
-            var propertyLatLong = new google.maps.LatLng(14.5069619, 121.0536315);
+            var lat = $('#Latitude').val();
+            var long = $('#Longitude').val();
+            var propertyLatLong = new google.maps.LatLng(lat, long);
             var mapOptions = {
                 zoom: 14,
                 center: propertyLatLong,

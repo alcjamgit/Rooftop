@@ -1063,6 +1063,8 @@
     <None Include="Properties\PublishProfiles\Bahay List Local IIS 2.pubxml" />
     <None Include="Properties\PublishProfiles\BahayList Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\bahaylist.com Local IIS.pubxml" />
+    <None Include="Properties\PublishProfiles\rooftop - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\rooftop - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\customScripts\searchHelpers.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
