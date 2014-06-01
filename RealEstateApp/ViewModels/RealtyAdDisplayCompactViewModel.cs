@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateApp.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,10 +33,11 @@ namespace RealEstateApp.ViewModels
     public float? FloorAreaSqM { get; set; }
     public string ImageUrl
     {
-      get { return String.Format("~/{0}/{1}", RealEstateApp.Helpers.Config.Directories.Images, this.FileName); }
+      get { return String.Format("~/{0}/{1}/{2}", RealEstateApp.Helpers.Config.Directories.Images, this.UserId ,this.FileName); }
     }
     public string FileName { get; set; }
     public short? PhotoCount { get; set; }
+    public string UserId { get; set; }
 
   }
 }

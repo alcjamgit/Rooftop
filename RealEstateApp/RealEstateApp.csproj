@@ -171,6 +171,10 @@
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserMenuController.cs" />
     <Compile Include="Controllers\UserViewModelsController.cs" />
+    <Compile Include="DataAccessLayer\GenericRepository.cs" />
+    <Compile Include="DataAccessLayer\IGenericRepository.cs" />
+    <Compile Include="DataAccessLayer\IUnitOfWork.cs" />
+    <Compile Include="DataAccessLayer\UnitOfWork.cs" />
     <Compile Include="ExtensionMethods\HtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,17 +201,22 @@
     <Compile Include="Migrations\201405010421380_ChangeBedCountToNullable.Designer.cs">
       <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406010507336_UpdateIdentityTable.cs" />
+    <Compile Include="Migrations\201406010507336_UpdateIdentityTable.Designer.cs">
+      <DependentUpon>201406010507336_UpdateIdentityTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
     <Compile Include="Models\RealtyAdImageDefault.cs" />
-    <Compile Include="Models\RealtyAdPageViews.cs" />
+    <Compile Include="Models\RealtyAdPageView.cs" />
     <Compile Include="Models\RealtyAd.cs" />
-    <Compile Include="Models\RealtyAdMessages.cs" />
+    <Compile Include="Models\RealtyAdMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AgentProfile.cs" />
     <Compile Include="ViewModels\RealtyAdCreateViewModel.cs" />
     <Compile Include="ViewModels\RealtyAdDisplayFullViewModel.cs" />
     <Compile Include="ViewModels\RealtyAdDisplayCompactViewModel.cs" />
@@ -1131,6 +1140,7 @@
     <Content Include="Views\RealtyAd\Properties.cshtml" />
     <Content Include="Views\Shared\_DisplaySearchResultsPartial.cshtml" />
     <Content Include="Views\RealtyAd\GetProperty.cshtml" />
+    <Content Include="Views\RealtyAd\GetAgentProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Search\" />
@@ -1157,6 +1167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201405010421380_ChangeBedCountToNullable.resx">
       <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406010507336_UpdateIdentityTable.resx">
+      <DependentUpon>201406010507336_UpdateIdentityTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

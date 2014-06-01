@@ -23,7 +23,7 @@
                             <div class="tab-pane active" id="picture-pane">
 
                                 <div class="fotorama" id="fotorama" data-nav="thumbs" data-width="100%" data-ratio="400/300" data-allowfullscreen="true" data-loop="true" data-auto="false">
-                                    @Html.RenderAdImages("67a98a64-c096-419e-8656-8829f566d3d0", Model.RealtyAdImages)
+                                    @Html.RenderAdImages(Model.UserId, Model.RealtyAdImages)
                                     @*<img src="~/Content/images/img4eb38507c91fe0.24497459.jpg" />
                                         <img src="/Content/images/9a01b78a-e17c-472c-aadf-d081179b08aa.jpg" />
                                         <img src="http://placehold.it/400x300" />
@@ -114,7 +114,7 @@
     <div class="col-md-3">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default glow-hover">
+                @*<div class="panel panel-default glow-hover">
                     <div class="panel-heading">Agent Info</div>
                     <div class="panel-body">
                         <div class="media">
@@ -145,7 +145,8 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div>*@
+                @Html.Action("GetAgentProfile", new { userId = Model.UserId})
             </div>
         </div>
         <div class="row">

@@ -60,3 +60,4 @@ C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.ChangeBedCountToNullable.resources
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\bin\LinqKit.dll
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csprojResolveAssemblyReference.cache
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.UpdateIdentityTable.resources

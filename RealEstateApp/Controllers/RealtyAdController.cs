@@ -55,7 +55,8 @@ namespace RealEstateApp.Controllers
                                                  FloorAreaSqM = r.FloorAreaSqM,
                                                  RealtyAdImages = r.RealtyAdImages,
                                                  Longitude = r.Longitude,
-                                                 Latitude = r.Latitude
+                                                 Latitude = r.Latitude,
+                                                 UserId = r.ApplicationUser_Id
                                                }).FirstOrDefault();
 
       var realtyAdImages = (from img in db.RealtyAdImages
@@ -71,7 +72,23 @@ namespace RealEstateApp.Controllers
       return View(realtyAd);
     }
 
+    [ChildActionOnly]
+    public ActionResult GetAgentProfile(string userId)
+    {
+      var user = (from u in db.IdentityUsers
+                 where u.Id == userId
+                 select new AgentProfile {
+                  Id = u.Id,
+                  FirstName = u.FirstName,
+                  LastName = u.LastName,
+                  UserName = u.UserName,
+                  Email = u.Email,
+                  ProfilePhotoFileName = u.ProfilePhotoFileName,
+                  DateJoined = u.DateJoined
+                 }).FirstOrDefault();
 
+      return PartialView(user);
+    }
 
     public ActionResult Search()
     {
@@ -134,7 +151,8 @@ namespace RealEstateApp.Controllers
                                                                 FileName = subjoin.FileName ?? "thumbnailPlaceholder400x300.gif",
                                                                 BedCount = r.BedCount,
                                                                 BathCount = r.BathCount,
-                                                                FloorAreaSqM = r.FloorAreaSqM
+                                                                FloorAreaSqM = r.FloorAreaSqM,
+                                                                UserId = r.ApplicationUser_Id
                                                               };
 
       IList<String> locationKeywords;
