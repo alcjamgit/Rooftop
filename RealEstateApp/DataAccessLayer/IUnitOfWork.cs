@@ -8,11 +8,13 @@ namespace RealEstateApp.DataAccessLayer
 {
   public interface IUnitOfWork:IDisposable
   {
-    IGenericRepository<RealtyAd> RealtyAd { get; }
-    IGenericRepository<RealtyAdImage> RealtyAdImage { get; }
-    IGenericRepository<RealtyAdImageDefault> RealtyAdImageDefault { get; }
-    IGenericRepository<RealtyAdMessage> RealtyAdMessage { get; }
-    IGenericRepository<RealtyAdPageView> RealtyAdPageView { get; }
+    IGenericRepository<RealtyAd> RealtyAdRepo { get; }
+    IGenericRepository<RealtyAdImage> RealtyAdImageRepo { get; }
+    IGenericRepository<RealtyAdImageDefault> RealtyAdImageDefaultRepo { get; }
+    IGenericRepository<RealtyAdMessage> RealtyAdMessageRepo { get; }
+    IGenericRepository<RealtyAdPageView> RealtyAdPageViewRepo { get; }
+    IGenericRepository<ApplicationUser> ApplicationUserRepo { get; }
+    IGenericRepository<City> CityRepo { get; }
     void Commit();
   }
 }

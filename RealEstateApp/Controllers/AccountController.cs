@@ -52,7 +52,7 @@ namespace RealEstateApp.Controllers
             if (model.IsUserNameEmail)
             {
               db = new ApplicationDbContext();
-              var derivedUserName = db.IdentityUsers.Where(u => u.Email == model.UserName).Select(u => u.UserName).FirstOrDefault();
+              var derivedUserName = db.ApplicationUsers.Where(u => u.Email == model.UserName).Select(u => u.UserName).FirstOrDefault();
               model.UserName = derivedUserName ?? model.UserName;
               db.Dispose();
             }

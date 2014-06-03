@@ -1,22 +1,19 @@
-﻿using System;
+﻿using RealEstateApp.DataAccessLayer;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace RealEstateApp.DataAccessLayer
+namespace RealEstateApp.UnitTest.DependencyInjections
 {
-  public class GenericRepository<TEntity>: 
-    IGenericRepository<TEntity> where TEntity: class
+  class MockGenericRepo<TEntity> : IGenericRepository<TEntity>
+    where TEntity: class
   {
-    private readonly DbSet<TEntity> _dbSet;
-    public GenericRepository(DbSet<TEntity> dbSet)
-    {
-      _dbSet = dbSet;
-    }
+    private readonly List<TEntity> _dbSet;
 
-    #region IGenericRepository Implementation
+    #region IGenericRepo Implementation
     public virtual IQueryable<TEntity> AsQueryable()
     {
       return _dbSet.AsQueryable();
@@ -29,13 +26,15 @@ namespace RealEstateApp.DataAccessLayer
 
     public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
     {
-      return _dbSet.Where(predicate);
+      List<TEntity> entity = new List<TEntity>() {};
+      return entity;
 
     }
 
     public TEntity Single(Expression<Func<TEntity, bool>> predicate)
     {
-      return _dbSet.Single(predicate);
+      TEntity entity = new TEntity();
+      return entity;
     }
 
     public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
