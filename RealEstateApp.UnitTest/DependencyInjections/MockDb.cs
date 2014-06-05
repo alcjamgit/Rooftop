@@ -8,74 +8,73 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.UnitTest.DependencyInjections
 {
-  class MockDb: IUnitOfWork
+  public class MockDb:IUnitOfWork
   {
-    private readonly MockGenericRepo<RealtyAd> _realtyAdRepo;
-    private readonly MockGenericRepo<RealtyAdImage> _realtyAdImageRepo;
-    private readonly MockGenericRepo<RealtyAdImageDefault> _realtyAdImageDefaultRepo;
-    private readonly MockGenericRepo<RealtyAdMessage> _realtyAdMessageRepo;
-    private readonly MockGenericRepo<RealtyAdPageView> _realtyAdPageViewRepo;
-    private readonly MockGenericRepo<ApplicationUser> _applicationUserRepo;
-    private readonly MockGenericRepo<City> _cityRepo;
 
-    public List<RealtyAd> RealtyAds { get; set; }
-    public List<RealtyAdImage> RealtyAdImages { get; set; }
-    public List<RealtyAdImageDefault> RealtyAdImageDefaults { get; set; }
-    public List<RealtyAdMessage> RealtyAdMessages { get; set; }
-    public List<RealtyAdPageView> RealtyAdPageViews { get; set; }
-    public List<ApplicationUser> ApplicationUsers { get; set; }
-    public List<City> Cities { get; set; }
+    //public IEnumerable<RealtyAd> RealtyAds { get; set; }
+    //public IEnumerable<RealtyAdImage> RealtyAdImages { get; set; }
+    //public IEnumerable<RealtyAdImageDefault> RealtyAdImageDefaults { get; set; }
+    //public IEnumerable<RealtyAdMessage> RealtyAdMessages { get; set; }
+    //public IEnumerable<RealtyAdPageView> RealtyAdPageViews { get; set; }
+    //public IEnumerable<ApplicationUser> ApplicationUsers { get; set; }
+    //public IEnumerable<City> Cities { get; set; }
     public MockDb()
     {
-      _realtyAdRepo = new MockGenericRepo<RealtyAd>(RealtyAds);
-      _realtyAdImageRepo = new MockGenericRepo<RealtyAdImage>(RealtyAdImages);
-      _realtyAdImageDefaultRepo = new MockGenericRepo<RealtyAdImageDefault>(RealtyAdImageDefaults);
-      _realtyAdMessageRepo = new MockGenericRepo<RealtyAdMessage>(RealtyAdMessages);
-      _realtyAdPageViewRepo = new MockGenericRepo<RealtyAdPageView>(RealtyAdPageViews);
-      _applicationUserRepo = new MockGenericRepo<ApplicationUser>(ApplicationUsers);
-      _cityRepo = new MockGenericRepo<City>(Cities);
+      //_realtyAdRepo = new MockGenericRepo<RealtyAd>(){ {Id =1,}};
+      //_realtyAdImageRepo = new MockGenericRepo<RealtyAdImage>(RealtyAdImages);
+      //_realtyAdImageDefaultRepo = new MockGenericRepo<RealtyAdImageDefault>(RealtyAdImageDefaults);
+      //_realtyAdMessageRepo = new MockGenericRepo<RealtyAdMessage>(RealtyAdMessages);
+      //_realtyAdPageViewRepo = new MockGenericRepo<RealtyAdPageView>(RealtyAdPageViews);
+      //_applicationUserRepo = new MockGenericRepo<ApplicationUser>(ApplicationUsers);
+      //_cityRepo = new MockGenericRepo<City>(Cities);
     }
 
     #region IUnitOfWork Implementation
     public IGenericRepository<RealtyAd> RealtyAdRepo
     {
-      get { return _realtyAdRepo; }
+      get { return new MockGenericRepo<RealtyAd>(); }
     }
 
     public IGenericRepository<RealtyAdImage> RealtyAdImageRepo
     {
-      get { return _realtyAdImageRepo; }
+      get { return new MockGenericRepo<RealtyAdImage>(); }
     }
 
     public IGenericRepository<RealtyAdImageDefault> RealtyAdImageDefaultRepo
     {
-      get { return _realtyAdImageDefaultRepo; }
+      get { return new MockGenericRepo<RealtyAdImageDefault>(); }
     }
 
     public IGenericRepository<RealtyAdMessage> RealtyAdMessageRepo
     {
-      get { return _realtyAdMessageRepo; }
+      get { return new MockGenericRepo<RealtyAdMessage>(); }
     }
 
     public IGenericRepository<RealtyAdPageView> RealtyAdPageViewRepo
     {
-      get { return _realtyAdPageViewRepo; }
+      get { return new MockGenericRepo<RealtyAdPageView>(); }
     }
 
     public IGenericRepository<ApplicationUser> ApplicationUserRepo
     {
-      get { return _applicationUserRepo; }
+      get { return new MockGenericRepo<ApplicationUser>(); }
     }
     public IGenericRepository<City> CityRepo
     {
-      get { return _cityRepo; }
+      get { return new MockGenericRepo<City>(); }
     }
 
     public void Commit()
     {
-      
+      //TODO
+    }
+    public void Dispose()
+    {
+      //TODO
     }
 
     #endregion
+
+
   }
 }

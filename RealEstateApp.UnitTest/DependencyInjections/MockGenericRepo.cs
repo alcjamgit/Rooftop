@@ -8,64 +8,63 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.UnitTest.DependencyInjections
 {
-  class MockGenericRepo<TEntity> : IGenericRepository<TEntity>
+  public class MockGenericRepo<TEntity> : IGenericRepository<TEntity>
     where TEntity: class
   {
-    private readonly List<TEntity> _dbSet;
+    private List<TEntity> _data = new List<TEntity>();
 
     #region IGenericRepo Implementation
     public virtual IQueryable<TEntity> AsQueryable()
     {
-      return _dbSet.AsQueryable();
+      return _data.AsQueryable();
     }
 
     public IEnumerable<TEntity> GetAll()
     {
-      return _dbSet;
+      return _data;
     }
 
     public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
     {
-      List<TEntity> entity = new List<TEntity>() {};
-      return entity;
+      //TODO:add the predicate
+      return _data;
 
     }
 
     public TEntity Single(Expression<Func<TEntity, bool>> predicate)
     {
-      TEntity entity = new TEntity();
-      return entity;
+      return _data.AsQueryable().Single(predicate);
     }
 
     public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
     {
-      return _dbSet.SingleOrDefault(predicate);
+      return _data.AsQueryable().SingleOrDefault(predicate);
     }
 
     public TEntity First(Expression<Func<TEntity, bool>> predicate)
     {
-      return _dbSet.First(predicate);
+      return _data.AsQueryable().FirstOrDefault(predicate);
     }
 
     public TEntity GetById(int id)
     {
-      return _dbSet.Find(id);
+      return _data.AsQueryable().FirstOrDefault();
     }
 
     public void Add(TEntity entity)
     {
-      _dbSet.Add(entity);
+      _data.Add(entity);
     }
 
     public void Delete(TEntity entity)
     {
-      _dbSet.Remove(entity);
+      _data.Remove(entity);
     }
 
     //Update
     public void Attach(TEntity entity)
     {
-      _dbSet.Attach(entity);
+      //TODO
     } 
     #endregion
   }
