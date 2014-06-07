@@ -175,8 +175,6 @@
     <Compile Include="DataAccessLayer\IGenericRepository.cs" />
     <Compile Include="DataAccessLayer\IUnitOfWork.cs" />
     <Compile Include="DataAccessLayer\UnitOfWork.cs" />
-    <Compile Include="DependencyInjections\MockDb.cs" />
-    <Compile Include="DependencyInjections\MockGenericRepo.cs" />
     <Compile Include="ExtensionMethods\HtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

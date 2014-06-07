@@ -41,3 +41,9 @@ C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\obj\Debug\RealEstateAppTests.csprojResolveAssemblyReference.cache
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\obj\Debug\RealEstateAppTests.dll
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\obj\Debug\RealEstateAppTests.pdb
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\RealEstateAppTests.dll.config
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\System.Web.Helpers.dll
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\System.Web.Helpers.xml

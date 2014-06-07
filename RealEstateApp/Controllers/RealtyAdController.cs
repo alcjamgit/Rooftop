@@ -40,7 +40,6 @@ namespace RealEstateApp.Controllers
     // GET: /RealtyAd/Details/5
     public ActionResult Details(int? id)
     {
-
       var realtyad = db.RealtyAdRepo.Find(r => r.Id == id);
 
       if (realtyad == null)
