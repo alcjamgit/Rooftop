@@ -47,3 +47,5 @@ C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\System.Web.Helpers.dll
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\System.Web.Helpers.xml
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\Moq.dll
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateAppTests\bin\Debug\Moq.xml

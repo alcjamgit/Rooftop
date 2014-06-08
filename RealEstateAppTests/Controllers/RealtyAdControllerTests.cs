@@ -8,6 +8,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RealEstateApp.UnitTest.DependencyInjections;
 using RealEstateApp.Models;
 using System.Web.Mvc;
+using RealEstateApp.ViewModels;
+using Moq;
+using RealEstateApp.DataAccessLayer;
+using System.Web;
+
+//using System.Web.HttpContextBase;
+
 namespace RealEstateApp.Controllers.Tests
 {
   [TestClass()]
@@ -21,7 +28,7 @@ namespace RealEstateApp.Controllers.Tests
 
       //Act
       ViewResult result = (ViewResult)controller.Details(3);
-
+      var x = result.ViewName;
       //Assert
       Assert.IsNotNull(controller);
     }
@@ -32,7 +39,7 @@ namespace RealEstateApp.Controllers.Tests
       //Arrange
       var db = new MockDb();
       RealtyAdController controller = new RealtyAdController(db);
-
+      
       #region add repo
       //var realtyAd = new RealtyAd
       //  {
@@ -85,6 +92,50 @@ namespace RealEstateApp.Controllers.Tests
       //Assert
       Assert.AreEqual("NotFound", result.ViewName);
     }
+
+    [TestMethod()]
+    public void CreateTest()
+    {
+      RealtyAdCreateViewModel vm = new RealtyAdCreateViewModel() 
+      { 
+        Id=1,
+        ShortDescn = "Test Item",
+        Type = 2,
+        Category = RealtyAdCategory.Rentals,
+        Price = 45555,
+        City = 13,
+        Address = "123 Makati"
+      };
+
+      //Mock getUserId
+      
+      //var context = new Mock<HttpContextBase>();
+      var db = new Mock<MockDb>();
+      var realtyRepo = new Mock<MockGenericRepo<RealtyAd>>();
+      db.Setup(r => r.RealtyAdRepo).Returns(realtyRepo.Object);
+      //HttpContextBase httpContext;
+      RealtyAdController controller = new RealtyAdController(db.Object);
+      controller.Create(vm);
+      //System.Web.HttpContextBase context;
+      
+      Assert.AreEqual(controller.ModelState.IsValid,true);
+
+    }
+
+    [TestMethod()]
+    public void IndexTest()
+    {
+      var expected = "Index";
+      var fakeUnitOfWork = new Mock<IUnitOfWork>(MockBehavior.Strict);
+      var controller = new RealtyAdController(fakeUnitOfWork.Object);
+
+      var result = controller.Index() as ViewResult;
+      
+      //Assert.IsNotNull(result);
+      Assert.AreEqual(result.ViewName, expected);
+    }
+
+
 
   }
 }

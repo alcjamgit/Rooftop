@@ -13,6 +13,7 @@ using RealEstateApp.Helpers;
 using RealEstateApp.ViewModels;
 using LinqKit;
 using RealEstateApp.DataAccessLayer;
+
 namespace RealEstateApp.Controllers
 {
   public class RealtyAdController : Controller
@@ -32,6 +33,7 @@ namespace RealEstateApp.Controllers
     // GET: /RealtyAd/
     public ActionResult Index()
     {
+      
       var realtyads = db.RealtyAdRepo.AsQueryable();
       
       return View(realtyads.ToList());
@@ -255,6 +257,7 @@ namespace RealEstateApp.Controllers
     public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
     {
       string userId = User.Identity.GetUserId();
+      //string userId = "123";
       if (ModelState.IsValid)
       {        
         RealtyAd realtyAd = new RealtyAd()
@@ -281,8 +284,9 @@ namespace RealEstateApp.Controllers
         db.RealtyAdRepo.Add(realtyAd);
         db.Commit();
 
-        //create user image directory for user
+        ////create user image directory for user
         string userAbsoluteDirectory = Path.Combine(Server.MapPath(string.Format("~/Content/images/{0}", userId)));
+
         if (!Directory.Exists(userAbsoluteDirectory))
         {
           Directory.CreateDirectory(userAbsoluteDirectory);
@@ -290,7 +294,7 @@ namespace RealEstateApp.Controllers
 
         //save Realty Ad Images to the server and add to database
         if (realtyAdViewModel.PostedImages != null)
-        {          
+        {
           foreach (var img in realtyAdViewModel.PostedImages)
           {
             if (img != null)

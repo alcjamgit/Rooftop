@@ -30,7 +30,7 @@ namespace RealEstateApp.UnitTest.DependencyInjections
     }
 
     #region IUnitOfWork Implementation
-    public IGenericRepository<RealtyAd> RealtyAdRepo
+    public virtual IGenericRepository<RealtyAd> RealtyAdRepo
     {
       get { return new MockGenericRepo<RealtyAd>(); }
     }
