@@ -32,16 +32,17 @@ namespace RealEstateApp.Models
   }
 
   //Originally public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  //public class ApplicationDbContext : IdentityDbContext
+  //add this inside public DbSet<ApplicationUser> ApplicationUsers { get; set; }
   //http://stackoverflow.com/questions/19628144/how-can-one-put-application-users-in-the-same-context-as-the-rest-of-the-objects
-  public class ApplicationDbContext : IdentityDbContext
+  public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
   {
     public ApplicationDbContext()
       : base("DefaultConnection")
     {
 
     }
-
-    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+ 
     public DbSet<RealtyAd> RealtyAds { get; set; }
     public DbSet<City> Cities { get; set; }
     public DbSet<RealtyAdMessage> RealtyAdMessages { get; set; }

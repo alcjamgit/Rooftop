@@ -18,7 +18,7 @@ namespace RealEstateApp.Controllers
         // GET: /UserViewModels/
         public ActionResult Index()
         {
-            return View(db.ApplicationUsers.ToList());
+            return View(db.Users.ToList());
         }
 
         // GET: /UserViewModels/Details/5
@@ -28,7 +28,7 @@ namespace RealEstateApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationuser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationuser = db.Users.Find(id);
             if (applicationuser == null)
             {
                 return HttpNotFound();
@@ -66,7 +66,7 @@ namespace RealEstateApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationuser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationuser = db.Users.Find(id);
             var updateUserProfile = new UserProfileUpdateViewModel
             {
 
@@ -105,7 +105,7 @@ namespace RealEstateApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationuser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationuser = db.Users.Find(id);
             if (applicationuser == null)
             {
                 return HttpNotFound();
@@ -118,7 +118,7 @@ namespace RealEstateApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ApplicationUser applicationuser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationuser = db.Users.Find(id);
             db.Users.Remove(applicationuser);
             db.SaveChanges();
             return RedirectToAction("Index");

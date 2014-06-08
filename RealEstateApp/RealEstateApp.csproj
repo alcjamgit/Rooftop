@@ -181,29 +181,9 @@
     </Compile>
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="Helpers\HtmlHelper.cs" />
-    <Compile Include="Migrations\201403250433401_Initial.cs" />
-    <Compile Include="Migrations\201403250433401_Initial.Designer.cs">
-      <DependentUpon>201403250433401_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404142052136_ChangeUrlImageFields.cs" />
-    <Compile Include="Migrations\201404142052136_ChangeUrlImageFields.Designer.cs">
-      <DependentUpon>201404142052136_ChangeUrlImageFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.cs" />
-    <Compile Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.Designer.cs">
-      <DependentUpon>201404142058516_AddTableRealtyAdImageDefaults.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404150050394_AddFileNameToDefaultImg.cs" />
-    <Compile Include="Migrations\201404150050394_AddFileNameToDefaultImg.Designer.cs">
-      <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405010421380_ChangeBedCountToNullable.cs" />
-    <Compile Include="Migrations\201405010421380_ChangeBedCountToNullable.Designer.cs">
-      <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201406010507336_UpdateIdentityTable.cs" />
-    <Compile Include="Migrations\201406010507336_UpdateIdentityTable.Designer.cs">
-      <DependentUpon>201406010507336_UpdateIdentityTable.cs</DependentUpon>
+    <Compile Include="Migrations\201406080541418_InitialCreate.cs" />
+    <Compile Include="Migrations\201406080541418_InitialCreate.Designer.cs">
+      <DependentUpon>201406080541418_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1153,23 +1133,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403250433401_Initial.resx">
-      <DependentUpon>201403250433401_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404142052136_ChangeUrlImageFields.resx">
-      <DependentUpon>201404142052136_ChangeUrlImageFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404142058516_AddTableRealtyAdImageDefaults.resx">
-      <DependentUpon>201404142058516_AddTableRealtyAdImageDefaults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404150050394_AddFileNameToDefaultImg.resx">
-      <DependentUpon>201404150050394_AddFileNameToDefaultImg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405010421380_ChangeBedCountToNullable.resx">
-      <DependentUpon>201405010421380_ChangeBedCountToNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201406010507336_UpdateIdentityTable.resx">
-      <DependentUpon>201406010507336_UpdateIdentityTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201406080541418_InitialCreate.resx">
+      <DependentUpon>201406080541418_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

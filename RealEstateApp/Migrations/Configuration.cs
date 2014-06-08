@@ -10,7 +10,7 @@ namespace RealEstateApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            //TODO:Revert this to false
+          //TODO: set this to false, this is for forcing database updates during server deployment
             AutomaticMigrationDataLossAllowed = true;
         }
 
@@ -19,7 +19,7 @@ namespace RealEstateApp.Migrations
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.Data Source=tcp:hc2idtv885.database.windows.net,1433;Initial Catalog=aspnet-RealtyDb;User ID=azuresqldb@hc2idtv885;Password=Semaj3891Mic
+            //  to avoid creating duplicate seed data. E.g.
             //
             //    context.People.AddOrUpdate(
             //      p => p.FullName,
