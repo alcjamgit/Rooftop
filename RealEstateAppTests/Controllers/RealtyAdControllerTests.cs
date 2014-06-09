@@ -125,13 +125,15 @@ namespace RealEstateApp.Controllers.Tests
     [TestMethod()]
     public void IndexTest()
     {
+      //Arrange
       var expected = "Index";
-      var fakeUnitOfWork = new Mock<IUnitOfWork>(MockBehavior.Strict);
+      var fakeUnitOfWork = new Mock<MockDb>() { CallBase = true};
       var controller = new RealtyAdController(fakeUnitOfWork.Object);
 
+      //Act
       var result = controller.Index() as ViewResult;
       
-      //Assert.IsNotNull(result);
+      //Assert
       Assert.AreEqual(result.ViewName, expected);
     }
 

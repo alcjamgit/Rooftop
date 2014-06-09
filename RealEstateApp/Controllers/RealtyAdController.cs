@@ -257,6 +257,10 @@ namespace RealEstateApp.Controllers
     public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
     {
       string userId = User.Identity.GetUserId();
+      //use User.Identity.Name for easier unit testing 
+      //Mocking User.Identity.GetUserId() would be difficult since Moq cannot do extension methods
+
+      //string userId = User.Identity.Name;
       //string userId = "123";
       if (ModelState.IsValid)
       {        

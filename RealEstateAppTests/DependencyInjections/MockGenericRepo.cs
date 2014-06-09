@@ -11,7 +11,16 @@ namespace RealEstateApp.UnitTest.DependencyInjections
   public class MockGenericRepo<TEntity> : IGenericRepository<TEntity>
     where TEntity: class
   {
-    private List<TEntity> _data = new List<TEntity>();
+    private List<TEntity> _data;
+
+    public MockGenericRepo()
+    {
+      _data = new List<TEntity>();
+    }
+    public MockGenericRepo(List<TEntity> list)
+    {
+      _data = list;
+    }
 
     #region IGenericRepo Implementation
     public virtual IQueryable<TEntity> AsQueryable()

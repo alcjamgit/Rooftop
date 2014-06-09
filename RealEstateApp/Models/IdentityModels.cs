@@ -50,5 +50,11 @@ namespace RealEstateApp.Models
     public DbSet<RealtyAdImage> RealtyAdImages { get; set; }
     public DbSet<RealtyAdImageDefault> RealtyAdImageDefaults { get; set; }
 
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<RealtyAd>().Property(r => r.ApplicationUser_Id).IsRequired();
+      base.OnModelCreating(modelBuilder);
+    } 
+
   }
 }

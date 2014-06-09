@@ -10,7 +10,7 @@ namespace RealEstateApp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-          //TODO: set this to false, this is for forcing database updates during server deployment
+          //TODO: need to set this to false later
             AutomaticMigrationDataLossAllowed = true;
         }
 
