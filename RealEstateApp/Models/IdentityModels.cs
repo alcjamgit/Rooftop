@@ -10,7 +10,7 @@ namespace RealEstateApp.Models
   //public class ApplicationUser : IdentityUser
   public class ApplicationUser : IdentityUser
   {
-
+    
     [Required, StringLength(50)]
     [DataType(DataType.EmailAddress)]
     public string Email { get; set; }

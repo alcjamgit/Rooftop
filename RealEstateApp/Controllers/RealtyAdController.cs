@@ -33,7 +33,7 @@ namespace RealEstateApp.Controllers
     // GET: /RealtyAd/
     public ActionResult Index()
     {
-      
+      ViewBag.TestValue = "123456";
       var realtyads = db.RealtyAdRepo.AsQueryable();
       
       return View(realtyads.ToList());
@@ -89,6 +89,7 @@ namespace RealEstateApp.Controllers
     [ChildActionOnly]
     public ActionResult GetAgentProfile(string userId)
     {
+      
       var user = (from u in db.ApplicationUserRepo.AsQueryable()
                  where u.Id == userId
                  select new AgentProfile {

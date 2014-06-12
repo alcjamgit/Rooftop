@@ -1,4 +1,5 @@
-﻿using RealEstateApp.Models;
+﻿using Microsoft.AspNet.Identity;
+using RealEstateApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

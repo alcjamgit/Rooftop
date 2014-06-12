@@ -15,7 +15,7 @@ namespace RealEstateApp.DataAccessLayer
     {
       _dbSet = dbSet;
     }
-
+	
     #region IGenericRepository Implementation
     public virtual IQueryable<TEntity> AsQueryable()
     {

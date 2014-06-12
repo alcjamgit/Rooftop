@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using RealEstateApp.DataAccessLayer;
 using RealEstateApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RealEstateApp.UnitTest.DependencyInjections
 {
-  public class MockDb : IdentityDbContext<ApplicationUser>, IUnitOfWork
+  public class MockDb : IdentityDbContext, IUnitOfWork
   {
 
     #region IUnitOfWork Implementation
@@ -42,13 +44,14 @@ namespace RealEstateApp.UnitTest.DependencyInjections
 
     public virtual IGenericRepository<ApplicationUser> ApplicationUserRepo
     {
-      
-      get 
+
+      get
       {
+        //UserStore<ApplicationUser> test = new UserStore<ApplicationUser>();
         List<ApplicationUser> appUser = new List<ApplicationUser>();
-        appUser.Add(new ApplicationUser() { Id = "user1",UserName = "JohnDoe",Email = "JohnDoe@gmail.com",PasswordHash ="TopSecret1" } );
-        appUser.Add(new ApplicationUser() { Id = "user2", UserName = "JaneDoe", Email = "JaneDoe@gmail.com", PasswordHash = "TopSecret1" });
-        return new MockGenericRepo<ApplicationUser>(appUser); 
+        //appUser.Add(new ApplicationUser() { Id = "user1", UserName = "JohnDoe", Email = "JohnDoe@gmail.com", PasswordHash = "TopSecret1" });
+        //appUser.Add(new ApplicationUser() { Id = "user2", UserName = "JaneDoe", Email = "JaneDoe@gmail.com", PasswordHash = "TopSecret1" });
+        return new MockGenericRepo<ApplicationUser>(appUser);
       }
     }
     public virtual IGenericRepository<City> CityRepo
@@ -60,10 +63,7 @@ namespace RealEstateApp.UnitTest.DependencyInjections
     {
       //TODO
     }
-    public void Dispose()
-    {
-      //TODO
-    }
+
 
     #endregion
 

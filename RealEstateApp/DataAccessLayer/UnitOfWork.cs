@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using RealEstateApp.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace RealEstateApp.DataAccessLayer
 {
   public class UnitOfWork : IdentityDbContext, IUnitOfWork
   {
+
     private readonly GenericRepository<RealtyAd> _realtyAdRepo;
     private readonly GenericRepository<RealtyAdImage> _realtyAdImageRepo;
     private readonly GenericRepository<RealtyAdImageDefault> _realtyAdImageDefaultRepo;
@@ -77,5 +79,8 @@ namespace RealEstateApp.DataAccessLayer
     }
 
     #endregion
+
+
+
   }
 }
