@@ -33,10 +33,9 @@ namespace RealEstateApp.Controllers
     // GET: /RealtyAd/
     public ActionResult Index()
     {
-      ViewBag.TestValue = "123456";
       var realtyads = db.RealtyAdRepo.AsQueryable();
       
-      return View(realtyads.ToList());
+      return View("Index",realtyads.ToList());
     }
 
     // GET: /RealtyAd/Details/5

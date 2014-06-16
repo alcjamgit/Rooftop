@@ -53,7 +53,6 @@ c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateA
 c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.dll
 c:\users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.pdb
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\bin\LinqKit.dll
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csprojResolveAssemblyReference.cache
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.InitialCreate.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.CreateDb.resources
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csproj.GenerateResource.Cache
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.Migrations.Rev01.resources
+C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Debug\RealEstateApp.csprojResolveAssemblyReference.cache

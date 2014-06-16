@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateApp.UnitTest.DependencyInjections
+namespace RealEstateApp.DependencyInjections
 {
   public class MockDb : IdentityDbContext, IUnitOfWork
   {
@@ -49,8 +49,8 @@ namespace RealEstateApp.UnitTest.DependencyInjections
       {
         //UserStore<ApplicationUser> test = new UserStore<ApplicationUser>();
         List<ApplicationUser> appUser = new List<ApplicationUser>();
-        //appUser.Add(new ApplicationUser() { Id = "user1", UserName = "JohnDoe", Email = "JohnDoe@gmail.com", PasswordHash = "TopSecret1" });
-        //appUser.Add(new ApplicationUser() { Id = "user2", UserName = "JaneDoe", Email = "JaneDoe@gmail.com", PasswordHash = "TopSecret1" });
+        appUser.Add(new ApplicationUser() { Id = "user1", UserName = "JohnDoe", Email = "JohnDoe@gmail.com", PasswordHash = "TopSecret1" });
+        appUser.Add(new ApplicationUser() { Id = "user2", UserName = "JaneDoe", Email = "JaneDoe@gmail.com", PasswordHash = "TopSecret1" });
         return new MockGenericRepo<ApplicationUser>(appUser);
       }
     }

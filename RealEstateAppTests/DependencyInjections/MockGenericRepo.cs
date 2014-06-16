@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RealEstateApp.UnitTest.DependencyInjections
+namespace RealEstateApp.DependencyInjections
 {
   public class MockGenericRepo<TEntity> : IGenericRepository<TEntity>
     where TEntity: class
