@@ -181,14 +181,9 @@
     </Compile>
     <Compile Include="Helpers\Config.cs" />
     <Compile Include="Helpers\HtmlHelper.cs" />
-    <Compile Include="Migrations\201406160401106_CreateDb.cs" />
-    <Compile Include="Migrations\201406160401106_CreateDb.Designer.cs">
-      <DependentUpon>201406160401106_CreateDb.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\City.cs" />
-    <Compile Include="Models\IApplicationUser.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\RealtyAdImage.cs" />
     <Compile Include="Models\RealtyAdImageDefault.cs" />
@@ -1132,11 +1127,6 @@
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201406160401106_CreateDb.resx">
-      <DependentUpon>201406160401106_CreateDb.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
