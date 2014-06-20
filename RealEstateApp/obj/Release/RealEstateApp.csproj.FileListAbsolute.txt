@@ -51,13 +51,6 @@ C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateA
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.csprojResolveAssemblyReference.cache
-C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.Initial.resources
-C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.csproj.GenerateResource.Cache
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.dll
 C:\Users\alcaraz\documents\visual studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.pdb
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.ChangeUrlImageFields.resources
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddTableRealtyAdImageDefaults.resources
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.AddFileNameToDefaultImg.resources
 C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\bin\LinqKit.dll
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.ChangeBedCountToNullable.resources
-C:\Users\alcaraz\Documents\Visual Studio 2013\Projects\RealEstateApp\RealEstateApp\obj\Release\RealEstateApp.Migrations.UpdateIdentityTable.resources

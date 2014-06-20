@@ -25,11 +25,11 @@ namespace RealEstateApp.ViewModels
     [StringLength(255)]
     public string Address { get; set; }
 
-    [Display(Name = "Bedroom Count")]
+    [Display(Name = "Bedrooms")]
     public short? BedCount { get; set; }
-    [Display(Name = "Bathroom Count")]
+    [Display(Name = "Bathrooms")]
     public short? BathCount { get; set; }
-    [Display(Name = "Floor Area (sqm)")]
+    [Display(Name = "Floor Area")]
     public float? FloorAreaSqM { get; set; }
     [Display(Name = "Lot Area (in sqm)")]
     public float? LotAreaSqM { get; set; }

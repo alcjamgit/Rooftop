@@ -1,0 +1,34 @@
+﻿@model RealEstateApp.ViewModels.AgentProfile
+
+<div class="panel panel-default glow-hover">
+    <div class="panel-heading">Agent Info</div>
+    <div class="panel-body">
+        <div class="media">
+            <a class="pull-left" href="#">
+
+                <img class="media-object" src="~/Content/images/profilePhoto1.jpg" />
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">@Html.DisplayFor(m => m.FullName)</h4>
+
+                <address>@Html.DisplayFor(m => m.Email)</address>
+            </div>
+        </div>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row"><small class="col-xs-5">Member Address:</small><span class="col-xs-7">12 Salcedo Village Makati</span></div>
+        </li>
+        <li class="list-group-item">
+            <div class="row"><small class="col-xs-5">Member Since:</small><span class="col-xs-7">@Html.DisplayFor(m => m.DateJoined)</span></div>
+        </li>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-success btn-block"><span class="glyphicon glyphicon-earphone"></span> Contact Numbers</button>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

@@ -210,6 +210,14 @@
     <Content Include="Content\images\thumbnailPlaceholder150x112.gif" />
     <Content Include="Content\images\thumbnailPlaceholder350x150.gif" />
     <Content Include="Content\images\thumbnailPlaceholder400x300.gif" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\css\fileinput.css" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\css\fileinput.min.css" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\examples\Desert.jpg" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\examples\index.html" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\examples\Jellyfish.jpg" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\img\loading.gif" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\js\fileinput.js" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\js\fileinput.min.js" />
     <Content Include="Plugins\chosen_v1.1.0\chosen-sprite%402x.png" />
     <Content Include="Plugins\chosen_v1.1.0\chosen-sprite.png" />
     <Content Include="Plugins\chosen_v1.1.0\chosen.css" />
@@ -1045,6 +1053,11 @@
     <Content Include="Plugins\font-awesome-4.1.0\scss\_spinning.scss" />
     <Content Include="Plugins\font-awesome-4.1.0\scss\_stacked.scss" />
     <Content Include="Plugins\font-awesome-4.1.0\scss\_variables.scss" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\bower.json" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\CHANGE.md" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\composer.json" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\LICENSE.md" />
+    <Content Include="Plugins\bootstrap-file-input-v1.5.0\README.md" />
     <None Include="Properties\PublishProfiles\Bahay List Local IIS 2.pubxml" />
     <None Include="Properties\PublishProfiles\BahayList Local IIS.pubxml" />
     <None Include="Properties\PublishProfiles\bahaylist.com Local IIS.pubxml" />

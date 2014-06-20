@@ -14,26 +14,34 @@ using RealEstateApp.ViewModels;
 using LinqKit;
 using RealEstateApp.DataAccessLayer;
 
+
 namespace RealEstateApp.Controllers
 {
   public class RealtyAdController : Controller
   {
-    private IUnitOfWork db;
+    private IUnitOfWork _db;
+    private HttpServerUtilityBase _server;
     public RealtyAdController()
     {
-      db = new UnitOfWork();
+      _db = new UnitOfWork();
+      _server = new HttpServerUtilityWrapper(System.Web.HttpContext.Current.Server);
     }
 
     //Constructor for dependency injection
     public RealtyAdController(IUnitOfWork unitOfWork)
     {
-      db = unitOfWork;
+      _db = unitOfWork;
+    }
+    public RealtyAdController(IUnitOfWork unitOfWork, HttpServerUtilityBase server)
+      :this(unitOfWork)
+    {
+      _server = server;
     }
 
     // GET: /RealtyAd/
     public ActionResult Index()
     {
-      var realtyads = db.RealtyAdRepo.AsQueryable();
+      var realtyads = _db.RealtyAdRepo.AsQueryable();
       
       return View("Index",realtyads.ToList());
     }
@@ -41,18 +49,19 @@ namespace RealEstateApp.Controllers
     // GET: /RealtyAd/Details/5
     public ActionResult Details(int? id)
     {
-      var realtyad = db.RealtyAdRepo.Find(r => r.Id == id);
+      var realtyad = _db.RealtyAdRepo.Find(r => r.Id == id);
 
       if (realtyad == null)
       {
         return HttpNotFound();
       }
+      
       return View(realtyad);
     }
 
     public ActionResult GetProperty(int id)
     {
-      RealtyAdDisplayFullViewModel realtyAd = (from r in db.RealtyAdRepo.AsQueryable()
+      RealtyAdDisplayFullViewModel realtyAd = (from r in _db.RealtyAdRepo.AsQueryable()
                                                where r.Id == id
                                                select new RealtyAdDisplayFullViewModel()
                                                {
@@ -72,7 +81,7 @@ namespace RealEstateApp.Controllers
                                                }).FirstOrDefault();
       //RealtyAdDisplayFullViewModel realtyAd = db.RealtyAdRepo.Find(r => r.Id == id);
 
-      var realtyAdImages = (from img in db.RealtyAdImageRepo.AsQueryable()
+      var realtyAdImages = (from img in _db.RealtyAdImageRepo.AsQueryable()
                             where img.RealtyAd_Id == id
                             select img).ToList();
 
@@ -82,14 +91,14 @@ namespace RealEstateApp.Controllers
         return HttpNotFound("Sorry no property found with this id.");
       }
       realtyAd.RealtyAdImages = realtyAdImages;
-      return View(realtyAd);
+      return View("GetProperty", realtyAd);
     }
 
     [ChildActionOnly]
     public ActionResult GetAgentProfile(string userId)
     {
       
-      var user = (from u in db.ApplicationUserRepo.AsQueryable()
+      var user = (from u in _db.ApplicationUserRepo.AsQueryable()
                  where u.Id == userId
                  select new AgentProfile {
                   Id = u.Id,
@@ -120,7 +129,7 @@ namespace RealEstateApp.Controllers
     public JsonResult DisplaySearchResultsJson(int bedcount)
     {
 
-      var realtyAds = from r in db.RealtyAdRepo.AsQueryable()
+      var realtyAds = from r in _db.RealtyAdRepo.AsQueryable()
                       select new { r.ShortDescn, r.Price, r.Id };
       return Json(realtyAds, JsonRequestBehavior.AllowGet);
     }
@@ -149,9 +158,9 @@ namespace RealEstateApp.Controllers
       //}
 
       //IEnumerable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAds
-      IQueryable<RealtyAdDisplayCompactViewModel> realtyAds = from r in db.RealtyAdRepo.AsQueryable()
-                                                              join c in db.CityRepo.AsQueryable() on r.City_Id equals c.Id
-                                                              join img in db.RealtyAdImageDefaultRepo.AsQueryable() on r.Id equals img.RealtyAd_Id into outerJoin
+      IQueryable<RealtyAdDisplayCompactViewModel> realtyAds = from r in _db.RealtyAdRepo.AsQueryable()
+                                                              join c in _db.CityRepo.AsQueryable() on r.City_Id equals c.Id
+                                                              join img in _db.RealtyAdImageDefaultRepo.AsQueryable() on r.Id equals img.RealtyAd_Id into outerJoin
                                                               from subjoin in outerJoin.DefaultIfEmpty()
                                                               select new RealtyAdDisplayCompactViewModel
                                                               {
@@ -246,7 +255,7 @@ namespace RealEstateApp.Controllers
       ViewBag.BedCountSelectItems = GetSelectListFromRange(0,6,suffix:" Beds");
       ViewBag.BathCountSelectItems = GetSelectListFromRange(0, 5, suffix: " Baths");
       ViewBag.FloorAreaSelectItems = GetSelectListFromRange(0, 1000,5,suffix:" sqm.");
-      ViewBag.City_Id = new SelectList(db.CityRepo.GetAll(), "Id", "Name");
+      ViewBag.City_Id = new SelectList(_db.CityRepo.GetAll(), "Id", "Name");
       return View(createModel);
     }
     // POST: /RealtyAd/Create
@@ -257,11 +266,12 @@ namespace RealEstateApp.Controllers
     public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
     {
       string userId = User.Identity.GetUserId();
+      
       //use User.Identity.Name for easier unit testing 
       //Mocking User.Identity.GetUserId() would be difficult since Moq cannot do extension methods
 
       //string userId = User.Identity.Name;
-      //string userId = "123";
+      //string userId = "user2";
       if (ModelState.IsValid)
       {        
         RealtyAd realtyAd = new RealtyAd()
@@ -285,11 +295,12 @@ namespace RealEstateApp.Controllers
         };
 
         //save RealtyAd entry
-        db.RealtyAdRepo.Add(realtyAd);
-        db.Commit();
+        _db.RealtyAdRepo.Add(realtyAd);
+        _db.Commit();
 
         ////create user image directory for user
-        string userAbsoluteDirectory = Path.Combine(Server.MapPath(string.Format("~/Content/images/{0}", userId)));
+        //string userAbsoluteDirectory = Path.Combine(Server.MapPath(string.Format("~/Content/images/{0}", userId)));
+        string userAbsoluteDirectory = Path.Combine(_server.MapPath(string.Format("~/Content/images/{0}", userId)));
 
         if (!Directory.Exists(userAbsoluteDirectory))
         {
@@ -308,7 +319,7 @@ namespace RealEstateApp.Controllers
               string relativeDirectory = string.Format("~/Content/images/{0}", userId);
               string absolutePath = Path.Combine(Server.MapPath(relativeDirectory), fileName);
               img.SaveAs(absolutePath);
-              db.RealtyAdImageRepo.Add(new RealtyAdImage()
+              _db.RealtyAdImageRepo.Add(new RealtyAdImage()
               {
                 RealtyAd_Id = realtyAd.Id,
                 FileName = fileName
@@ -317,10 +328,10 @@ namespace RealEstateApp.Controllers
             }
           }
           //save changes for the images
-          db.Commit();
+          _db.Commit();
 
           //save Realty Ad Image Default
-          var imgSelect = (from i in db.RealtyAdImageRepo.AsQueryable()
+          var imgSelect = (from i in _db.RealtyAdImageRepo.AsQueryable()
                            where i.RealtyAd_Id == realtyAd.Id
                            select i).FirstOrDefault();
 
@@ -333,8 +344,8 @@ namespace RealEstateApp.Controllers
               FileName = imgSelect.FileName
             };
 
-            db.RealtyAdImageDefaultRepo.Add(realtyAdImgDefault);
-            db.Commit();
+            _db.RealtyAdImageDefaultRepo.Add(realtyAdImgDefault);
+            _db.Commit();
           }
         }
 
@@ -345,9 +356,10 @@ namespace RealEstateApp.Controllers
       ViewBag.BedCountSelectItems = GetSelectListFromRange(0,6,suffix:" Beds");
       ViewBag.BathCountSelectItems = GetSelectListFromRange(0, 5, suffix: " Baths");
       ViewBag.FloorAreaSelectItems = GetSelectListFromRange(0, 1000,5,suffix:" sqm.");
-      ViewBag.City_Id = new SelectList(db.CityRepo.GetAll(), "Id", "Name");
+      ViewBag.City_Id = new SelectList(_db.CityRepo.GetAll(), "Id", "Name");
       return View(realtyAdViewModel);
     }
+
 
     public IEnumerable<SelectListItem> GetSelectListFromRange(int startVal, int endVal, int increment = 1, string prefix = "", string suffix ="" )
     {
@@ -403,7 +415,7 @@ namespace RealEstateApp.Controllers
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
       }
-      RealtyAd realtyad = db.RealtyAdRepo.GetById(id??0);
+      RealtyAd realtyad = _db.RealtyAdRepo.GetById(id??0);
       if (realtyad == null)
       {
         return HttpNotFound();
@@ -416,9 +428,9 @@ namespace RealEstateApp.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int id)
     {
-      RealtyAd realtyad = db.RealtyAdRepo.GetById(id);
-      db.RealtyAdRepo.Delete(realtyad);
-      db.Commit();
+      RealtyAd realtyad = _db.RealtyAdRepo.GetById(id);
+      _db.RealtyAdRepo.Delete(realtyad);
+      _db.Commit();
       return RedirectToAction("Index");
     }
 
@@ -426,7 +438,7 @@ namespace RealEstateApp.Controllers
     {
       if (disposing)
       {
-        db.Dispose();
+        _db.Dispose();
       }
       base.Dispose(disposing);
     }
