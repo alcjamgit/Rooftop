@@ -1,7 +1,8 @@
 ﻿body {
     background-color:#f5f5f5;
-    padding-top: 70px;
+    /*padding-top: 20px;*/
     padding-bottom: 20px;
+  
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -19,7 +20,7 @@ textarea {
 }
 */
 
-/* styles for validation helpers */
+/* styles for validation helpers 
 .field-validation-error {
     color: #b94a48;
 }
@@ -43,6 +44,7 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+*/
 
 /* James Styles */
 /* styles for borderless thumbnail */
@@ -156,17 +158,26 @@ div.photo-count {
 -------------------------------------------------*/
 
 /*-------------------------------------------------
-    Start of Easy Wizard Styling
+    Start of Bootstrap Theme - Admin LTE
 -------------------------------------------------*/
-.easyWizardSteps {list-style:none;width:100%;overflow:hidden;margin:0;padding:0;border-bottom:1px solid #ccc;margin-bottom:20px}
-.easyWizardSteps li {font-size:18px;display:inline-block;padding:10px;color:#B0B1B3;margin-right:20px;}
-.easyWizardSteps li span {font-size:24px}
-.easyWizardSteps li.current {color:#000}
+ .right-side{
+     margin-left: 0;
+     background-color: #f5f5f5;
+ }
 
-/*.easyWizardButtons {overflow:hidden;padding:10px;} */
-.easyWizardButtons button, .easyWizardButtons .submit {cursor:pointer}
-.easyWizardButtons .prev {float:left}
-.easyWizardButtons .next, .easyWizardButtons .submit {float:right}
+  .skin-blue .right-side .content-header{
+     box-shadow:none;
+     border-bottom:#d3d3d3 solid 1px;
+     padding-left:0;
+     padding-right:0;
+     background-color:#f5f5f5;
+ }
+
+    .navbar> .container .navbar-brand {
+        margin-left: -15px;
+    }
+
+}
 /*-------------------------------------------------
-    End of Easy Wizard Styling
+    End of Bootstrap Theme - Admin LTE
 -------------------------------------------------*/

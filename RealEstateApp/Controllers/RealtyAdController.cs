@@ -19,23 +19,29 @@ namespace RealEstateApp.Controllers
 {
   public class RealtyAdController : Controller
   {
+    
     private IUnitOfWork _db;
     private HttpServerUtilityBase _server;
+    private string _userId;
     public RealtyAdController()
     {
       _db = new UnitOfWork();
       _server = new HttpServerUtilityWrapper(System.Web.HttpContext.Current.Server);
+      
     }
 
     //Constructor for dependency injection
-    public RealtyAdController(IUnitOfWork unitOfWork)
+    public RealtyAdController(IUnitOfWork unitOfWork, string userId = null)
     {
       _db = unitOfWork;
+      _userId = userId;
     }
-    public RealtyAdController(IUnitOfWork unitOfWork, HttpServerUtilityBase server)
+
+    public RealtyAdController(IUnitOfWork unitOfWork, HttpServerUtilityBase server )
       :this(unitOfWork)
     {
       _server = server;
+ 
     }
 
     // GET: /RealtyAd/
@@ -265,13 +271,7 @@ namespace RealEstateApp.Controllers
     [ValidateAntiForgeryToken,Authorize]
     public ActionResult Create(RealtyAdCreateViewModel realtyAdViewModel)
     {
-      string userId = User.Identity.GetUserId();
-      
-      //use User.Identity.Name for easier unit testing 
-      //Mocking User.Identity.GetUserId() would be difficult since Moq cannot do extension methods
-
-      //string userId = User.Identity.Name;
-      //string userId = "user2";
+      _userId = User.Identity.GetUserId();
       if (ModelState.IsValid)
       {        
         RealtyAd realtyAd = new RealtyAd()
@@ -291,7 +291,7 @@ namespace RealEstateApp.Controllers
           Latitude = realtyAdViewModel.Latitude,
           Longitude = realtyAdViewModel.Longitude,
           Status = RealtyAdStatus.Active,
-          ApplicationUser_Id = userId
+          ApplicationUser_Id = _userId
         };
 
         //save RealtyAd entry
@@ -300,7 +300,7 @@ namespace RealEstateApp.Controllers
 
         ////create user image directory for user
         //string userAbsoluteDirectory = Path.Combine(Server.MapPath(string.Format("~/Content/images/{0}", userId)));
-        string userAbsoluteDirectory = Path.Combine(_server.MapPath(string.Format("~/Content/images/{0}", userId)));
+        string userAbsoluteDirectory = Path.Combine(_server.MapPath(string.Format("~/Content/images/{0}", _userId)));
 
         if (!Directory.Exists(userAbsoluteDirectory))
         {
@@ -316,8 +316,8 @@ namespace RealEstateApp.Controllers
             {
               string fileExt = Path.GetExtension(img.FileName);
               string fileName = Guid.NewGuid().ToString() + fileExt;
-              string relativeDirectory = string.Format("~/Content/images/{0}", userId);
-              string absolutePath = Path.Combine(Server.MapPath(relativeDirectory), fileName);
+              string relativeDirectory = string.Format("~/Content/images/{0}", _userId);
+              string absolutePath = Path.Combine(_server.MapPath(relativeDirectory), fileName);
               img.SaveAs(absolutePath);
               _db.RealtyAdImageRepo.Add(new RealtyAdImage()
               {
